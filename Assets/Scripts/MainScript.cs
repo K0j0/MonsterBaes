@@ -18,6 +18,8 @@ public class MainScript : MonoBehaviour {
 	public float slide = 50;
 	private static MonoBehaviour instance;
 	private string currArea;
+	public GameObject currNavButtons;
+	public GameObject commonUI;
 
 	public GameObject buttonGroup;
 	public Button option1;
@@ -34,6 +36,7 @@ public class MainScript : MonoBehaviour {
 		Debug.Log("Bae.");
 		instance = this;
 		currArea = GameAreas.CLASSROOM;
+		currNavButtons = gameAreas.classroomNav;
 
 		GameFlags.init ();
 		switch (lastState) {
@@ -54,6 +57,8 @@ public class MainScript : MonoBehaviour {
 			// hide characters
 			Kaede.gameObject.SetActive(false);
 			Dan.gameObject.SetActive(false);
+			// hide nav
+			currNavButtons.SetActive(false);
 			
 			// show larger character
 			Kaede_big.gameObject.SetActive(true);
@@ -68,6 +73,8 @@ public class MainScript : MonoBehaviour {
 				// hide characters
 				Kaede.gameObject.SetActive(false);
 				Dan.gameObject.SetActive(false);
+				// hide nav
+				currNavButtons.SetActive(false);
 				
 				iTween.MoveTo(Kaede_big.gameObject, iTween.Hash(
 					"x", Kaede_big.transform.position.x - slide
@@ -88,6 +95,8 @@ public class MainScript : MonoBehaviour {
 				// hide characters
 				Kaede.gameObject.SetActive(false);
 				Dan.gameObject.SetActive(false);
+				// hide nav
+				currNavButtons.SetActive(false);
 				
 				// show larger character
 				Kaede_big.gameObject.SetActive(true);
@@ -115,16 +124,18 @@ public class MainScript : MonoBehaviour {
 		// hide characters
 		Kaede.gameObject.SetActive(false);
 		Dan.gameObject.SetActive(false);
+		// hide nav
+		currNavButtons.SetActive(false);
 		
 		// show larger character
 		Dan_big.gameObject.SetActive(true);
 		conversationPanel.SetActive(true);
+		closeConvoButton.SetActive (false); // don't show close button here
 		blocker.SetActive(true);
 		convoText.text = "DAN:\nWhat's up?";
 
 		HelperFunctions.DelayCallback (1f, () => {
 			buttonGroup.SetActive (true);
-			closeConvoButton.SetActive (false);
 		});
 
 
@@ -138,7 +149,9 @@ public class MainScript : MonoBehaviour {
 					lastState = GameFlags.GameState.SPEAK_TO_KAEDE_1;
 					// show characters
 					Kaede.gameObject.SetActive(true);
-					Dan.gameObject.SetActive(true);					
+					Dan.gameObject.SetActive(true);
+					// show nav
+					currNavButtons.SetActive(true);
 					// hide larger character
 					resetKaedeBig();
 					conversationPanel.SetActive(false);
@@ -188,16 +201,19 @@ public class MainScript : MonoBehaviour {
 				currArea = GameAreas.CLASSROOM;
 				gameAreas.classroom.SetActive(true);
 				gameAreas.classroom.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
 			break;
 			case GameAreas.CLASSROOM_BLUE:
 				currArea = GameAreas.CLASSROOM_BLUE;
 				gameAreas.classroomBlue.SetActive(true);
 				gameAreas.classroomBlue.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
 			break;
 			case GameAreas.CLASSROOM_RED:
 				currArea = GameAreas.CLASSROOM_RED;
 				gameAreas.classroomRed.SetActive(true);
 				gameAreas.classroomRed.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
 			break;
 			default:
 				Debug.LogError("Unknown area: " + area + ". Maybe that's a type?");

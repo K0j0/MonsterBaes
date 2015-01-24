@@ -14,8 +14,13 @@ public class GameAreas : MonoBehaviour
 {
 	public const string CLASSROOM = "classroom";
 	public GameObject classroom;
+	public GameObject classroomNav;
+
 	public const string CLASSROOM_RED = "classroom_red";
 	public GameObject classroomRed;
+	public GameObject classroomRedNav;
+
 	public const string CLASSROOM_BLUE = "classroom_blue";
 	public GameObject classroomBlue;
+	public GameObject classroomBlueNav;
 }
