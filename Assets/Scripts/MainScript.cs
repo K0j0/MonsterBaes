@@ -8,6 +8,7 @@ public class MainScript : MonoBehaviour {
 	public GameObject conversationPanel;
 	public GameObject blocker;
 	public GameObject closeConvoButton;
+	public GameAreas gameAreas;
 	public Text convoText;
 	public Button Dan;
 	public Button Dan_big;
@@ -16,6 +17,7 @@ public class MainScript : MonoBehaviour {
 	public GameFlags.GameState lastState = GameFlags.GameState.START;
 	public float slide = 50;
 	private static MonoBehaviour instance;
+	private string currArea;
 
 	public GameObject buttonGroup;
 	public Button option1;
@@ -31,6 +33,7 @@ public class MainScript : MonoBehaviour {
 	void Start () {
 		Debug.Log("Bae.");
 		instance = this;
+		currArea = GameAreas.CLASSROOM;
 
 		GameFlags.init ();
 		switch (lastState) {
@@ -119,7 +122,7 @@ public class MainScript : MonoBehaviour {
 		blocker.SetActive(true);
 		convoText.text = "DAN:\nWhat's up?";
 
-		DelayCallback (1f, () => {
+		HelperFunctions.DelayCallback (1f, () => {
 			buttonGroup.SetActive (true);
 			closeConvoButton.SetActive (false);
 		});
@@ -178,13 +181,27 @@ public class MainScript : MonoBehaviour {
 		}
 	}
 
-	public delegate void Callback();
-	static IEnumerator DelayCallbackCoroutine(float delay, Callback callback){
-		yield return new WaitForSeconds(delay);
-		callback();
-	}
-	
-	public static void DelayCallback(float delay, Callback callback){
-		instance.StartCoroutine(DelayCallbackCoroutine(delay, callback));
+	public void onNavigate(string area){
+		print ("Navigate to " + area);
+		switch (area) {
+			case GameAreas.CLASSROOM:
+				currArea = GameAreas.CLASSROOM;
+				gameAreas.classroom.SetActive(true);
+				gameAreas.classroom.transform.SetAsLastSibling();
+			break;
+			case GameAreas.CLASSROOM_BLUE:
+				currArea = GameAreas.CLASSROOM_BLUE;
+				gameAreas.classroomBlue.SetActive(true);
+				gameAreas.classroomBlue.transform.SetAsLastSibling();
+			break;
+			case GameAreas.CLASSROOM_RED:
+				currArea = GameAreas.CLASSROOM_RED;
+				gameAreas.classroomRed.SetActive(true);
+				gameAreas.classroomRed.transform.SetAsLastSibling();
+			break;
+			default:
+				Debug.LogError("Unknown area: " + area + ". Maybe that's a type?");
+			break;
+		}
 	}
 }
