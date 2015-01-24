@@ -99,13 +99,16 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void talkToDan(){
-		iTween.MoveTo(Dan_big.gameObject, iTween.Hash(
-			"x", Dan_big.transform.position.x + slide
-			, "islocal", false
-			, "time", 1f
-			, "delay", 0
-		));
+		if (!GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_DAN]) {
+			GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_DAN] = true;
 
+			iTween.MoveTo(Dan_big.gameObject, iTween.Hash(
+				"x", Dan_big.transform.position.x + slide
+				, "islocal", false
+				, "time", 1f
+				, "delay", 0
+				));
+		}
 		// hide characters
 		Kaede.gameObject.SetActive(false);
 		Dan.gameObject.SetActive(false);

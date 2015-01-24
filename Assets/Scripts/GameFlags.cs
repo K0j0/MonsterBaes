@@ -9,7 +9,8 @@ public class GameFlags{
 	}
 
 	public enum StoryEvent{
-		SPEAK_TO_KAEDE
+		SPEAK_TO_KAEDE,
+		SPEAK_TO_DAN
 	}
 
 	public static Dictionary<StoryEvent, bool> flags;
@@ -17,6 +18,7 @@ public class GameFlags{
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
 		flags [StoryEvent.SPEAK_TO_KAEDE] = false;
+		flags [StoryEvent.SPEAK_TO_DAN] = false;
 	}
 
 }
