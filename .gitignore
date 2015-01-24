@@ -1,0 +1,18 @@
+#For Mac developers
+.DS_Store
+ 
+[Oo]bj/
+[Tt]emp/
+[Ll]ibrary
+[Bb]uilds/
+
+#These are files in the root folder of the project
+*.tmproj
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.pidb
+*.userprefs
+
