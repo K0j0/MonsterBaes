@@ -28,7 +28,34 @@ public class DanConvo : MonoBehaviour {
 				mainSCript.conversationPanel.SetActive(true);
 				mainSCript.closeConvoButton.SetActive (true);
 				mainSCript.blocker.SetActive(true);
-				mainSCript.say (Baes.DAN, "Oh you found them! Thank you so much. Let's get started");
+			//	mainSCript.say (Baes.DAN, "Oh you found them! Thank you so much. Let's get started");
+			//	setOptions(GameState.SPEAK_TO_DAN_6);
+				switch (mainSCript.lastState)
+				{
+				case GameState.SPEAK_TO_DAN_6:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_7;
+					mainSCript.say (Baes.DAN, "Ok, you ready to learn?");
+					setOptions(GameState.SPEAK_TO_DAN_7);
+					mainSCript.showOptions();
+				break;
+				case GameState.SPEAK_TO_DAN_7A:
+					changeBigMood(Moods.ANGRY);
+					mainSCript.say(Baes.DAN, "Get out");
+					mainSCript.closeConvoButton.SetActive(true);
+					break;
+				case GameState.SPEAK_TO_DAN_7B:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
+					mainSCript.say(Baes.DAN, "Good. Name a noble gas.");
+					setOptions(GameState.SPEAK_TO_DAN_8);
+					mainSCript.showOptions();				
+					break;
+				case GameState.SPEAK_TO_DAN_7C:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
+					mainSCript.say(Baes.DAN, "Ha... Name a noble gas.");
+					setOptions(GameState.SPEAK_TO_DAN_8);
+					mainSCript.showOptions();
+					break;
+				}
 			}
 			else{
 				mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
@@ -156,7 +183,32 @@ public class DanConvo : MonoBehaviour {
 			case GameState.SPEAK_TO_DAN_5B:
 				mainSCript.closeConversationPanel();				
 			break;
-			
+//				if (GameFlags.flags[StoryEvent.GOT_GLASSES]);
+//				setOptions(GameState.SPEAK_TO_DAN_6);
+
+		//	case GameState.SPEAK_TO_DAN_6:
+		//		mainSCript.lastState = GameState.SPEAK_TO_DAN_7;
+		//		mainSCript.say (Baes.DAN, "Ok, you ready to learn?");
+		//		setOptions(GameState.SPEAK_TO_DAN_7);
+		//		mainSCript.showOptions();
+		//		break;
+			case GameState.SPEAK_TO_DAN_7A:
+				changeBigMood(Moods.ANGRY);
+				mainSCript.say(Baes.DAN, "Get out");
+				mainSCript.closeConvoButton.SetActive(true);
+				break;
+			case GameState.SPEAK_TO_DAN_7B:
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
+				mainSCript.say(Baes.DAN, "Good. Name a noble gas.");
+				setOptions(GameState.SPEAK_TO_DAN_8);
+				mainSCript.showOptions();				
+				break;
+			case GameState.SPEAK_TO_DAN_7C:
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
+				mainSCript.say(Baes.DAN, "Ha... Name a noble gas.");
+				setOptions(GameState.SPEAK_TO_DAN_8);
+				mainSCript.showOptions();
+				break;
 			default:
 				Debug.LogError("Whoa, didn't think you could talk to Dan during this state: " + mainSCript.lastState);
 			break;
@@ -232,6 +284,21 @@ public class DanConvo : MonoBehaviour {
 				mainSCript.option4_text.text = "";
 				mainSCript.option4.gameObject.SetActive(false);
 			break;
+			case GameState.SPEAK_TO_DAN_6:
+			break;
+
+			case GameState.SPEAK_TO_DAN_7:
+				mainSCript.option1_text.text = "Nope.";
+				mainSCript.option1.gameObject.SetActive(true);
+				mainSCript.option2_text.text = "Yep.";
+				mainSCript.option2.gameObject.SetActive(true);
+				mainSCript.option3_text.text = "Are you?";
+				mainSCript.option3.gameObject.SetActive(true);
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
+
+
 		}
 	}
 

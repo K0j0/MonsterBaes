@@ -365,7 +365,9 @@ public class MainScript : MonoBehaviour {
 				gameAreas.entraceOutsideNav.SetActive(false);
 			break;
 			case "oil":
-				if(GameFlags.flags[StoryEvent.NEED_OIL]) say (Baes.YOU, "This is just what Buzz was looking for");
+				if(GameFlags.flags[StoryEvent.NEED_OIL]){ say (Baes.YOU, "This is just what Buzz was looking for");
+					items.oilCan.SetActive(false);
+				}
 				else say (Baes.YOU, "It's just some organic oil");
 				conversationPanel.SetActive(true);
 				gameAreas.paletteNav.SetActive(false);
