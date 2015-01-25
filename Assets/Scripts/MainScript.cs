@@ -23,6 +23,7 @@ public class MainScript : MonoBehaviour {
 	public ConversationTree convoTree;
 	public GameObject book;
 	public GameObject bookBig;
+	public GameObject[] trash;
 
 	public GameObject buttonGroup;
 	public Button option1;
@@ -346,5 +347,15 @@ public class MainScript : MonoBehaviour {
 		bookBig.SetActive(false);
 		book.SetActive(true);
 		blocker.SetActive(false);
+	}
+
+	int trashTotal = 0;
+	public void pickupTrash(int piece){
+		trash[piece].SetActive(false);
+		++trashTotal;
+		if (trashTotal >= trash.Length) {
+			say (Baes.YOU, "This place is looking cleaner already!");
+			conversationPanel.SetActive(true);
+		}
 	}
 }
