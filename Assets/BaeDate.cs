@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BaeDate : MonoBehaviour {
-	public GameObject Klulu;
-	public GameObject Daisy;
-	public GameObject Dan;
-	public GameObject Buzz;
+
+	public Button Klulu;
+	public Button Daisy;
+	public Button Dan;
+	public Button Buzz;
 
 	public GameObject Klulu_Button;
 	public GameObject Daisy_Button;
@@ -18,6 +20,7 @@ public class BaeDate : MonoBehaviour {
 	public GameObject Buzz_Kiss;
 
 	public void Kiss(Baes who){
+		print ("Kiss " + who);
 		switch(who){
 			case Baes.BUZZ:
 			break;
@@ -26,15 +29,25 @@ public class BaeDate : MonoBehaviour {
 			case Baes.DAISY:
 			break;
 			case Baes.KULU:
+				Klulu.gameObject.SetActive(false);
+				Klulu_Button.SetActive(false);
+				Klulu_Kiss.SetActive(true);
+				
+				HelperFunctions.DelayCallback(3f, ()=>{
+					Klulu_Kiss.SetActive(false);
+					GameFlags.flags[StoryEvent.DATED_KLULU] = true;
+					MainScript.instance.onNavigate(GameAreas.BEACH);
+					MainScript.instance.Klulu.gameObject.SetActive(false);
+				});
 			break;
 		}
 	}
 
 	public void StartDate(Baes who){
-		Klulu.SetActive (false);
-		Daisy.SetActive (false);
-		Dan.SetActive (false);
-		Buzz.SetActive (false);
+		Klulu.gameObject.SetActive (false);
+		Daisy.gameObject.SetActive (false);
+		Dan.gameObject.SetActive (false);
+		Buzz.gameObject.SetActive (false);
 
 		Klulu_Button.SetActive (false);
 		Daisy_Button.SetActive (false);
@@ -43,20 +56,20 @@ public class BaeDate : MonoBehaviour {
 
 		switch(who){
 			case Baes.BUZZ:
-				Buzz.SetActive (true);
+				Buzz.gameObject.SetActive (true);
 				Buzz_Button.SetActive (true);
 			break;
 			case Baes.DAN:
-				Dan.SetActive (true);
+				Dan.gameObject.SetActive (true);
 				Dan_Button.SetActive (true);
 			break;
 			case Baes.DAISY:
-				Daisy.SetActive (true);
+				Daisy.gameObject.SetActive (true);
 				Daisy_Button.SetActive (true);
 			break;
 			case Baes.KULU:
 				GameFlags.flags[StoryEvent.DATING_KLULU] = true;
-				Klulu.SetActive (true);
+				Klulu.gameObject.SetActive (true);
 				Klulu_Button.SetActive (true);
 			break;
 		}

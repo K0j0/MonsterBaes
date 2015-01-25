@@ -10,7 +10,7 @@ public class KluluConvo : MonoBehaviour {
 			mainSCript.closeConvoButton.SetActive(false);
 			switch (mainSCript.lastState)
 			{
-				case GameState.DATE_KLULU_1:
+				case GameState.DATE_KLULU_1:					
 					mainSCript.conversationPanel.SetActive(true);
 					mainSCript.say(Baes.KULU, "Thanks for helping me out, dear.");
 					setOptions(GameState.DATE_KLULU_1);
@@ -27,12 +27,23 @@ public class KluluConvo : MonoBehaviour {
 				case GameState.DATE_KLULU_2A:
 					changeMood(Moods.ANGRY);
 					mainSCript.say(Baes.KULU, "What!?");
-					mainSCript.closeConvoButton.SetActive(true);
+
+					HelperFunctions.DelayCallback(3f, ()=>{
+						GameFlags.flags[StoryEvent.DATED_KLULU] = true;
+						MainScript.instance.onNavigate(GameAreas.BEACH);
+						MainScript.instance.Klulu.gameObject.SetActive(false);
+						mainSCript.conversationPanel.SetActive(false);
+					});
 				break;
 
 				case GameState.DATE_KLULU_2B:
 					changeMood(Moods.SMILE);
 					mainSCript.say(Baes.KULU, "Oh you flirt");
+
+					HelperFunctions.DelayCallback(1f, ()=>{
+						mainSCript.baeDates.Kiss(Baes.KULU);
+						mainSCript.conversationPanel.SetActive(false);
+					});
 				break;
 			}
 		}
@@ -54,6 +65,7 @@ public class KluluConvo : MonoBehaviour {
 						case GameState.SPEAK_TO_KLULU_6A:							
 							mainSCript.closeConversationPanel();
 							mainSCript.StartDate(Baes.KULU);
+							changeMood(Moods.NEUTRAL);
 							mainSCript.lastState = GameState.DATE_KLULU_1; // need to call this after closing panel
 						break;
 					}
@@ -292,6 +304,7 @@ public class KluluConvo : MonoBehaviour {
 			break;
 		}
 		mainSCript.Klulu_big.image.sprite = newSprite;
+		mainSCript.baeDates.Klulu.image.sprite = newSprite;
 	}
 
 	void TakeFocus(bool showCloseButton){
