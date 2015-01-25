@@ -30,8 +30,7 @@ public class ConversationTree : MonoBehaviour {
 		switch (mainScript.lastState) {
 			case GameState.START:
 			case GameState.SPEAK_TO_DAN:
-			case GameState.SPEAK_TO_DAN_1:
-			case GameState.SPEAK_TO_DAN_2:
+			case GameState.SPEAK_TO_DAN_1_0:
         	switch(choice)
 				{
 					case 1:
@@ -47,22 +46,26 @@ public class ConversationTree : MonoBehaviour {
 				mainScript.buttonGroup.SetActive(false);
 				TalkToDan();
 			break;
+			case GameState.SPEAK_TO_DAN_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_2A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_2B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+			break;
 			default:
 				Debug.LogError("Whoops, wasn't expecting you to say something in this state: " + mainScript.lastState);
 			break;
 		}
 	}
-	public void setOptions(GameState forState){
-		switch (forState) {
-			case GameState.SPEAK_TO_DAN:
-				dan.setOptions(forState);
-			break;
-			default:
-				Debug.LogError("Dunno, who to set the options for in this state: " + forState);
-			break;
-		}
-	}
-	
+
 	public void TalkToDan(){
 		dan.TalkToMe ();
 	}

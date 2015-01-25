@@ -113,23 +113,22 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void closeConversationPanel(){
-		switch (lastState) {
-			case GameState.START:
-			case GameState.SPEAK_TO_KAEDE_1:
-			case GameState.SPEAK_TO_DAN_1A:
-			case GameState.SPEAK_TO_DAN_1C:
-				lastState = GameState.SPEAK_TO_KAEDE_1;
-					// show characters
-					Kaede.gameObject.SetActive(true);
-					Dan.gameObject.SetActive(true);
-					// show nav
-					currNavButtons.SetActive(true);
-					// hide larger character
-					resetKaedeBig();
-					resetDanBig();
-					conversationPanel.SetActive(false);
-					closeConvoButton.SetActive(true);
-					blocker.SetActive(false);
+		switch (currArea) {
+			case GameAreas.CLASSROOM:
+				lastState = GameState.SPEAK_TO_DAN;
+				// show characters
+				Kaede.gameObject.SetActive(true);
+				Dan.gameObject.SetActive(true);
+				// show nav
+				currNavButtons.SetActive(true);
+				// hide larger character
+				resetKaedeBig();
+				resetDanBig();
+				conversationPanel.SetActive(false);
+				closeConvoButton.SetActive(true);
+				blocker.SetActive(false);
+				// hide buttons too
+				buttonGroup.SetActive(false);
 			break;
 		}
 	}
@@ -173,6 +172,13 @@ public class MainScript : MonoBehaviour {
 		Dan_big.gameObject.SetActive(false);
 	}
 
+	public void showOptions(){
+		print ("show options");
+		HelperFunctions.DelayCallback (1.5f, () => {
+			buttonGroup.SetActive (true);
+		});
+	}
+	
 	public void onNavigate(string area){
 		print ("Navigate to " + area);
 		switch (area) {

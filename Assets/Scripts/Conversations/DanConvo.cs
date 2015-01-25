@@ -35,18 +35,12 @@ public class DanConvo : MonoBehaviour {
 					mainSCript.closeConvoButton.SetActive (false); // don't show close button here
 					mainSCript.blocker.SetActive(true);
 					mainSCript.say (Baes.YOU, "Hey you, Mr. Slime");
-				
-					setOptions(GameState.SPEAK_TO_DAN);
 			break;
 			case GameState.SPEAK_TO_DAN_1:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_2;
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_1_0;
 				mainSCript.say (Baes.DAN, "Wow, That not my name. Is that how you adress everyone?");
-
-				HelperFunctions.DelayCallback (1.5f, () => {
-					mainSCript.buttonGroup.SetActive (true);
-				});
-				
-				
+				setOptions(GameState.SPEAK_TO_DAN_1_0);
+				mainSCript.showOptions();
 			break;
 			case GameState.SPEAK_TO_DAN_1A:
 				changeBigMood(Moods.ANGRY);
@@ -54,11 +48,26 @@ public class DanConvo : MonoBehaviour {
 				mainSCript.closeConvoButton.SetActive(true);
 			break;
 			case GameState.SPEAK_TO_DAN_1B:
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_2;
 				mainSCript.say(Baes.DAN, "It's rude to address someone by their physical properties");
+				mainSCript.showOptions();
+				setOptions(GameState.SPEAK_TO_DAN_1B);
+				
 			break;
 			case GameState.SPEAK_TO_DAN_1C:
 				mainSCript.closeConversationPanel();
-				mainSCript.lastState = GameState.SPEAK_TO_DAN;
+			break;
+
+			case GameState.SPEAK_TO_DAN_2A:
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_3;
+				mainSCript.say(Baes.DAN, "Dan Goo. What do you want?");
+				setOptions(GameState.SPEAK_TO_DAN_2A);
+			break;
+
+			case GameState.SPEAK_TO_DAN_2B:				
+				changeBigMood(Moods.ANGRY);
+				mainSCript.say(Baes.DAN, "@#$%^# off!");
+				mainSCript.closeConvoButton.SetActive(true);
 			break;
 			
 			default:
@@ -68,14 +77,30 @@ public class DanConvo : MonoBehaviour {
 
 	}
 
-	public void setOptions(GameState forState){
+	void setOptions(GameState forState){
 		switch (forState) {
-		case GameState.SPEAK_TO_DAN:
-			mainSCript.option1_text.text = "Pretty much";
-			mainSCript.option2_text.text = "What do you mean?";
-			mainSCript.option3_text.text = "I'll come back later";
-			mainSCript.option4.gameObject.SetActive(false);
-			mainSCript.option4_text.text = "";
+			case GameState.SPEAK_TO_DAN_1_0:
+				mainSCript.option1_text.text = "Pretty much";
+				mainSCript.option1.gameObject.SetActive(true);
+
+				mainSCript.option2_text.text = "What do you mean?";
+				mainSCript.option2.gameObject.SetActive(true);
+
+				mainSCript.option3_text.text = "I'll come back later";
+				mainSCript.option3.gameObject.SetActive(true);
+
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
+			case GameState.SPEAK_TO_DAN_1B:
+				mainSCript.option1_text.text = "Sorry, what's your name?";
+				mainSCript.option1.gameObject.SetActive(true);
+				mainSCript.option2_text.text = "Sorry, goo guy";
+				mainSCript.option2.gameObject.SetActive(true);
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
 			break;
 		}
 	}
