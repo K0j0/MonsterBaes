@@ -384,12 +384,12 @@ GameObject:
   - 114: {fileID: 36391724}
   - 114: {fileID: 36391723}
   m_Layer: 5
-  m_Name: Kaede_big
+  m_Name: Klulu_big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &36391722
 RectTransform:
   m_ObjectHideFlags: 0
@@ -448,8 +448,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
-        m_MethodName: talkToKaede
+      - m_Target: {fileID: 1505569711}
+        m_MethodName: TalkToKlulu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 20e3951147b46084e8f8d888f94fb864, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cab5685913ed5964ca4a28444921954a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -587,7 +587,7 @@ RectTransform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 834580952}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 380, y: 319}
@@ -683,6 +683,70 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 43226118}
+--- !u!1 &51687593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 153338, guid: 1e625efc40e93854eb7d3dcc6f9afbe8, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 51687594}
+  - 222: {fileID: 51687596}
+  - 114: {fileID: 51687595}
+  m_Layer: 5
+  m_Name: Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &51687594
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22453340, guid: 1e625efc40e93854eb7d3dcc6f9afbe8,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 51687593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.00999999}
+  m_Children: []
+  m_Father: {fileID: 834580952}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 400, y: 300}
+  m_SizeDelta: {x: 810, y: 610}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &51687595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11453334, guid: 1e625efc40e93854eb7d3dcc6f9afbe8,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 51687593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .0514705777, g: .0514705777, b: .0514705777, a: .768627465}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &51687596
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22253340, guid: 1e625efc40e93854eb7d3dcc6f9afbe8,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 51687593}
 --- !u!1 &62863921
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +923,11 @@ Prefab:
       objectReference: {fileID: 1409239878}
     - target: {fileID: 151594, guid: 1bfb6b6480fd99c4689f6267ad6c28e8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451590, guid: 1bfb6b6480fd99c4689f6267ad6c28e8, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bfb6b6480fd99c4689f6267ad6c28e8, type: 2}
@@ -1264,7 +1332,7 @@ GameObject:
   - 114: {fileID: 91400533}
   - 114: {fileID: 91400532}
   m_Layer: 5
-  m_Name: Kaede
+  m_Name: Klulu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1328,8 +1396,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
-        m_MethodName: talkToKaede
+      - m_Target: {fileID: 1505569711}
+        m_MethodName: TalkToKlulu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1751,7 +1819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &124383979
 Transform:
   m_ObjectHideFlags: 0
@@ -1931,7 +1999,7 @@ Transform:
   - {fileID: 1336100361}
   - {fileID: 684380848}
   m_Father: {fileID: 834580952}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &194078140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,7 +2030,7 @@ RectTransform:
   m_LocalScale: {x: .840000033, y: .840000033, z: .840000033}
   m_Children: []
   m_Father: {fileID: 834580952}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 512, y: 296}
@@ -5048,7 +5116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &834580952
 Transform:
   m_ObjectHideFlags: 0
@@ -5060,6 +5128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1398172273}
+  - {fileID: 51687594}
   - {fileID: 167917614}
   - {fileID: 194078141}
   - {fileID: 43226119}
@@ -9369,16 +9438,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisGameObject: {fileID: 1409239877}
   conversationPanel: {fileID: 2130091696}
-  blocker: {fileID: 531342569}
+  blocker: {fileID: 0}
+  blockerClassRoom: {fileID: 531342569}
+  blockerZen: {fileID: 1633431702}
+  blockerBeach: {fileID: 1922601648}
+  blockerFlorist: {fileID: 51687593}
   closeConvoButton: {fileID: 961249071}
   gameAreas: {fileID: 1409239880}
   convoText: {fileID: 337440547}
   Dan: {fileID: 1055219984}
   Dan_big: {fileID: 341565647}
-  Kaede: {fileID: 91400532}
-  Kaede_big: {fileID: 36391723}
-  lastState: 0
+  Klulu: {fileID: 91400532}
+  Klulu_big: {fileID: 36391723}
+  Daisy: {fileID: 0}
+  Daisy_big: {fileID: 0}
+  Buzz: {fileID: 0}
+  Buzz_big: {fileID: 0}
+  lastState: 20
   slide: 50
+  currArea: BEACH
   currNavButtons: {fileID: 0}
   commonUI: {fileID: 1143423293}
   convoTree: {fileID: 1505569711}
@@ -10007,6 +10085,7 @@ GameObject:
   - 4: {fileID: 1505569710}
   - 114: {fileID: 1505569711}
   - 114: {fileID: 1505569709}
+  - 114: {fileID: 1505569712}
   m_Layer: 0
   m_Name: AllConversations
   m_TagString: Untagged
@@ -10051,6 +10130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScript: {fileID: 1409239878}
   dan: {fileID: 1505569709}
+  klulu: {fileID: 1505569712}
   option1: {fileID: 1928088212}
   option1_text: {fileID: 891596306}
   option2: {fileID: 1462504235}
@@ -10059,6 +10139,18 @@ MonoBehaviour:
   option3_text: {fileID: 40278072}
   option4: {fileID: 1315693077}
   option4_text: {fileID: 609135071}
+--- !u!114 &1505569712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4039257d9a35c4eb80f855b3f52c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSCript: {fileID: 0}
 --- !u!1001 &1509459102
 Prefab:
   m_ObjectHideFlags: 0
@@ -12040,7 +12132,7 @@ Prefab:
       objectReference: {fileID: 1409239878}
     - target: {fileID: 179634, guid: 5dfb9a15ca39e20468d739f501676217, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 479632, guid: 5dfb9a15ca39e20468d739f501676217, type: 2}
       propertyPath: m_RootOrder

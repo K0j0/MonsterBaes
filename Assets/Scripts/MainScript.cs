@@ -7,6 +7,10 @@ public class MainScript : MonoBehaviour {
 	public GameObject thisGameObject;
 	public GameObject conversationPanel;
 	public GameObject blocker;
+	public GameObject blockerClassRoom;
+	public GameObject blockerZen;
+	public GameObject blockerBeach;
+	public GameObject blockerFlorist;
 	public GameObject closeConvoButton;
 	public GameAreas gameAreas;
 	public Text convoText;
@@ -14,10 +18,14 @@ public class MainScript : MonoBehaviour {
 	public Button Dan_big;
 	public Button Klulu;
 	public Button Klulu_big;
+	public Button Daisy;
+	public Button Daisy_big;
+	public Button Buzz;
+	public Button Buzz_big;
 	public GameState lastState = GameState.START;
 	public float slide = 50;
 	private static MonoBehaviour instance;
-	private string currArea;
+	public string currArea;
 	public GameObject currNavButtons;
 	public GameObject commonUI;
 	public ConversationTree convoTree;
@@ -39,22 +47,16 @@ public class MainScript : MonoBehaviour {
 	void Start () {
 		Debug.Log("Bae.");
 		instance = this;
-		currArea = GameAreas.BEACH;
+
 		currNavButtons = gameAreas.classroomNav;
 		convoTree.Init ();
-
 		GameFlags.init ();
-		switch (lastState) {
-		case GameState.START:
-				conversationPanel.SetActive(false);
-				blocker.SetActive(false);
-				Dan.gameObject.SetActive(true);
-				Dan_big.gameObject.SetActive(false);
-				Klulu.gameObject.SetActive(true);
-				Klulu_big.gameObject.SetActive(false);
-				buttonGroup.gameObject.SetActive(false);
-			break;
-		}
+		
+		conversationPanel.SetActive(false);
+		buttonGroup.gameObject.SetActive(false);
+
+		// where to start
+		onNavigate (GameAreas.BEACH);
 	}
 
 	void Update(){
@@ -150,6 +152,9 @@ public class MainScript : MonoBehaviour {
 				gameAreas.classroom.SetActive(true);
 				gameAreas.classroom.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
+				blocker = blockerClassRoom;
+				lastState = GameState.START; // classroom with Dan
+				currNavButtons = gameAreas.classroomNav;
 			break;
 			case GameAreas.LEFT_MID_2:
 				currArea = GameAreas.LEFT_MID_2;
@@ -174,6 +179,9 @@ public class MainScript : MonoBehaviour {
 				gameAreas.zen.SetActive(true);
 				gameAreas.zen.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
+				blocker = blockerZen;
+				lastState = GameState.START_ZEN;
+				currNavButtons = gameAreas.zenNav;
 			break;
 			case GameAreas.TOP_LEFT_2:
 				currArea = GameAreas.TOP_LEFT_2;
@@ -198,7 +206,9 @@ public class MainScript : MonoBehaviour {
 				gameAreas.beach.SetActive(true);
 				gameAreas.beach.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
+				blocker = blockerBeach;
 				lastState = GameState.START_BEACH;
+				currNavButtons = gameAreas.beachNav;
 			break;
 			case GameAreas.ENTRACE_OUTSIDE:
 				currArea = GameAreas.ENTRACE_OUTSIDE;
@@ -210,7 +220,10 @@ public class MainScript : MonoBehaviour {
 				currArea = GameAreas.FLORIST;
 				gameAreas.florist.SetActive(true);
 				gameAreas.florist.transform.SetAsLastSibling();
+				blocker = blockerFlorist;
 				commonUI.transform.SetAsLastSibling();
+				lastState = GameState.START_FLORIST;
+				currNavButtons = gameAreas.floristNav;
 			break;
 				case GameAreas.ENTRACE_1:
 				currArea = GameAreas.ENTRACE_1;
