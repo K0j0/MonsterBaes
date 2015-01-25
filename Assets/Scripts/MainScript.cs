@@ -194,16 +194,94 @@ public class MainScript : MonoBehaviour {
 				gameAreas.classroom.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
 			break;
-			case GameAreas.CLASSROOM_BLUE:
-				currArea = GameAreas.CLASSROOM_BLUE;
-				gameAreas.classroomBlue.SetActive(true);
-				gameAreas.classroomBlue.transform.SetAsLastSibling();
+			case GameAreas.LEFT_MID_2:
+				currArea = GameAreas.LEFT_MID_2;
+				gameAreas.leftMid2.SetActive(true);
+				gameAreas.leftMid2.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
 			break;
-			case GameAreas.CLASSROOM_RED:
-				currArea = GameAreas.CLASSROOM_RED;
-				gameAreas.classroomRed.SetActive(true);
-				gameAreas.classroomRed.transform.SetAsLastSibling();
+			case GameAreas.RIGHT_MID_1:
+				currArea = GameAreas.RIGHT_MID_1;
+				gameAreas.rightMid1.SetActive(true);
+				gameAreas.rightMid1.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.RIGHT_MID_2:
+				currArea = GameAreas.RIGHT_MID_2;
+				gameAreas.rightMid2.SetActive(true);
+				gameAreas.rightMid2.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.ZEN:
+				currArea = GameAreas.ZEN;
+				gameAreas.zen.SetActive(true);
+				gameAreas.zen.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.TOP_LEFT_2:
+				currArea = GameAreas.TOP_LEFT_2;
+				gameAreas.topLeft2.SetActive(true);
+				gameAreas.topLeft2.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.CAFE_INSIDE:
+				currArea = GameAreas.CAFE_INSIDE;
+				gameAreas.cafeInside.SetActive(true);
+				gameAreas.cafeInside.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.CAFE_OUTSIDE:
+				currArea = GameAreas.CAFE_OUTSIDE;
+				gameAreas.cafeOutside.SetActive(true);
+				gameAreas.cafeOutside.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.BEACH:
+				currArea = GameAreas.BEACH;
+				gameAreas.beach.SetActive(true);
+				gameAreas.beach.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.ENTRACE_OUTSIDE:
+				currArea = GameAreas.ENTRACE_OUTSIDE;
+				gameAreas.entraceOutside.SetActive(true);
+				gameAreas.entraceOutside.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.FLORIST:
+				currArea = GameAreas.FLORIST;
+				gameAreas.florist.SetActive(true);
+				gameAreas.florist.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+				case GameAreas.ENTRACE_1:
+				currArea = GameAreas.ENTRACE_1;
+				gameAreas.entrace1.SetActive(true);
+				gameAreas.entrace1.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.ENTRANCE_2:
+				currArea = GameAreas.ENTRANCE_2;
+				gameAreas.entrace2.SetActive(true);
+				gameAreas.entrace2.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.PALETTE:
+				currArea = GameAreas.PALETTE;
+				gameAreas.palette.SetActive(true);
+				gameAreas.palette.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.BOTTOM_LEFT_1:
+				currArea = GameAreas.BOTTOM_LEFT_1;
+				gameAreas.bottomLeft1.SetActive(true);
+				gameAreas.bottomLeft1.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
+			case GameAreas.BOTTOM_LEFT_2:
+				currArea = GameAreas.BOTTOM_LEFT_2;
+				gameAreas.bottomLeft2.SetActive(true);
+				gameAreas.bottomLeft2.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
 			break;
 			default:
