@@ -3,12 +3,15 @@ using System.Collections;
 
 public class DanConvo : MonoBehaviour {
 	public MainScript mainSCript;
+	bool slide = true;
 
 	public void TalkToMe(){
-		switch (mainSCript.lastState) {
+		switch (mainSCript.lastState)
+		{
 			case GameState.START:
 			case GameState.SPEAK_TO_KAEDE_1:
-			case GameState.SPEAK_TO_DAN:
+				mainSCript.lastState = GameState.SPEAK_TO_DAN;
+
 				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
 					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
 					
@@ -30,15 +33,32 @@ public class DanConvo : MonoBehaviour {
 					mainSCript.conversationPanel.SetActive(true);
 					mainSCript.closeConvoButton.SetActive (false); // don't show close button here
 					mainSCript.blocker.SetActive(true);
-					mainSCript.convoText.text = "DAN:\nWhat's up?";
-					
-					HelperFunctions.DelayCallback (1f, () => {
-					mainSCript.buttonGroup.SetActive (true);
-				});
+					mainSCript.say (Baes.YOU, "Hey you, Mr. Slime");
 				
-				
-				mainSCript.convoTree.setOptions(GameState.SPEAK_TO_DAN);
+					setOptions(GameState.SPEAK_TO_DAN);
 			break;
+			case GameState.SPEAK_TO_DAN:
+				mainSCript.say (Baes.DAN, "Wow, That not my name. Is that how you adress everyone?");
+				if(slide){
+					slide = false;
+					HelperFunctions.DelayCallback (1.5f, () => {
+						mainSCript.buttonGroup.SetActive (true);
+					});
+				}
+				
+			break;
+			case GameState.SPEAK_TO_DAN_1A:
+				mainSCript.say(Baes.DAN, "You're failing my class");
+				mainSCript.closeConvoButton.SetActive(true);
+			break;
+			case GameState.SPEAK_TO_DAN_1B:
+				mainSCript.say(Baes.DAN, "It's rude to address someone by their physical properties");
+			break;
+			case GameState.SPEAK_TO_DAN_1C:
+				mainSCript.closeConversationPanel();
+				mainSCript.lastState = GameState.SPEAK_TO_DAN;
+			break;
+			
 			default:
 				Debug.LogError("Whoa, didn't think you could talk to me during this state: " + mainSCript.lastState);
 			break;
@@ -49,10 +69,11 @@ public class DanConvo : MonoBehaviour {
 	public void setOptions(GameState forState){
 		switch (forState) {
 		case GameState.SPEAK_TO_DAN:
-			mainSCript.option1_text.text = "Hey, Dan...";
-			mainSCript.option2_text.text = "Hey Dan. Did you see the debate last night?";
-			mainSCript.option3_text.text = "Hey Dan. It sure is nice out right!";
-			mainSCript.option4_text.text = "Hey Dan. What's with your hair?";
+			mainSCript.option1_text.text = "Pretty much";
+			mainSCript.option2_text.text = "What do you mean?";
+			mainSCript.option3_text.text = "I'll come back later";
+			mainSCript.option4.gameObject.SetActive(false);
+			mainSCript.option4_text.text = "";
 			break;
 		}
 	}

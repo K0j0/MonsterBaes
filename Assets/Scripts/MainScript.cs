@@ -116,7 +116,9 @@ public class MainScript : MonoBehaviour {
 		switch (lastState) {
 			case GameState.START:
 			case GameState.SPEAK_TO_KAEDE_1:
-					lastState = GameState.SPEAK_TO_KAEDE_1;
+			case GameState.SPEAK_TO_DAN_1A:
+			case GameState.SPEAK_TO_DAN_1C:
+				lastState = GameState.SPEAK_TO_KAEDE_1;
 					// show characters
 					Kaede.gameObject.SetActive(true);
 					Dan.gameObject.SetActive(true);
@@ -124,10 +126,31 @@ public class MainScript : MonoBehaviour {
 					currNavButtons.SetActive(true);
 					// hide larger character
 					resetKaedeBig();
+					resetDanBig();
 					conversationPanel.SetActive(false);
+					closeConvoButton.SetActive(true);
 					blocker.SetActive(false);
 			break;
 		}
+	}
+
+	public void say(Baes who, string what){
+		convoText.text = "";
+		switch (who) {
+			case Baes.YOU:
+				convoText.text = GameData.playerName + ":\n";
+			break;
+			case Baes.DAN:
+				convoText.text = "Dan:\n";
+			break;
+			case Baes.BUZZ:
+				convoText.text = "Buzz:\n";
+			break;
+			case Baes.DAISY:
+				convoText.text = "Daisy:\n";
+			break;
+		}
+		convoText.text += what;
 	}
 
 	public void fadeKaedeBig(float newX){
@@ -141,6 +164,13 @@ public class MainScript : MonoBehaviour {
 		newPos.x = newPos.x + slide;
 		Kaede_big.transform.position = newPos;
 		Kaede_big.gameObject.SetActive(false);
+	}
+
+	void resetDanBig(){
+		Vector3 newPos = Kaede_big.transform.position;
+		newPos.x = newPos.x - slide;
+		Dan_big.transform.position = newPos;
+		Dan_big.gameObject.SetActive(false);
 	}
 
 	public void onNavigate(string area){

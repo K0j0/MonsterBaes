@@ -24,9 +24,25 @@ public class ConversationTree : MonoBehaviour {
 	public void optionChosen(int choice){
 		Debug.Log ("Chose Option " + choice);
 		switch (mainScript.lastState) {
-		case GameState.START:
-		case GameState.SPEAK_TO_KAEDE_1:
-			
+			case GameState.START:
+			case GameState.SPEAK_TO_DAN:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_1A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_1B;
+					break;
+					case 3:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_1C;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+			default:
+				Debug.LogError("Whoops, wasn't expecting you to say something in this state: " + mainScript.lastState);
 			break;
 		}
 	}

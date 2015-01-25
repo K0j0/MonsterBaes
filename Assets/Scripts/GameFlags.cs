@@ -1,10 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum Baes{
+	YOU,
+	DAN,
+	KULU,
+	BUZZ,
+	DAISY
+}
+
 public enum GameState{
 	START,
 	SPEAK_TO_KAEDE_1,
-	SPEAK_TO_DAN
+	SPEAK_TO_DAN,
+	SPEAK_TO_DAN_1A,
+	SPEAK_TO_DAN_1B,
+	SPEAK_TO_DAN_1C
 }
 
 public enum StoryEvent{
