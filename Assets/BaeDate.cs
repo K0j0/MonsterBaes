@@ -27,6 +27,16 @@ public class BaeDate : MonoBehaviour {
 			case Baes.DAN:
 			break;
 			case Baes.DAISY:
+				Daisy.gameObject.SetActive(false);
+				Daisy_Button.SetActive(false);
+				Daisy_Kiss.SetActive(true);
+				
+				HelperFunctions.DelayCallback(3f, ()=>{
+					Daisy_Kiss.SetActive(false);
+					GameFlags.flags[StoryEvent.DATED_DAISY] = true;
+					MainScript.instance.onNavigate(GameAreas.FLORIST);
+					MainScript.instance.Daisy.gameObject.SetActive(false);
+				});
 			break;
 			case Baes.KULU:
 				Klulu.gameObject.SetActive(false);
@@ -56,14 +66,17 @@ public class BaeDate : MonoBehaviour {
 
 		switch(who){
 			case Baes.BUZZ:
+				GameFlags.flags[StoryEvent.DATING_BUZZ] = true;
 				Buzz.gameObject.SetActive (true);
 				Buzz_Button.SetActive (true);
 			break;
 			case Baes.DAN:
+				GameFlags.flags[StoryEvent.DATING_DAN] = true;
 				Dan.gameObject.SetActive (true);
 				Dan_Button.SetActive (true);
 			break;
 			case Baes.DAISY:
+				GameFlags.flags[StoryEvent.DATING_DAISY] = true;
 				Daisy.gameObject.SetActive (true);
 				Daisy_Button.SetActive (true);
 			break;

@@ -5,7 +5,50 @@ public class DaisyConvo : MonoBehaviour {
 	public MainScript mainSCript;
 	
 	public void TalkToMe(){
-		if(GameFlags.flags[StoryEvent.NEED_FLOWERS] == true){
+		if(GameFlags.flags[StoryEvent.DATING_DAISY] == true){
+			mainSCript.closeConvoButton.SetActive(false);
+			switch (mainSCript.lastState)
+			{
+				case GameState.DATE_DAISY_1:					
+					mainSCript.conversationPanel.SetActive(true);
+					mainSCript.say(Baes.KULU, "Thanks for finding the nightshade. It's one of my favorite dangerous flowers.");
+					setOptions(GameState.DATE_DAISY_1);
+					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_DAISY_1A:
+					changeMood(Moods.SMILE);
+					mainSCript.lastState = GameState.DATE_DAISY_2;
+					mainSCript.say(Baes.KULU, "I hope you washed your hand");
+					setOptions(GameState.DATE_DAISY_2);
+					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_DAISY_2A:
+					changeMood(Moods.ANGRY);
+					mainSCript.say(Baes.KULU, "EW!?");
+
+					HelperFunctions.DelayCallback(3f, ()=>{
+						GameFlags.flags[StoryEvent.DATED_DAISY] = true;
+						MainScript.instance.onNavigate(GameAreas.FLORIST);
+						MainScript.instance.Daisy.gameObject.SetActive(false);
+						mainSCript.conversationPanel.SetActive(false);
+					});
+				break;
+
+				case GameState.DATE_DAISY_2B:
+					changeMood(Moods.SMILE);
+					mainSCript.say(Baes.KULU, "You're just about as sweet as my little flowers");
+
+					HelperFunctions.DelayCallback(1f, ()=>{
+						mainSCript.baeDates.Kiss(Baes.DAISY);
+						mainSCript.conversationPanel.SetActive(false);
+					});
+				break;
+			}
+		}
+		else{
+			if(GameFlags.flags[StoryEvent.NEED_FLOWERS] == true){
 			if(GameFlags.flags[StoryEvent.GOT_FLOWER_NIGHTSHADE] == true ||
 			   GameFlags.flags[StoryEvent.GOT_FLOWER_SEAFIG] == true ||
 			   GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE] == true){
@@ -22,22 +65,26 @@ public class DaisyConvo : MonoBehaviour {
 					break;
 					case GameState.SPEAK_TO_DAISY_7A:
 						mainSCript.lastState = GameState.SPEAK_TO_DAISY_8;
-						mainSCript.say(Baes.DAISY, "Oh my nightshade! Local and very special. Careful with that, give it here.");
+						mainSCript.say(Baes.DAISY, "Oh my nightshade! Local and very special. That's so thoughtful. Say, you wanna grab some coffee?");
 						setOptions(GameState.SPEAK_TO_DAISY_8);
 						mainSCript.showOptions();
 					break;
 					case GameState.SPEAK_TO_DAISY_7B:
+						changeMood(Moods.NEUTRAL);
 						mainSCript.say(Baes.DAISY, "This seafig smells like trash");
 						mainSCript.closeConvoButton.SetActive(true);
 					break;
 					case GameState.SPEAK_TO_DAISY_7C:
-						mainSCript.say(Baes.DAISY, "Oh,a thistle...thanks");				
+						changeMood(Moods.NEUTRAL);
+						mainSCript.say(Baes.DAISY, "Oh, a thistle...thanks");				
 						mainSCript.closeConvoButton.SetActive(true);
 					break;
 
 					case GameState.SPEAK_TO_DAISY_8A:
-//						mainSCript.say(Baes.DAISY, "Oh,a thistle...thanks");				
-//						mainSCript.closeConvoButton.SetActive(true);
+						mainSCript.closeConversationPanel();
+						mainSCript.StartDate(Baes.DAISY);
+						changeMood(Moods.NEUTRAL);
+						mainSCript.lastState = GameState.DATE_DAISY_1; // need to call this after closing panel
 					break;
 				}
 
@@ -137,8 +184,7 @@ public class DaisyConvo : MonoBehaviour {
 				break;
 			}
 		}
-		
-		
+		}
 	}
 	
 	void setOptions(GameState forState){
@@ -251,7 +297,7 @@ public class DaisyConvo : MonoBehaviour {
 
 			break;
 			case GameState.SPEAK_TO_DAISY_8:
-				mainSCript.option1_text.text = "Here you go";
+				mainSCript.option1_text.text = "I'd love that";
 				mainSCript.option1.gameObject.SetActive(true);
 				
 				mainSCript.option2_text.text = "";
@@ -263,6 +309,32 @@ public class DaisyConvo : MonoBehaviour {
 				mainSCript.option4_text.text = "";
 				mainSCript.option4.gameObject.SetActive(false);
 				break;
+			case GameState.DATE_DAISY_1:
+				mainSCript.option1_text.text = "No sweat";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
+			case GameState.DATE_DAISY_2:
+				mainSCript.option1_text.text = "*Wipes hand on her*";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "No problem. I'm glad you liked it.";
+				mainSCript.option2.gameObject.SetActive(true);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
 		}
 	}
 	
@@ -285,6 +357,7 @@ public class DaisyConvo : MonoBehaviour {
 			break;
 		}
 		mainSCript.Daisy_big.image.sprite = newSprite;
+		mainSCript.baeDates.Daisy.image.sprite = newSprite;
 	}
 
 	void TakeFocus(bool showCLoseButton){
