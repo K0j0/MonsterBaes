@@ -306,9 +306,19 @@ public class MainScript : MonoBehaviour {
 	public void SelectItem(string itemName){
 		print ("Selected " + itemName);
 		switch(itemName){
-			case "trashBags":
-				if(GameFlags.flags[StoryEvent.NEED_TRASH_BAGS]) say (Baes.YOU, "I can use these to help Klulu clean up the beach");
+			case "trashbags":
+				if(GameFlags.flags[StoryEvent.NEED_TRASH_BAGS]){ say (Baes.YOU, "I can use these to help Klulu clean up the beach");
+					GameFlags.flags[StoryEvent.GOT_TRASH_BAGS] = true;
+					items.trashBags.SetActive(false);
+				}
 				else say (Baes.YOU, "It's just some trash bags");
+				conversationPanel.SetActive(true);
+			break;
+			case "trash":
+				if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){ say (Baes.YOU, "One less piece of trash.");
+					items.trash.SetActive(false);
+				}
+				else say (Baes.YOU, "This place is dirty.");
 				conversationPanel.SetActive(true);
 			break;
 			case "thistle":

@@ -8,4 +8,5 @@ public class Items : MonoBehaviour {
 	public GameObject oilCan;
 	public GameObject trashBags;
 	public GameObject glasses;
+	public GameObject trash;
 }
