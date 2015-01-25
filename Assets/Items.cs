@@ -9,4 +9,5 @@ public class Items : MonoBehaviour {
 	public GameObject trashBags;
 	public GameObject glasses;
 	public GameObject trash;
+	public GameObject[] alLTrash;
 }

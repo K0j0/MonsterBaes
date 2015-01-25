@@ -57,7 +57,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-		onNavigate (GameAreas.FLORIST);
+		onNavigate (GameAreas.BEACH);
 	}
 
 	void Update(){
@@ -123,6 +123,9 @@ public class MainScript : MonoBehaviour {
 			case GameAreas.CAFE_INSIDE:
 				gameAreas.cafeInsideNav.SetActive(true);
 			break;
+			case GameAreas.LEFT_MID_2:
+				gameAreas.leftMid2Nav.SetActive(true);
+			break;
 		}
 	}
 
@@ -131,6 +134,9 @@ public class MainScript : MonoBehaviour {
 		switch (who) {
 			case Baes.YOU:
 				convoText.text = GameData.playerName + ":\n";
+			break;
+			case Baes.KULU:
+				convoText.text = "Klulu:\n";
 			break;
 			case Baes.DAN:
 				convoText.text = "Dan:\n";
@@ -153,7 +159,8 @@ public class MainScript : MonoBehaviour {
 
 	void resetKluluBig(){
 		Vector3 newPos = Klulu_big.transform.position;
-		newPos.x = newPos.x - slide;
+//		newPos.x = newPos.x - slide;
+		newPos.x = 548;
 		Klulu_big.transform.position = newPos;
 		Klulu_big.gameObject.SetActive(false);
 	}
@@ -313,13 +320,15 @@ public class MainScript : MonoBehaviour {
 				}
 				else say (Baes.YOU, "It's just some trash bags");
 				conversationPanel.SetActive(true);
+				gameAreas.leftMid2Nav.SetActive(false);
 			break;
 			case "trash":
-				if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){ say (Baes.YOU, "One less piece of trash.");
-					items.trash.SetActive(false);
-				}
-				else say (Baes.YOU, "This place is dirty.");
-				conversationPanel.SetActive(true);
+//				if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){ 
+//					say (Baes.YOU, "One less piece of trash.");
+//					items.trash.SetActive(false);
+//				}
+//				else say (Baes.YOU, "This place is dirty.");
+//				conversationPanel.SetActive(true);
 			break;
 			case "thistle":
 				if(GameFlags.flags[StoryEvent.NEED_FLOWERS] && !GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE]){
@@ -394,10 +403,18 @@ public class MainScript : MonoBehaviour {
 
 	int trashTotal = 0;
 	public void pickupTrash(int piece){
-		trash[piece].SetActive(false);
-		++trashTotal;
-		if (trashTotal >= trash.Length) {
-			say (Baes.YOU, "This place is looking cleaner already!");
+		if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){ 
+			items.alLTrash[piece].SetActive(false);
+			++trashTotal;
+			if (trashTotal >= items.alLTrash.Length) {
+				say (Baes.YOU, "This place is looking cleaner already!");
+				GameFlags.flags [StoryEvent.PICKED_UP_ALL_TRASH] = true;
+				conversationPanel.SetActive(true);
+			}
+			else say (Baes.YOU, "One less piece of trash.");
+		}
+		else{
+			say (Baes.YOU, "This place is dirty.");
 			conversationPanel.SetActive(true);
 		}
 	}

@@ -6,27 +6,22 @@ public class KluluConvo : MonoBehaviour {
 
 	public void TalkToMe(){
 		if(GameFlags.flags[StoryEvent.NEED_TRASH_BAGS] == true){
-			changeMood(Moods.SMILE);
-			iTween.MoveTo(mainSCript.Klulu_big.gameObject, iTween.Hash(
-				"x", mainSCript.Klulu_big.transform.position.x + mainSCript.slide
-				, "islocal", false
-				, "time", 1f
-				, "delay", 0
-				));
-			
-			// hide small character
-			mainSCript.Klulu.gameObject.SetActive(false);
-			// hide nav
-			mainSCript.currNavButtons.SetActive(false);
-			
-			// show larger character
-			mainSCript.Klulu_big.gameObject.SetActive(true);
-			mainSCript.conversationPanel.SetActive(true);
-			mainSCript.closeConvoButton.SetActive (true);
-			mainSCript.blocker.SetActive(true);
+			if(GameFlags.flags[StoryEvent.PICKED_UP_ALL_TRASH]){
+				changeMood(Moods.HAPPY);
+				TakeFocus (true); // Lead to date
+				mainSCript.say(Baes.KULU, "You're amazing!");
+			}
+			else if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){
+				changeMood(Moods.SMILE);
+				TakeFocus (true);
+				mainSCript.say(Baes.KULU, "That's great! Now we can clean up the beach.");
 
-			mainSCript.closeConvoButton.SetActive(true);
-			mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
+			}
+			else{
+				changeMood(Moods.SMILE);
+				TakeFocus (true);
+				mainSCript.say(Baes.KULU, "If your willing to get your hands dirty in the name of sea life, grab a pick and a trash bag and lets clean this beach.");
+			}
 		}
 		else{
 			switch (mainSCript.lastState)
@@ -35,26 +30,8 @@ public class KluluConvo : MonoBehaviour {
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_1;
 					changeMood(Moods.NEUTRAL);
 
-						
-					iTween.MoveTo(mainSCript.Klulu_big.gameObject, iTween.Hash(
-						"x", mainSCript.Klulu_big.transform.position.x + mainSCript.slide
-						, "islocal", false
-						, "time", 1f
-						, "delay", 0
-						));
-
-					// hide small character
-					mainSCript.Klulu.gameObject.SetActive(false);
-					// hide nav
-					mainSCript.currNavButtons.SetActive(false);
-					
-					// show larger character
-					mainSCript.Klulu_big.gameObject.SetActive(true);
-					mainSCript.conversationPanel.SetActive(true);
-					mainSCript.closeConvoButton.SetActive (false); // don't show close button here
-					mainSCript.blocker.SetActive(true);
-					mainSCript.say (Baes.KULU, "Hey.");
-
+					TakeFocus (false);
+					mainSCript.say(Baes.KULU, "Hey.");
 					setOptions(GameState.SPEAK_TO_KLULU_1);
 					mainSCript.showOptions();
 				break;
@@ -67,7 +44,7 @@ public class KluluConvo : MonoBehaviour {
 
 				case GameState.SPEAK_TO_KLULU_1B:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_2;
-				mainSCript.say(Baes.KULU, "Cleaning up the beach. To be honest, I’m pretty pissed. No one showed up. Even the guy who was bringing the trash bags and pickers.");
+				mainSCript.say(Baes.KULU, "Cleaning up the beach. To be honest, I'm pretty pissed. No one showed up. Even the guy who was bringing the trash bags and pickers.");
 					setOptions(GameState.SPEAK_TO_KLULU_2);
 					mainSCript.showOptions();
 				break;
@@ -90,7 +67,6 @@ public class KluluConvo : MonoBehaviour {
 
 				case GameState.SPEAK_TO_KLULU_3A:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_4;
-					mainSCript.closeConvoButton.SetActive(true);
 				mainSCript.say(Baes.KULU, "Well allow me to illuminate you on the subject. First of all a large present of litter ends up in our oceans from people just throwing trash on the ground and letting it run into our storm drains");
 					setOptions(GameState.SPEAK_TO_KLULU_4);
 					mainSCript.showOptions();
@@ -104,7 +80,6 @@ public class KluluConvo : MonoBehaviour {
 
 				case GameState.SPEAK_TO_KLULU_4A:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_5;
-					mainSCript.closeConvoButton.SetActive(true);
 				mainSCript.say(Baes.KULU, "Mhm, and all that trash collects into giant gyres in each ocean. These bits of garbage can either be ingested by wildlife or they can be caught in it and be physically deformed.");
 					setOptions(GameState.SPEAK_TO_KLULU_5);
 					mainSCript.showOptions();
@@ -229,4 +204,26 @@ public class KluluConvo : MonoBehaviour {
 		}
 		mainSCript.Klulu_big.image.sprite = newSprite;
 	}
-}
+
+	void TakeFocus(bool showCloseButton){
+		iTween.MoveTo(mainSCript.Klulu_big.gameObject, iTween.Hash(
+			"x", mainSCript.Klulu_big.transform.position.x + mainSCript.slide
+			, "islocal", false
+			, "time", 1f
+			, "delay", 0
+			));
+		
+		// hide small character
+		mainSCript.Klulu.gameObject.SetActive(false);
+		// hide nav
+		mainSCript.currNavButtons.SetActive(false);
+		
+		// show larger character
+		mainSCript.Klulu_big.gameObject.SetActive(true);
+		mainSCript.conversationPanel.SetActive(true);
+		mainSCript.closeConvoButton.SetActive (true);
+		mainSCript.blocker.SetActive(true);
+		
+		mainSCript.closeConvoButton.SetActive(showCloseButton);
+	}
+}	

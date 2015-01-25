@@ -102,6 +102,7 @@ public enum GameState{
 public enum StoryEvent{
 	NEED_TRASH_BAGS,
 	GOT_TRASH_BAGS,
+	PICKED_UP_ALL_TRASH,
 	READ_BOOK,
 	NEED_FLOWERS,
 	GOT_FLOWER_THISTLE,
@@ -122,6 +123,7 @@ public class GameFlags{
 //		flags [StoryEvent.SPEAK_TO_DAN] = false;
 		flags [StoryEvent.NEED_TRASH_BAGS] = false;
 		flags [StoryEvent.GOT_TRASH_BAGS] = false;
+		flags [StoryEvent.PICKED_UP_ALL_TRASH] = false;
 		flags [StoryEvent.READ_BOOK] = false;
 		flags [StoryEvent.NEED_FLOWERS] = false;
 		flags [StoryEvent.GOT_FLOWER_THISTLE] = false;
