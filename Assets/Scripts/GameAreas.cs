@@ -75,4 +75,7 @@ public class GameAreas : MonoBehaviour
 	public const string ZEN = "ZEN";
 	public GameObject zen;
 	public GameObject zenNav;
+
+	public const string DATE = "DATE";
+	public GameObject date;
 }

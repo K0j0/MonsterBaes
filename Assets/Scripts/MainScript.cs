@@ -304,6 +304,12 @@ public class MainScript : MonoBehaviour {
 				gameAreas.bottomLeft2.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
 			break;
+			case GameAreas.DATE:
+				currArea = GameAreas.DATE;
+				gameAreas.date.SetActive(true);
+				gameAreas.date.transform.SetAsLastSibling();
+				commonUI.transform.SetAsLastSibling();
+			break;
 			default:
 				Debug.LogError("Unknown area: " + area + ". Maybe that's a type?");
 			break;
