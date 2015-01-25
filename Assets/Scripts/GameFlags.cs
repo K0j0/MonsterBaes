@@ -158,8 +158,8 @@ public class GameFlags{
 	public static Dictionary<soundEvents, bool> soundBools;
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
-		flags [StoryEvent.NEED_TRASH_BAGS] = true;
-		flags [StoryEvent.GOT_TRASH_BAGS] = true;
+		flags [StoryEvent.NEED_TRASH_BAGS] = false;
+		flags [StoryEvent.GOT_TRASH_BAGS] = false;
 		flags [StoryEvent.PICKED_UP_ALL_TRASH] = false;
 		flags [StoryEvent.DATING_KLULU] = false;
 		flags [StoryEvent.DATED_KLULU] = false;
