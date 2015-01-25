@@ -24,6 +24,7 @@ public class DaisyConvo : MonoBehaviour {
 			mainSCript.conversationPanel.SetActive(true);
 			mainSCript.closeConvoButton.SetActive (true);
 			mainSCript.blocker.SetActive(true);
+			mainSCript.book.SetActive(false);
 			
 			mainSCript.closeConvoButton.SetActive(true);
 			mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
@@ -53,6 +54,7 @@ public class DaisyConvo : MonoBehaviour {
 				mainSCript.conversationPanel.SetActive(true);
 				mainSCript.closeConvoButton.SetActive (false); // don't show close button here
 				mainSCript.blocker.SetActive(true);
+				mainSCript.book.SetActive(false);
 				mainSCript.say (Baes.KULU, "Hey.");
 				
 				setOptions(GameState.SPEAK_TO_DAISY_1);
@@ -118,7 +120,7 @@ public class DaisyConvo : MonoBehaviour {
 				
 			case GameState.SPEAK_TO_DAISY_5A:
 				changeMood(Moods.SMILE);
-				GameFlags.flags[StoryEvent.NEED_TRASH_BAGS] = true;
+				GameFlags.flags[StoryEvent.NEED_FLOWERS] = true;
 				mainSCript.closeConvoButton.SetActive(true);
 				mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
 				mainSCript.closeConvoButton.SetActive(true);

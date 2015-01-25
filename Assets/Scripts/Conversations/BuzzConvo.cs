@@ -118,7 +118,7 @@ public class BuzzConvo : MonoBehaviour {
 				
 			case GameState.SPEAK_TO_BUZZ_5A:
 				changeMood(Moods.SMILE);
-				GameFlags.flags[StoryEvent.NEED_TRASH_BAGS] = true;
+				GameFlags.flags[StoryEvent.NEED_OIL] = true;
 				mainSCript.closeConvoButton.SetActive(true);
 				mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
 				mainSCript.closeConvoButton.SetActive(true);

@@ -5,6 +5,7 @@ using System.Collections;
 public class MainScript : MonoBehaviour {	
 
 	public GameObject thisGameObject;
+	public Items items;
 	public GameObject conversationPanel;
 	public GameObject blocker;
 	public GameObject blockerClassRoom;
@@ -56,7 +57,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-		onNavigate (GameAreas.ZEN);
+		onNavigate (GameAreas.FLORIST);
 	}
 
 	void Update(){
@@ -66,6 +67,11 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void closeConversationPanel(){
+		conversationPanel.SetActive(false);
+		closeConvoButton.SetActive(true);
+		blocker.SetActive(false);
+		buttonGroup.SetActive(false);
+		
 		switch (currArea) {
 			case GameAreas.CLASSROOM:
 				lastState = GameState.SPEAK_TO_DAN;
@@ -75,11 +81,6 @@ public class MainScript : MonoBehaviour {
 				currNavButtons.SetActive(true);
 				// hide larger character
 				resetDanBig();
-				conversationPanel.SetActive(false);
-				closeConvoButton.SetActive(true);
-				blocker.SetActive(false);
-				// hide buttons too
-				buttonGroup.SetActive(false);
 			break;
 			case GameAreas.BEACH:
 				lastState = GameState.START_BEACH;
@@ -89,11 +90,6 @@ public class MainScript : MonoBehaviour {
 				currNavButtons.SetActive(true);
 				// hide larger character
 				resetKluluBig();
-				conversationPanel.SetActive(false);
-				closeConvoButton.SetActive(true);
-				blocker.SetActive(false);
-				// hide buttons too
-				buttonGroup.SetActive(false);
 			break;
 			case GameAreas.ZEN:
 				lastState = GameState.START_ZEN;
@@ -103,11 +99,6 @@ public class MainScript : MonoBehaviour {
 				currNavButtons.SetActive(true);
 				// hide larger character
 				resetBuzzBig();
-				conversationPanel.SetActive(false);
-				closeConvoButton.SetActive(true);
-				blocker.SetActive(false);
-				// hide buttons too
-				buttonGroup.SetActive(false);
 			break;
 			case GameAreas.FLORIST:
 				lastState = GameState.START_FLORIST;
@@ -117,11 +108,14 @@ public class MainScript : MonoBehaviour {
 				currNavButtons.SetActive(true);
 				// hide larger character
 				resetDaisyBig();
-				conversationPanel.SetActive(false);
-				closeConvoButton.SetActive(true);
-				blocker.SetActive(false);
-				// hide buttons too
-				buttonGroup.SetActive(false);
+				// show book again
+				book.SetActive(true);
+			break;
+			case GameAreas.ENTRACE_OUTSIDE:
+				gameAreas.entraceOutsideNav.SetActive(true);
+			break;
+			case GameAreas.CAFE_OUTSIDE:
+				gameAreas.cafeOutsideNav.SetActive(true);
 			break;
 		}
 	}
@@ -304,41 +298,56 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void SelectItem(string itemName){
+		print ("Selected " + itemName);
 		switch(itemName){
 			case "trashBags":
 				if(GameFlags.flags[StoryEvent.NEED_TRASH_BAGS]) say (Baes.YOU, "I can use these to help Klulu clean up the beach");
 				else say (Baes.YOU, "It's just some trash bags");
+				conversationPanel.SetActive(true);
 			break;
-			case "flowers1":
-				if(GameFlags.flags[StoryEvent.NEED_FLOWERS]){
-					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are flower1");
+			case "thistle":
+				if(GameFlags.flags[StoryEvent.NEED_FLOWERS] && !GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE]){
+					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "This is a thistle.");
 					else say (Baes.YOU, "I wonder if Daisy would like these?");
+					GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE] = true;
+					items.thistle.SetActive(false);
 				}
 				else say (Baes.YOU, "I wonder what kind of flowers those are?");
 				conversationPanel.SetActive(true);
+				gameAreas.cafeOutsideNav.SetActive(false);
 			break;
-			case "flowers2":
-				if(GameFlags.flags[StoryEvent.NEED_FLOWERS]){
-					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are flower1");
+			case "seafig":
+				if(GameFlags.flags[StoryEvent.NEED_FLOWERS] && !GameFlags.flags[StoryEvent.GOT_FLOWER_SEAFIG]){
+					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are seafig");
 					else say (Baes.YOU, "I wonder if Daisy would like these?");
+					GameFlags.flags[StoryEvent.GOT_FLOWER_SEAFIG] = true;
+					items.seafig.SetActive(false);
 				}
 				else say (Baes.YOU, "I wonder what kind of flowers those are?");
+				conversationPanel.SetActive(true);
+				gameAreas.beachNav.SetActive(false);
 			break;
 
-			case "flowers3":
-				if(GameFlags.flags[StoryEvent.NEED_FLOWERS]){
-					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are flower1");
+			case "nightshade":
+				if(GameFlags.flags[StoryEvent.NEED_FLOWERS] && !GameFlags.flags[StoryEvent.GOT_FLOWER_NIGHTSHADE] ){
+					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are nightshade");
 					else say (Baes.YOU, "I wonder if Daisy would like these?");
+					GameFlags.flags[StoryEvent.GOT_FLOWER_NIGHTSHADE] = true;
+					items.nightshade.SetActive(false);
 				}
 				else say (Baes.YOU, "I wonder what kind of flowers those are?");
+				conversationPanel.SetActive(true);
+				gameAreas.entraceOutsideNav.SetActive(false);
 			break;
 			case "oil":
 				if(GameFlags.flags[StoryEvent.NEED_OIL]) say (Baes.YOU, "This is just what Buzz was looking for");
 				else say (Baes.YOU, "It's just some peanut oil");
+				conversationPanel.SetActive(true);
 			break;
 			case "glasses":
 				if(GameFlags.flags[StoryEvent.NEED_GLASSES]) say (Baes.YOU, "Ah, Dan was looking for these. I'll return them to him");
 				else say (Baes.YOU, "I wonder whose glasses these are?");
+				conversationPanel.SetActive(true);
 			break;
 			case "book":
 				GameFlags.flags[StoryEvent.READ_BOOK] = true;
@@ -346,6 +355,7 @@ public class MainScript : MonoBehaviour {
 				blocker.SetActive(true);
 				book.SetActive(false);
 				closeConversationPanel();
+				gameAreas.floristNav.SetActive(false);
 			break;
 			default:
 				Debug.LogError("What's that? " + itemName);
@@ -354,6 +364,7 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void CloseBook(){
+		currNavButtons.SetActive(true);
 		bookBig.SetActive(false);
 		book.SetActive(true);
 		blocker.SetActive(false);

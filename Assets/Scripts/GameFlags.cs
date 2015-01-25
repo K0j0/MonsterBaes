@@ -102,9 +102,9 @@ public enum StoryEvent{
 	GOT_TRASH_BAGS,
 	READ_BOOK,
 	NEED_FLOWERS,
-	GOT_FLOWER_1,
-	GOT_FLOWER_2,
-	GOT_FLOWER_3,
+	GOT_FLOWER_THISTLE,
+	GOT_FLOWER_SEAFIG,
+	GOT_FLOWER_NIGHTSHADE,
 	NEED_OIL,
 	GOT_OIL,
 	NEED_GLASSES,
@@ -122,9 +122,9 @@ public class GameFlags{
 		flags [StoryEvent.GOT_TRASH_BAGS] = false;
 		flags [StoryEvent.READ_BOOK] = false;
 		flags [StoryEvent.NEED_FLOWERS] = false;
-		flags [StoryEvent.GOT_FLOWER_1] = false;
-		flags [StoryEvent.GOT_FLOWER_2] = false;
-		flags [StoryEvent.GOT_FLOWER_3] = false;
+		flags [StoryEvent.GOT_FLOWER_THISTLE] = false;
+		flags [StoryEvent.GOT_FLOWER_SEAFIG] = false;
+		flags [StoryEvent.GOT_FLOWER_NIGHTSHADE] = false;
 		flags [StoryEvent.NEED_OIL] = false;
 		flags [StoryEvent.GOT_OIL] = false;
 		flags [StoryEvent.NEED_GLASSES] = false;
