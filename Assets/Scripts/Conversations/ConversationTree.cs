@@ -19,6 +19,7 @@ public class ConversationTree : MonoBehaviour {
 	public void Init(){
 		print ("CTree init");
 		dan.mainSCript = mainScript;
+		klulu.mainSCript = mainScript;
 	}
 
 	// TODO, this should route to each conversation script based off of current state (who you're speaking to)
@@ -114,6 +115,80 @@ public class ConversationTree : MonoBehaviour {
 				}
 				mainScript.buttonGroup.SetActive(false);
 				TalkToDan();
+			break;
+
+			// Klulu
+			case GameState.SPEAK_TO_KLULU_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_1A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_1B;
+					break;
+					case 3:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_1C;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
+			case GameState.SPEAK_TO_KLULU_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_2A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_2B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
+			case GameState.SPEAK_TO_KLULU_3:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_3A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_3B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
+			case GameState.SPEAK_TO_KLULU_4:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_4A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_4B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
+			case GameState.SPEAK_TO_KLULU_5:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_5A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_5B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
 			break;
 
 			default:

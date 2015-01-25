@@ -465,7 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 20e3951147b46084e8f8d888f94fb864, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cab5685913ed5964ca4a28444921954a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -9098,7 +9098,7 @@ MonoBehaviour:
   Dan_big: {fileID: 341565647}
   Klulu: {fileID: 91400532}
   Klulu_big: {fileID: 36391723}
-  lastState: 0
+  lastState: 20
   slide: 50
   currNavButtons: {fileID: 0}
   commonUI: {fileID: 1143423293}
@@ -9716,6 +9716,7 @@ GameObject:
   - 4: {fileID: 1505569710}
   - 114: {fileID: 1505569711}
   - 114: {fileID: 1505569709}
+  - 114: {fileID: 1505569712}
   m_Layer: 0
   m_Name: AllConversations
   m_TagString: Untagged
@@ -9760,7 +9761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScript: {fileID: 1409239878}
   dan: {fileID: 1505569709}
-  klulu: {fileID: 0}
+  klulu: {fileID: 1505569712}
   option1: {fileID: 1928088212}
   option1_text: {fileID: 891596306}
   option2: {fileID: 1462504235}
@@ -9769,6 +9770,18 @@ MonoBehaviour:
   option3_text: {fileID: 40278072}
   option4: {fileID: 1315693077}
   option4_text: {fileID: 609135071}
+--- !u!114 &1505569712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4039257d9a35c4eb80f855b3f52c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSCript: {fileID: 0}
 --- !u!1 &1519280650
 GameObject:
   m_ObjectHideFlags: 0

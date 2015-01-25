@@ -39,7 +39,7 @@ public class MainScript : MonoBehaviour {
 	void Start () {
 		Debug.Log("Bae.");
 		instance = this;
-		currArea = GameAreas.CLASSROOM;
+		currArea = GameAreas.BEACH;
 		currNavButtons = gameAreas.classroomNav;
 		convoTree.Init ();
 
@@ -79,6 +79,20 @@ public class MainScript : MonoBehaviour {
 				// hide buttons too
 				buttonGroup.SetActive(false);
 			break;
+			case GameAreas.BEACH:
+				lastState = GameState.START_BEACH;
+				// show characters
+				Klulu.gameObject.SetActive(true);
+				// show nav
+				currNavButtons.SetActive(true);
+				// hide larger character
+				resetKluluBig();
+				conversationPanel.SetActive(false);
+				closeConvoButton.SetActive(true);
+				blocker.SetActive(false);
+				// hide buttons too
+				buttonGroup.SetActive(false);
+			break;
 		}
 	}
 
@@ -109,7 +123,7 @@ public class MainScript : MonoBehaviour {
 
 	void resetKluluBig(){
 		Vector3 newPos = Klulu_big.transform.position;
-		newPos.x = newPos.x + slide;
+		newPos.x = newPos.x - slide;
 		Klulu_big.transform.position = newPos;
 		Klulu_big.gameObject.SetActive(false);
 	}
