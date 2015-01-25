@@ -21,16 +21,23 @@ public class DaisyConvo : MonoBehaviour {
 						mainSCript.showOptions();
 					break;
 					case GameState.SPEAK_TO_DAISY_7A:
-						mainSCript.say(Baes.DAISY, "A?");
-						mainSCript.closeConvoButton.SetActive(true);
+						mainSCript.lastState = GameState.SPEAK_TO_DAISY_8;
+						mainSCript.say(Baes.DAISY, "Oh my nightshade! Local and very special. Careful with that, give it here.");
+						setOptions(GameState.SPEAK_TO_DAISY_8);
+						mainSCript.showOptions();
 					break;
 					case GameState.SPEAK_TO_DAISY_7B:
-						mainSCript.say(Baes.DAISY, "B");
+						mainSCript.say(Baes.DAISY, "This seafig smells like trash");
 						mainSCript.closeConvoButton.SetActive(true);
 					break;
 					case GameState.SPEAK_TO_DAISY_7C:
-						mainSCript.say(Baes.DAISY, "C");
+						mainSCript.say(Baes.DAISY, "Oh,a thistle...thanks");				
 						mainSCript.closeConvoButton.SetActive(true);
+					break;
+
+					case GameState.SPEAK_TO_DAISY_8A:
+//						mainSCript.say(Baes.DAISY, "Oh,a thistle...thanks");				
+//						mainSCript.closeConvoButton.SetActive(true);
 					break;
 				}
 
@@ -243,6 +250,19 @@ public class DaisyConvo : MonoBehaviour {
 				mainSCript.option4.gameObject.SetActive(false);
 
 			break;
+			case GameState.SPEAK_TO_DAISY_8:
+				mainSCript.option1_text.text = "Here you go";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
 		}
 	}
 	

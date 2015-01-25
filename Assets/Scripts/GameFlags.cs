@@ -119,7 +119,9 @@ public enum GameState{
 	SPEAK_TO_DAISY_7,
 	SPEAK_TO_DAISY_7A,
 	SPEAK_TO_DAISY_7B,
-	SPEAK_TO_DAISY_7C
+	SPEAK_TO_DAISY_7C,
+	SPEAK_TO_DAISY_8,
+	SPEAK_TO_DAISY_8A
 }
 
 public enum StoryEvent{
@@ -165,10 +167,10 @@ public class GameFlags{
 		flags [StoryEvent.DATED_KLULU] = false;
 
 		flags [StoryEvent.READ_BOOK] = false;
-		flags [StoryEvent.NEED_FLOWERS] = false;
-		flags [StoryEvent.GOT_FLOWER_THISTLE] = false;
-		flags [StoryEvent.GOT_FLOWER_SEAFIG] = false;
-		flags [StoryEvent.GOT_FLOWER_NIGHTSHADE] = false;
+		flags [StoryEvent.NEED_FLOWERS] = true;
+		flags [StoryEvent.GOT_FLOWER_THISTLE] = true;
+		flags [StoryEvent.GOT_FLOWER_SEAFIG] = true;
+		flags [StoryEvent.GOT_FLOWER_NIGHTSHADE] = true;
 
 		flags [StoryEvent.NEED_OIL] = false;
 		flags [StoryEvent.GOT_OIL] = false;

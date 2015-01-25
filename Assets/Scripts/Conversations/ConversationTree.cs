@@ -385,6 +385,17 @@ public class ConversationTree : MonoBehaviour {
 				TalkToDaisy();
 			break;
 
+			case GameState.SPEAK_TO_DAISY_8:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_8A;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
 
 			// Buzz
 			case GameState.SPEAK_TO_BUZZ_1:
