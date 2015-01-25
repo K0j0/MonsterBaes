@@ -21,6 +21,8 @@ public class MainScript : MonoBehaviour {
 	public GameObject currNavButtons;
 	public GameObject commonUI;
 	public ConversationTree convoTree;
+	public GameObject book;
+	public GameObject bookBig;
 
 	public GameObject buttonGroup;
 	public Button option1;
@@ -60,63 +62,63 @@ public class MainScript : MonoBehaviour {
 		}
 	}
 
-	public void talkToKaede(){
-		if (GameFlags.flags [StoryEvent.SPEAK_TO_KAEDE]) {
-			// hide characters
-			Kaede.gameObject.SetActive(false);
-			Dan.gameObject.SetActive(false);
-			// hide nav
-			currNavButtons.SetActive(false);
-			
-			// show larger character
-			Kaede_big.gameObject.SetActive(true);
-			conversationPanel.SetActive(true);
-			blocker.SetActive(true);
-			convoText.text = "KAEDE:\nSo what did he say?";
-		}
-		else {
-			switch (lastState) {
-			case GameState.START:
-				lastState = GameState.SPEAK_TO_KAEDE_1;
-				// hide characters
-				Kaede.gameObject.SetActive(false);
-				Dan.gameObject.SetActive(false);
-				// hide nav
-				currNavButtons.SetActive(false);
-				
-				iTween.MoveTo(Kaede_big.gameObject, iTween.Hash(
-					"x", Kaede_big.transform.position.x - slide
-					, "islocal", false
-					, "time", 1f
-					, "delay", 0
-					));
-				
-				// show larger character
-				Kaede_big.gameObject.SetActive(true);
-				conversationPanel.SetActive(true);
-				blocker.SetActive(true);
-				convoText.text = "KAEDE:\nHey! You have a crush on Dan right? I hear he's really into politics.";
-				break;
-			case GameState.SPEAK_TO_KAEDE_1:
-				GameFlags.flags[StoryEvent.SPEAK_TO_KAEDE] = true;
-				
-				// hide characters
-				Kaede.gameObject.SetActive(false);
-				Dan.gameObject.SetActive(false);
-				// hide nav
-				currNavButtons.SetActive(false);
-				
-				// show larger character
-				Kaede_big.gameObject.SetActive(true);
-				conversationPanel.SetActive(true);
-				blocker.SetActive(true);
-				convoText.text = "KAEDE:\nWhy don't you try talking to Dan?";
-				break;
-			
-			}
-		}
-
-	}
+//	public void talkToKaede(){
+//		if (GameFlags.flags [StoryEvent.SPEAK_TO_KAEDE]) {
+//			// hide characters
+//			Kaede.gameObject.SetActive(false);
+//			Dan.gameObject.SetActive(false);
+//			// hide nav
+//			currNavButtons.SetActive(false);
+//			
+//			// show larger character
+//			Kaede_big.gameObject.SetActive(true);
+//			conversationPanel.SetActive(true);
+//			blocker.SetActive(true);
+//			convoText.text = "KAEDE:\nSo what did he say?";
+//		}
+//		else {
+//			switch (lastState) {
+//			case GameState.START:
+//				lastState = GameState.SPEAK_TO_KAEDE_1;
+//				// hide characters
+//				Kaede.gameObject.SetActive(false);
+//				Dan.gameObject.SetActive(false);
+//				// hide nav
+//				currNavButtons.SetActive(false);
+//				
+//				iTween.MoveTo(Kaede_big.gameObject, iTween.Hash(
+//					"x", Kaede_big.transform.position.x - slide
+//					, "islocal", false
+//					, "time", 1f
+//					, "delay", 0
+//					));
+//				
+//				// show larger character
+//				Kaede_big.gameObject.SetActive(true);
+//				conversationPanel.SetActive(true);
+//				blocker.SetActive(true);
+//				convoText.text = "KAEDE:\nHey! You have a crush on Dan right? I hear he's really into politics.";
+//				break;
+//			case GameState.SPEAK_TO_KAEDE_1:
+//				GameFlags.flags[StoryEvent.SPEAK_TO_KAEDE] = true;
+//				
+//				// hide characters
+//				Kaede.gameObject.SetActive(false);
+//				Dan.gameObject.SetActive(false);
+//				// hide nav
+//				currNavButtons.SetActive(false);
+//				
+//				// show larger character
+//				Kaede_big.gameObject.SetActive(true);
+//				conversationPanel.SetActive(true);
+//				blocker.SetActive(true);
+//				convoText.text = "KAEDE:\nWhy don't you try talking to Dan?";
+//				break;
+//			
+//			}
+//		}
+//
+//	}
 
 	public void closeConversationPanel(){
 		switch (currArea) {
@@ -188,27 +190,82 @@ public class MainScript : MonoBehaviour {
 	public void onNavigate(string area){
 		print ("Navigate to " + area);
 		switch (area) {
-			case GameAreas.CLASSROOM:
-				currArea = GameAreas.CLASSROOM;
-				gameAreas.classroom.SetActive(true);
-				gameAreas.classroom.transform.SetAsLastSibling();
-				commonUI.transform.SetAsLastSibling();
-			break;
-			case GameAreas.CLASSROOM_BLUE:
-				currArea = GameAreas.CLASSROOM_BLUE;
-				gameAreas.classroomBlue.SetActive(true);
-				gameAreas.classroomBlue.transform.SetAsLastSibling();
-				commonUI.transform.SetAsLastSibling();
-			break;
-			case GameAreas.CLASSROOM_RED:
-				currArea = GameAreas.CLASSROOM_RED;
-				gameAreas.classroomRed.SetActive(true);
-				gameAreas.classroomRed.transform.SetAsLastSibling();
-				commonUI.transform.SetAsLastSibling();
-			break;
+//			case GameAreas.CLASSROOM:
+//				currArea = GameAreas.CLASSROOM;
+//				gameAreas.classroom.SetActive(true);
+//				gameAreas.classroom.transform.SetAsLastSibling();
+//				commonUI.transform.SetAsLastSibling();
+//			break;
+//			case GameAreas.CLASSROOM_BLUE:
+//				currArea = GameAreas.CLASSROOM_BLUE;
+//				gameAreas.classroomBlue.SetActive(true);
+//				gameAreas.classroomBlue.transform.SetAsLastSibling();
+//				commonUI.transform.SetAsLastSibling();
+//			break;
+//			case GameAreas.CLASSROOM_RED:
+//				currArea = GameAreas.CLASSROOM_RED;
+//				gameAreas.classroomRed.SetActive(true);
+//				gameAreas.classroomRed.transform.SetAsLastSibling();
+//				commonUI.transform.SetAsLastSibling();
+//			break;
 			default:
 				Debug.LogError("Unknown area: " + area + ". Maybe that's a type?");
 			break;
 		}
+	}
+
+	public void SelectItem(string itemName){
+		switch(itemName){
+			case "trashBags":
+				if(GameFlags.flags[StoryEvent.NEED_TRASH_BAGS]) say (Baes.YOU, "I can use these to help Klulu clean up the beach");
+				else say (Baes.YOU, "It's just some trash bags");
+			break;
+			case "flowers1":
+				if(GameFlags.flags[StoryEvent.NEED_FLOWERS]){
+					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are flower1");
+					else say (Baes.YOU, "I wonder if Daisy would like these?");
+				}
+				else say (Baes.YOU, "I wonder what kind of flowers those are?");
+				conversationPanel.SetActive(true);
+			break;
+			case "flowers2":
+				if(GameFlags.flags[StoryEvent.NEED_FLOWERS]){
+					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are flower1");
+					else say (Baes.YOU, "I wonder if Daisy would like these?");
+				}
+				else say (Baes.YOU, "I wonder what kind of flowers those are?");
+			break;
+			case "flowers3":
+				if(GameFlags.flags[StoryEvent.NEED_FLOWERS]){
+					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "Those are flower1");
+					else say (Baes.YOU, "I wonder if Daisy would like these?");
+				}
+				else say (Baes.YOU, "I wonder what kind of flowers those are?");
+			break;
+			case "oil":
+				if(GameFlags.flags[StoryEvent.NEED_OIL]) say (Baes.YOU, "This is just what Buzz was looking for");
+				else say (Baes.YOU, "It's just some peanut oil");
+			break;
+			case "glasses":
+				if(GameFlags.flags[StoryEvent.NEED_GLASSES]) say (Baes.YOU, "Ah, Dan was looking for these. I'll return them to him");
+				else say (Baes.YOU, "I wonder whose glasses these are?");
+			break;
+			case "book":
+				GameFlags.flags[StoryEvent.READ_BOOK] = true;
+				bookBig.SetActive(true);
+				blocker.SetActive(true);
+				book.SetActive(false);
+			closeConversationPanel();
+			break;
+			default:
+				Debug.LogError("What's that? " + itemName);
+			break;
+		}
+	}
+
+	public void CloseBook(){
+		bookBig.SetActive(false);
+		book.SetActive(true);
+		blocker.SetActive(false);
 	}
 }

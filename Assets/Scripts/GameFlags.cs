@@ -41,8 +41,17 @@ public enum GameState{
 }
 
 public enum StoryEvent{
-	SPEAK_TO_KAEDE,
-	SPEAK_TO_DAN
+	NEED_TRASH_BAGS,
+	GOT_TRASH_BAGS,
+	READ_BOOK,
+	NEED_FLOWERS,
+	GOT_FLOWER_1,
+	GOT_FLOWER_2,
+	GOT_FLOWER_3,
+	NEED_OIL,
+	GOT_OIL,
+	NEED_GLASSES,
+	GOT_GLASSES,
 }
 
 public class GameFlags{
@@ -50,7 +59,18 @@ public class GameFlags{
 
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
-		flags [StoryEvent.SPEAK_TO_KAEDE] = false;
-		flags [StoryEvent.SPEAK_TO_DAN] = false;
+//		flags [StoryEvent.SPEAK_TO_KAEDE] = false;
+//		flags [StoryEvent.SPEAK_TO_DAN] = false;
+		flags [StoryEvent.NEED_TRASH_BAGS] = false;
+		flags [StoryEvent.GOT_TRASH_BAGS] = false;
+		flags [StoryEvent.READ_BOOK] = false;
+		flags [StoryEvent.NEED_FLOWERS] = false;
+		flags [StoryEvent.GOT_FLOWER_1] = false;
+		flags [StoryEvent.GOT_FLOWER_2] = false;
+		flags [StoryEvent.GOT_FLOWER_3] = false;
+		flags [StoryEvent.NEED_OIL] = false;
+		flags [StoryEvent.GOT_OIL] = false;
+		flags [StoryEvent.NEED_GLASSES] = false;
+		flags [StoryEvent.GOT_GLASSES] = false;
 	}
 }

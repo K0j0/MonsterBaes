@@ -13,8 +13,8 @@ public class DanConvo : MonoBehaviour {
 	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
 				changeBigMood(Moods.NEUTRAL);
 
-				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
-					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
+//				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
+//					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
 					
 					iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
 						"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
@@ -22,7 +22,7 @@ public class DanConvo : MonoBehaviour {
 						, "time", 1f
 						, "delay", 0
 						));
-					}
+//					}
 					// hide characters
 					mainSCript.Kaede.gameObject.SetActive(false);
 					mainSCript.Dan.gameObject.SetActive(false);
