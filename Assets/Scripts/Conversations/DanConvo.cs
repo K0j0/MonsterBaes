@@ -3,14 +3,14 @@ using System.Collections;
 
 public class DanConvo : MonoBehaviour {
 	public MainScript mainSCript;
-	bool slide = true;
 
 	public void TalkToMe(){
 		switch (mainSCript.lastState)
 		{
 			case GameState.START:
 			case GameState.SPEAK_TO_KAEDE_1:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN;
+			case GameState.SPEAK_TO_DAN:
+	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
 
 				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
 					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
@@ -37,14 +37,14 @@ public class DanConvo : MonoBehaviour {
 				
 					setOptions(GameState.SPEAK_TO_DAN);
 			break;
-			case GameState.SPEAK_TO_DAN:
+			case GameState.SPEAK_TO_DAN_1:
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_2;
 				mainSCript.say (Baes.DAN, "Wow, That not my name. Is that how you adress everyone?");
-				if(slide){
-					slide = false;
-					HelperFunctions.DelayCallback (1.5f, () => {
-						mainSCript.buttonGroup.SetActive (true);
-					});
-				}
+
+				HelperFunctions.DelayCallback (1.5f, () => {
+					mainSCript.buttonGroup.SetActive (true);
+				});
+				
 				
 			break;
 			case GameState.SPEAK_TO_DAN_1A:

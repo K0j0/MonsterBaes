@@ -167,9 +167,9 @@ public class MainScript : MonoBehaviour {
 	}
 
 	void resetDanBig(){
-		Vector3 newPos = Kaede_big.transform.position;
-		newPos.x = newPos.x - slide;
-		Dan_big.transform.position = newPos;
+//		Vector3 newPos = Dan_big.transform.position;
+//		newPos.x = newPos.x - slide;
+//		Dan_big.transform.position = newPos;
 		Dan_big.gameObject.SetActive(false);
 	}
 

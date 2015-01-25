@@ -26,7 +26,9 @@ public class ConversationTree : MonoBehaviour {
 		switch (mainScript.lastState) {
 			case GameState.START:
 			case GameState.SPEAK_TO_DAN:
-				switch(choice)
+			case GameState.SPEAK_TO_DAN_1:
+			case GameState.SPEAK_TO_DAN_2:
+        	switch(choice)
 				{
 					case 1:
 						mainScript.lastState = GameState.SPEAK_TO_DAN_1A;
