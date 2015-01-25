@@ -73,7 +73,9 @@ public enum GameState{
 	SPEAK_TO_KLULU_6A,
 	DATE_KLULU_1,
 	DATE_KLULU_1A,
-	DATE_KLULU_1B,
+	DATE_KLULU_2,
+	DATE_KLULU_2A,
+	DATE_KLULU_2B,
 
 	// for Buzz
 	START_ZEN,

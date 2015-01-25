@@ -12,9 +12,27 @@ public class KluluConvo : MonoBehaviour {
 			{
 				case GameState.DATE_KLULU_1:
 					mainSCript.conversationPanel.SetActive(true);
-					mainSCript.say(Baes.KULU, "So here we are");
+					mainSCript.say(Baes.KULU, "Thanks for helping me out, dear.");
 					setOptions(GameState.DATE_KLULU_1);
 					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_KLULU_1A:
+					mainSCript.lastState = GameState.DATE_KLULU_2;
+					mainSCript.say(Baes.KULU, "On behalf of the marine life and other lovely critters, we appreciate it.");
+					setOptions(GameState.DATE_KLULU_2);
+					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_KLULU_2A:
+					changeMood(Moods.ANGRY);
+					mainSCript.say(Baes.KULU, "What!?");
+					mainSCript.closeConvoButton.SetActive(true);
+				break;
+
+				case GameState.DATE_KLULU_2B:
+					changeMood(Moods.SMILE);
+					mainSCript.say(Baes.KULU, "Oh you flirt");
 				break;
 			}
 		}
@@ -226,10 +244,24 @@ public class KluluConvo : MonoBehaviour {
 			break;
 
 			case GameState.DATE_KLULU_1:
-				mainSCript.option1_text.text = "You look nice.";
+				mainSCript.option1_text.text = "No problem";
 				mainSCript.option1.gameObject.SetActive(true);
 
-				mainSCript.option2_text.text = "I'm kinda regretting it...";
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
+
+			case GameState.DATE_KLULU_2:
+				mainSCript.option1_text.text = "All the more for me to eat";
+				mainSCript.option1.gameObject.SetActive(true);
+
+				mainSCript.option2_text.text = "I love sea critters almost as much as I love you";
 				mainSCript.option2.gameObject.SetActive(true);
 
 				mainSCript.option3_text.text = "";
