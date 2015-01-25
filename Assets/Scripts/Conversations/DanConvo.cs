@@ -8,7 +8,6 @@ public class DanConvo : MonoBehaviour {
 		switch (mainSCript.lastState)
 		{
 			case GameState.START:
-			case GameState.SPEAK_TO_KAEDE_1:
 			case GameState.SPEAK_TO_DAN:
 	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
 				changeBigMood(Moods.NEUTRAL);
@@ -24,7 +23,6 @@ public class DanConvo : MonoBehaviour {
 						));
 //					}
 					// hide characters
-					mainSCript.Kaede.gameObject.SetActive(false);
 					mainSCript.Dan.gameObject.SetActive(false);
 					// hide nav
 					mainSCript.currNavButtons.SetActive(false);

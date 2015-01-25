@@ -17,8 +17,8 @@ public enum Moods{
 }
 
 public enum GameState{
+	// for Dan
 	START,
-	SPEAK_TO_KAEDE_1,
 	SPEAK_TO_DAN,
 	SPEAK_TO_DAN_1,
 	SPEAK_TO_DAN_1_0,
@@ -37,7 +37,11 @@ public enum GameState{
 	SPEAK_TO_DAN_4B,
 	SPEAK_TO_DAN_5,
 	SPEAK_TO_DAN_5A,
-	SPEAK_TO_DAN_5B
+	SPEAK_TO_DAN_5B,
+
+	// for Klulu
+	START_BEACH,
+	SPEAK_TO_KLULU_1,
 }
 
 public enum StoryEvent{

@@ -5,6 +5,7 @@ using System.Collections;
 public class ConversationTree : MonoBehaviour {
 	public MainScript mainScript;
 	public DanConvo dan;
+	public KluluConvo klulu;
 
 	public Button option1;
 	public Text option1_text;
@@ -18,10 +19,6 @@ public class ConversationTree : MonoBehaviour {
 	public void Init(){
 		print ("CTree init");
 		dan.mainSCript = mainScript;
-//		dan.changeMood (Moods.ANGRY);
-//		dan.changeMood (Moods.HAPPY);
-//		dan.changeMood (Moods.SMILE);
-//		dan.changeMood (Moods.NEUTRAL);
 	}
 
 	// TODO, this should route to each conversation script based off of current state (who you're speaking to)
@@ -127,5 +124,9 @@ public class ConversationTree : MonoBehaviour {
 
 	public void TalkToDan(){
 		dan.TalkToMe ();
+	}
+
+	public void TalkToKlulu(){
+		klulu.TalkToMe();
 	}
 }

@@ -12,8 +12,8 @@ public class MainScript : MonoBehaviour {
 	public Text convoText;
 	public Button Dan;
 	public Button Dan_big;
-	public Button Kaede;
-	public Button Kaede_big;
+	public Button Klulu;
+	public Button Klulu_big;
 	public GameState lastState = GameState.START;
 	public float slide = 50;
 	private static MonoBehaviour instance;
@@ -50,8 +50,8 @@ public class MainScript : MonoBehaviour {
 				blocker.SetActive(false);
 				Dan.gameObject.SetActive(true);
 				Dan_big.gameObject.SetActive(false);
-				Kaede.gameObject.SetActive(true);
-				Kaede_big.gameObject.SetActive(false);
+				Klulu.gameObject.SetActive(true);
+				Klulu_big.gameObject.SetActive(false);
 				buttonGroup.gameObject.SetActive(false);
 			break;
 		}
@@ -63,75 +63,15 @@ public class MainScript : MonoBehaviour {
 		}
 	}
 
-//	public void talkToKaede(){
-//		if (GameFlags.flags [StoryEvent.SPEAK_TO_KAEDE]) {
-//			// hide characters
-//			Kaede.gameObject.SetActive(false);
-//			Dan.gameObject.SetActive(false);
-//			// hide nav
-//			currNavButtons.SetActive(false);
-//			
-//			// show larger character
-//			Kaede_big.gameObject.SetActive(true);
-//			conversationPanel.SetActive(true);
-//			blocker.SetActive(true);
-//			convoText.text = "KAEDE:\nSo what did he say?";
-//		}
-//		else {
-//			switch (lastState) {
-//			case GameState.START:
-//				lastState = GameState.SPEAK_TO_KAEDE_1;
-//				// hide characters
-//				Kaede.gameObject.SetActive(false);
-//				Dan.gameObject.SetActive(false);
-//				// hide nav
-//				currNavButtons.SetActive(false);
-//				
-//				iTween.MoveTo(Kaede_big.gameObject, iTween.Hash(
-//					"x", Kaede_big.transform.position.x - slide
-//					, "islocal", false
-//					, "time", 1f
-//					, "delay", 0
-//					));
-//				
-//				// show larger character
-//				Kaede_big.gameObject.SetActive(true);
-//				conversationPanel.SetActive(true);
-//				blocker.SetActive(true);
-//				convoText.text = "KAEDE:\nHey! You have a crush on Dan right? I hear he's really into politics.";
-//				break;
-//			case GameState.SPEAK_TO_KAEDE_1:
-//				GameFlags.flags[StoryEvent.SPEAK_TO_KAEDE] = true;
-//				
-//				// hide characters
-//				Kaede.gameObject.SetActive(false);
-//				Dan.gameObject.SetActive(false);
-//				// hide nav
-//				currNavButtons.SetActive(false);
-//				
-//				// show larger character
-//				Kaede_big.gameObject.SetActive(true);
-//				conversationPanel.SetActive(true);
-//				blocker.SetActive(true);
-//				convoText.text = "KAEDE:\nWhy don't you try talking to Dan?";
-//				break;
-//			
-//			}
-//		}
-//
-//	}
-
 	public void closeConversationPanel(){
 		switch (currArea) {
 			case GameAreas.CLASSROOM:
 				lastState = GameState.SPEAK_TO_DAN;
 				// show characters
-				Kaede.gameObject.SetActive(true);
 				Dan.gameObject.SetActive(true);
 				// show nav
 				currNavButtons.SetActive(true);
 				// hide larger character
-				resetKaedeBig();
 				resetDanBig();
 				conversationPanel.SetActive(false);
 				closeConvoButton.SetActive(true);
@@ -161,17 +101,17 @@ public class MainScript : MonoBehaviour {
 		convoText.text += what;
 	}
 
-	public void fadeKaedeBig(float newX){
-		Vector3 newPos = Kaede_big.transform.position;
+	public void fadeKluluBig(float newX){
+		Vector3 newPos = Klulu_big.transform.position;
 		newPos.x = newX;
-		Kaede_big.transform.position = newPos;
+		Klulu_big.transform.position = newPos;
 	}
 
-	void resetKaedeBig(){
-		Vector3 newPos = Kaede_big.transform.position;
+	void resetKluluBig(){
+		Vector3 newPos = Klulu_big.transform.position;
 		newPos.x = newPos.x + slide;
-		Kaede_big.transform.position = newPos;
-		Kaede_big.gameObject.SetActive(false);
+		Klulu_big.transform.position = newPos;
+		Klulu_big.gameObject.SetActive(false);
 	}
 
 	void resetDanBig(){
@@ -244,6 +184,7 @@ public class MainScript : MonoBehaviour {
 				gameAreas.beach.SetActive(true);
 				gameAreas.beach.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
+				lastState = GameState.START_BEACH;
 			break;
 			case GameAreas.ENTRACE_OUTSIDE:
 				currArea = GameAreas.ENTRACE_OUTSIDE;
