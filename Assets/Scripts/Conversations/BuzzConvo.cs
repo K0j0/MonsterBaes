@@ -53,7 +53,7 @@ public class BuzzConvo : MonoBehaviour {
 				mainSCript.conversationPanel.SetActive(true);
 				mainSCript.closeConvoButton.SetActive (false); // don't show close button here
 				mainSCript.blocker.SetActive(true);
-				mainSCript.say (Baes.KULU, "Hey.");
+				mainSCript.say (Baes.KULU, "Namaste.");
 				
 				setOptions(GameState.SPEAK_TO_BUZZ_1);
 				mainSCript.showOptions();
