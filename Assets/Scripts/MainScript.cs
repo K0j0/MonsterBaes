@@ -38,6 +38,7 @@ public class MainScript : MonoBehaviour {
 		instance = this;
 		currArea = GameAreas.CLASSROOM;
 		currNavButtons = gameAreas.classroomNav;
+		convoTree.Init ();
 
 		GameFlags.init ();
 		switch (lastState) {
@@ -109,38 +110,6 @@ public class MainScript : MonoBehaviour {
 			}
 		}
 
-	}
-
-	public void talkToDan(){
-		if (!GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_DAN]) {
-			GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_DAN] = true;
-
-			iTween.MoveTo(Dan_big.gameObject, iTween.Hash(
-				"x", Dan_big.transform.position.x + slide
-				, "islocal", false
-				, "time", 1f
-				, "delay", 0
-				));
-		}
-		// hide characters
-		Kaede.gameObject.SetActive(false);
-		Dan.gameObject.SetActive(false);
-		// hide nav
-		currNavButtons.SetActive(false);
-		
-		// show larger character
-		Dan_big.gameObject.SetActive(true);
-		conversationPanel.SetActive(true);
-		closeConvoButton.SetActive (false); // don't show close button here
-		blocker.SetActive(true);
-		convoText.text = "DAN:\nWhat's up?";
-
-		HelperFunctions.DelayCallback (1f, () => {
-			buttonGroup.SetActive (true);
-		});
-
-
-		convoTree.setOptions(GameFlags.GameState.SPEAK_TO_DAN);
 	}
 
 	public void closeConversationPanel(){

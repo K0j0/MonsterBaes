@@ -977,8 +977,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
-        m_MethodName: talkToDan
+      - m_Target: {fileID: 1505569709}
+        m_MethodName: TalkToMe
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2115,8 +2115,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
-        m_MethodName: talkToDan
+      - m_Target: {fileID: 1505569709}
+        m_MethodName: TalkToMe
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2475,7 +2475,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
+      - m_Target: {fileID: 1505569711}
         m_MethodName: optionChosen
         m_Mode: 3
         m_Arguments:
@@ -2642,7 +2642,6 @@ GameObject:
   - 114: {fileID: 1409239878}
   - 114: {fileID: 1409239880}
   - 114: {fileID: 1409239881}
-  - 114: {fileID: 1409239882}
   m_Layer: 0
   m_Name: ScriptObject
   m_TagString: Untagged
@@ -2675,7 +2674,7 @@ MonoBehaviour:
   slide: 50
   currNavButtons: {fileID: 0}
   commonUI: {fileID: 1143423293}
-  convoTree: {fileID: 1409239882}
+  convoTree: {fileID: 1505569711}
   buttonGroup: {fileID: 13370356}
   option1: {fileID: 1928088212}
   option1_text: {fileID: 891596306}
@@ -2725,26 +2724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954f6fb1e7a2248438b63d73bd6eabc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1409239882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1409239877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead60f89bf4b48d40bb912836167eeff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainScript: {fileID: 1409239878}
-  option1: {fileID: 1928088212}
-  option1_text: {fileID: 891596306}
-  option2: {fileID: 1462504235}
-  option2_text: {fileID: 1149099269}
-  option3: {fileID: 1655189235}
-  option3_text: {fileID: 40278072}
-  option4: {fileID: 1315693077}
-  option4_text: {fileID: 609135071}
 --- !u!1 &1462504233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,7 +2799,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
+      - m_Target: {fileID: 1505569711}
         m_MethodName: optionChosen
         m_Mode: 3
         m_Arguments:
@@ -2861,6 +2840,68 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1462504233}
+--- !u!1 &1505569708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1505569710}
+  - 114: {fileID: 1505569711}
+  - 114: {fileID: 1505569709}
+  m_Layer: 0
+  m_Name: AllConversations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1505569709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8a39c100144524fa1e5b55941bd9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSCript: {fileID: 0}
+--- !u!4 &1505569710
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 437.13623, y: 321.351318, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!114 &1505569711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead60f89bf4b48d40bb912836167eeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 1409239878}
+  dan: {fileID: 1505569709}
+  option1: {fileID: 1928088212}
+  option1_text: {fileID: 891596306}
+  option2: {fileID: 1462504235}
+  option2_text: {fileID: 1149099269}
+  option3: {fileID: 1655189235}
+  option3_text: {fileID: 40278072}
+  option4: {fileID: 1315693077}
+  option4_text: {fileID: 609135071}
 --- !u!1 &1655189233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,7 +2977,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
+      - m_Target: {fileID: 1505569711}
         m_MethodName: optionChosen
         m_Mode: 3
         m_Arguments:
@@ -3202,7 +3243,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409239878}
+      - m_Target: {fileID: 1505569711}
         m_MethodName: optionChosen
         m_Mode: 3
         m_Arguments:
