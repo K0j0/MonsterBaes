@@ -12,68 +12,68 @@ using UnityEngine;
 
 public class GameAreas : MonoBehaviour
 {
-	public const string ENTRACE_1 = "classroom";
+	public const string ENTRACE_1 = "ENTRANCE_1";
 	public GameObject entrace1;
-	public GameObject entrace1;
+	public GameObject entrace1Nav;
 
 	public const string ENTRANCE_2 = "ENTRANCE_2";
 	public GameObject entrace2;
-	public GameObject classroomNav;
+	public GameObject entrace2Nav;
 
 	public const string ENTRACE_OUTSIDE = "ENTRACE_OUTSIDE";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject entraceOutside;
+	public GameObject entraceOutsideNav;
 
 	public const string BEACH = "BEACH";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject beach;
+	public GameObject beachNav;
 
 	public const string FLORIST = "FLORIST";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject florist;
+	public GameObject floristNav;
 
 	public const string PALETTE = "PALETTE";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject palette;
+	public GameObject paletteNav;
 
 	public const string BOTTOM_LEFT_1 = "BOTTOM_LEFT_1";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject bottomLeft1;
+	public GameObject bottomLeft1Nav;
 
 	public const string BOTTOM_LEFT_2 = "BOTTOM_LEFT_2";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject bottomLeft2;
+	public GameObject bottomLeft2Nav;
 
 	public const string CLASSROOM = "CLASSROOM";
 	public GameObject classroom;
 	public GameObject classroomNav;
 
 	public const string LEFT_MID_2 = "LEFT_MID_2";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject leftMid2;
+	public GameObject leftMid2Nav;
 
 	public const string RIGHT_MID_1 = "RIGHT_MID_1";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject rightMid1;
+	public GameObject rightMid1Nav;
 	
 	public const string RIGHT_MID_2 = "RIGHT_MID_2";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject rightMid2;
+	public GameObject rightMid2Nav;
 	
 	public const string TOP_LEFT_2 = "TOP_LEFT_2";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject topLeft2;
+	public GameObject topLeft2Nav;
 	
 	public const string CAFE_INSIDE = "CAFE_INSIDE";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject cafeInside;
+	public GameObject cafeInsideNav;
 	
 	public const string CAFE_OUTSIDE = "CAFE_OUTSIDE";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject cafeOutside;
+	public GameObject cafeOutsideNav;
 	
 	public const string ZEN = "ZEN";
-	public GameObject classroom;
-	public GameObject classroomNav;
+	public GameObject zen;
+	public GameObject zenNav;
 
 }
