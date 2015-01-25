@@ -120,6 +120,9 @@ public class MainScript : MonoBehaviour {
 			case GameAreas.PALETTE:
 				gameAreas.paletteNav.SetActive(true);
 			break;
+			case GameAreas.CAFE_INSIDE:
+				gameAreas.cafeInsideNav.SetActive(true);
+			break;
 		}
 	}
 
@@ -352,6 +355,7 @@ public class MainScript : MonoBehaviour {
 				if(GameFlags.flags[StoryEvent.NEED_GLASSES]) say (Baes.YOU, "Ah, Dan was looking for these. I'll return them to him");
 				else say (Baes.YOU, "I wonder whose glasses these are?");
 				conversationPanel.SetActive(true);
+				gameAreas.cafeInsideNav.SetActive(false);
 			break;
 			case "book":
 				GameFlags.flags[StoryEvent.READ_BOOK] = true;

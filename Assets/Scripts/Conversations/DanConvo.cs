@@ -5,15 +5,64 @@ public class DanConvo : MonoBehaviour {
 	public MainScript mainSCript;
 
 	public void TalkToMe(){
-		switch (mainSCript.lastState)
+		if(GameFlags.flags[StoryEvent.NEED_GLASSES]){
+			if(GameFlags.flags[StoryEvent.GOT_GLASSES]){
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
+				changeBigMood(Moods.HAPPY);
+				
+				
+				iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
+					"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
+					, "islocal", false
+					, "time", 1f
+					, "delay", 0
+					));
+				
+				// hide characters
+				mainSCript.Dan.gameObject.SetActive(false);
+				// hide nav
+				mainSCript.currNavButtons.SetActive(false);
+				
+				// show larger character
+				mainSCript.Dan_big.gameObject.SetActive(true);
+				mainSCript.conversationPanel.SetActive(true);
+				mainSCript.closeConvoButton.SetActive (true);
+				mainSCript.blocker.SetActive(true);
+				mainSCript.say (Baes.DAN, "Oh you found them! Thank you so much. Let's get started");
+			}
+			else{
+				mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
+				changeBigMood(Moods.SMILE);
+				
+				
+				iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
+					"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
+					, "islocal", false
+					, "time", 1f
+					, "delay", 0
+					));
+				
+				// hide characters
+				mainSCript.Dan.gameObject.SetActive(false);
+				// hide nav
+				mainSCript.currNavButtons.SetActive(false);
+				
+				// show larger character
+				mainSCript.Dan_big.gameObject.SetActive(true);
+				mainSCript.conversationPanel.SetActive(true);
+				mainSCript.closeConvoButton.SetActive (true);
+				mainSCript.blocker.SetActive(true);
+				mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
+			}
+		}
+		else{
+			switch (mainSCript.lastState)
 		{
 			case GameState.START:
 			case GameState.SPEAK_TO_DAN:
 	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
 				changeBigMood(Moods.NEUTRAL);
 
-//				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
-//					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
 					
 					iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
 						"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
@@ -21,7 +70,7 @@ public class DanConvo : MonoBehaviour {
 						, "time", 1f
 						, "delay", 0
 						));
-//					}
+
 					// hide characters
 					mainSCript.Dan.gameObject.SetActive(false);
 					// hide nav
@@ -98,7 +147,10 @@ public class DanConvo : MonoBehaviour {
 			break;
 
 			case GameState.SPEAK_TO_DAN_5A:
-				mainSCript.say(Baes.DAN, "...Here's my number...");
+				GameFlags.flags[StoryEvent.NEED_GLASSES] = true;
+				changeBigMood(Moods.SMILE);
+				mainSCript.say(Baes.DAN, "I'd love to but I've misplaced my glasses. Honestly, I can hardly see the board myself without them. Once I find them I'll be happy to tutor you though.");
+				mainSCript.closeConvoButton.SetActive(true);
 			break;
 
 			case GameState.SPEAK_TO_DAN_5B:
@@ -109,6 +161,9 @@ public class DanConvo : MonoBehaviour {
 				Debug.LogError("Whoa, didn't think you could talk to Dan during this state: " + mainSCript.lastState);
 			break;
 		}
+		}
+
+
 
 	}
 
@@ -172,7 +227,7 @@ public class DanConvo : MonoBehaviour {
 				mainSCript.option1.gameObject.SetActive(true);
 				mainSCript.option2_text.text = "See you then";
 				mainSCript.option2.gameObject.SetActive(true);
-				mainSCript.option3_text.text = "What about if I wanna meet outside office hours?";
+				mainSCript.option3_text.text = "Can you tutor me now?";
 				mainSCript.option3.gameObject.SetActive(true);
 				mainSCript.option4_text.text = "";
 				mainSCript.option4.gameObject.SetActive(false);
