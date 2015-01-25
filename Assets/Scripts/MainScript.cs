@@ -6,6 +6,7 @@ public class MainScript : MonoBehaviour {
 
 	public GameObject thisGameObject;
 	public Items items;
+	public BaeDate baeDates;
 	public GameObject conversationPanel;
 	public GameObject blocker;
 	public GameObject blockerClassRoom;
@@ -57,7 +58,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-		onNavigate (GameAreas.FLORIST);
+		onNavigate (GameAreas.BEACH);
 	}
 
 	void Update(){
@@ -328,14 +329,7 @@ public class MainScript : MonoBehaviour {
 				conversationPanel.SetActive(true);
 				gameAreas.leftMid2Nav.SetActive(false);
 			break;
-			case "trash":
-//				if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){ 
-//					say (Baes.YOU, "One less piece of trash.");
-//					items.trash.SetActive(false);
-//				}
-//				else say (Baes.YOU, "This place is dirty.");
-//				conversationPanel.SetActive(true);
-			break;
+
 			case "thistle":
 				if(GameFlags.flags[StoryEvent.NEED_FLOWERS] && !GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE]){
 					if(GameFlags.flags[StoryEvent.READ_BOOK]) say (Baes.YOU, "This is a thistle.");
@@ -373,6 +367,7 @@ public class MainScript : MonoBehaviour {
 			case "oil":
 				if(GameFlags.flags[StoryEvent.NEED_OIL]){ say (Baes.YOU, "This is just what Buzz was looking for");
 					items.oilCan.SetActive(false);
+					GameFlags.flags[StoryEvent.GOT_OIL] = true;
 				}
 				else say (Baes.YOU, "It's just some organic oil");
 				conversationPanel.SetActive(true);
@@ -425,5 +420,10 @@ public class MainScript : MonoBehaviour {
 			say (Baes.YOU, "This place is dirty.");
 			conversationPanel.SetActive(true);
 		}
+	}
+
+	public void StartDate(Baes withWho){
+		onNavigate (GameAreas.DATE);
+		baeDates.StartDate (withWho);
 	}
 }

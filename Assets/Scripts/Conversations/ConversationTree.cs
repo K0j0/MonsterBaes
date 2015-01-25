@@ -247,6 +247,31 @@ public class ConversationTree : MonoBehaviour {
 				TalkToKlulu();
 			break;
 
+			case GameState.SPEAK_TO_KLULU_6:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_KLULU_6A;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
+			case GameState.DATE_KLULU_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.DATE_KLULU_1A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.DATE_KLULU_1B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
 			// Daisy
 			case GameState.SPEAK_TO_DAISY_1:
 				switch(choice)
@@ -349,6 +374,7 @@ public class ConversationTree : MonoBehaviour {
 				TalkToDaisy();
 			break;
 
+
 			// Buzz
 			case GameState.SPEAK_TO_BUZZ_1:
 				switch(choice)
@@ -430,18 +456,22 @@ public class ConversationTree : MonoBehaviour {
 	}
 
 	public void TalkToDan(){
+		print ("Talk to Dan");
 		dan.TalkToMe ();
 	}
 
 	public void TalkToKlulu(){
+		print ("Talk to Klulu");
 		klulu.TalkToMe();
 	}
 
 	public void TalkToBuzz(){
+		print ("Talk to Buzz");
 		buzz.TalkToMe();
 	}
 
 	public void TalkToDaisy(){
+		print ("Talk to Daisy");
 		daisy.TalkToMe();
 	}
 }

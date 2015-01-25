@@ -6,27 +6,16 @@ public class BuzzConvo : MonoBehaviour {
 	
 	public void TalkToMe(){
 		if(GameFlags.flags[StoryEvent.NEED_OIL] == true){
-			changeMood(Moods.SMILE);
-			iTween.MoveTo(mainSCript.Buzz_big.gameObject, iTween.Hash(
-				"x", mainSCript.Buzz_big.transform.position.x + mainSCript.slide
-				, "islocal", false
-				, "time", 1f
-				, "delay", 0
-				));
-			
-			// hide small character
-			mainSCript.Buzz.gameObject.SetActive(false);
-			// hide nav
-			mainSCript.currNavButtons.SetActive(false);
-			
-			// show larger character
-			mainSCript.Buzz_big.gameObject.SetActive(true);
-			mainSCript.conversationPanel.SetActive(true);
-			mainSCript.closeConvoButton.SetActive (true);
-			mainSCript.blocker.SetActive(true);
-			
-			mainSCript.closeConvoButton.SetActive(true);
-			mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
+			if(GameFlags.flags[StoryEvent.GOT_OIL]){
+//				TakeFocus(true);
+//				mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
+				mainSCript.StartDate(Baes.BUZZ);
+			}
+			else{
+				changeMood(Moods.SMILE);
+				TakeFocus(true);
+				mainSCript.say(Baes.KULU, "I'm so dry...");
+			}
 		}
 		else{
 			switch (mainSCript.lastState)
@@ -34,27 +23,8 @@ public class BuzzConvo : MonoBehaviour {
 			case GameState.START_ZEN:
 				mainSCript.lastState = GameState.SPEAK_TO_BUZZ_1;
 				changeMood(Moods.NEUTRAL);
-				
-				
-				iTween.MoveTo(mainSCript.Buzz_big.gameObject, iTween.Hash(
-					"x", mainSCript.Buzz_big.transform.position.x + mainSCript.slide
-					, "islocal", false
-					, "time", 1f
-					, "delay", 0
-					));
-				
-				// hide small character
-				mainSCript.Buzz.gameObject.SetActive(false);
-				// hide nav
-				mainSCript.currNavButtons.SetActive(false);
-				
-				// show larger character
-				mainSCript.Buzz_big.gameObject.SetActive(true);
-				mainSCript.conversationPanel.SetActive(true);
-				mainSCript.closeConvoButton.SetActive (false); // don't show close button here
-				mainSCript.blocker.SetActive(true);
-				mainSCript.say (Baes.KULU, "Namaste.");
-				
+				TakeFocus(false);
+				mainSCript.say (Baes.KULU, "Namaste.");				
 				setOptions(GameState.SPEAK_TO_BUZZ_1);
 				mainSCript.showOptions();
 				break;
@@ -228,5 +198,26 @@ public class BuzzConvo : MonoBehaviour {
 			break;
 		}
 		mainSCript.Buzz_big.image.sprite = newSprite;
+	}
+
+	void TakeFocus(bool showCloseButton){
+		iTween.MoveTo(mainSCript.Buzz_big.gameObject, iTween.Hash(
+			"x", mainSCript.Buzz_big.transform.position.x + mainSCript.slide
+			, "islocal", false
+			, "time", 1f
+			, "delay", 0
+			));
+		
+		// hide small character
+		mainSCript.Buzz.gameObject.SetActive(false);
+		// hide nav
+		mainSCript.currNavButtons.SetActive(false);
+		
+		// show larger character
+		mainSCript.Buzz_big.gameObject.SetActive(true);
+		mainSCript.conversationPanel.SetActive(true);
+		mainSCript.closeConvoButton.SetActive (true);
+		mainSCript.blocker.SetActive(true);			
+		mainSCript.closeConvoButton.SetActive (showCloseButton);
 	}
 }
