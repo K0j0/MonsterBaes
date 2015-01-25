@@ -10445,8 +10445,9 @@ MonoBehaviour:
   thistle: {fileID: 355943277}
   seafig: {fileID: 1129635595}
   nightshade: {fileID: 446480112}
-  oilCan: {fileID: 0}
+  oilCan: {fileID: 1263141250}
   trashBags: {fileID: 0}
+  glasses: {fileID: 1454830638}
 --- !u!1 &1417403521
 GameObject:
   m_ObjectHideFlags: 0

@@ -352,7 +352,11 @@ public class MainScript : MonoBehaviour {
 				gameAreas.paletteNav.SetActive(false);
 			break;
 			case "glasses":
-				if(GameFlags.flags[StoryEvent.NEED_GLASSES]) say (Baes.YOU, "Ah, Dan was looking for these. I'll return them to him");
+				if(GameFlags.flags[StoryEvent.NEED_GLASSES] && !GameFlags.flags[StoryEvent.GOT_GLASSES]){
+					say (Baes.YOU, "Ah, Dan was looking for these. I'll return them to him");
+					items.glasses.SetActive(false);
+					GameFlags.flags[StoryEvent.GOT_GLASSES] = true;
+				}
 				else say (Baes.YOU, "I wonder whose glasses these are?");
 				conversationPanel.SetActive(true);
 				gameAreas.cafeInsideNav.SetActive(false);
