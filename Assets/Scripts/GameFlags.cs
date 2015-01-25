@@ -127,12 +127,23 @@ public enum StoryEvent{
 	NEED_OIL,
 	GOT_OIL,
 	NEED_GLASSES,
-	GOT_GLASSES
+	GOT_GLASSES,
+}
+public enum soundEvents{
+	BUZZ_KISS,
+	DAISY_KISS,
+	DAN_KISS,
+	KLULU_KISS,
+	BUZZ_ROOM,
+	DAISY_ROOM,
+	DAN_ROOM,
+	KLULU_ROOM,
+	HALLWAY,
 }
 
 public class GameFlags{
 	public static Dictionary<StoryEvent, bool> flags;
-
+	public static Dictionary<soundEvents, bool> soundBools;
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
 //		flags [StoryEvent.SPEAK_TO_KAEDE] = false;
@@ -149,5 +160,14 @@ public class GameFlags{
 		flags [StoryEvent.GOT_OIL] = false;
 		flags [StoryEvent.NEED_GLASSES] = false;
 		flags [StoryEvent.GOT_GLASSES] = false;
+		soundBools [soundEvents.BUZZ_KISS] = false;
+		soundBools [soundEvents.KLULU_KISS] = false;
+		soundBools [soundEvents.DAN_KISS] = false;
+		soundBools [soundEvents.DAISY_KISS] = false;
+		soundBools [soundEvents.BUZZ_ROOM] = false;
+		soundBools [soundEvents.KLULU_ROOM] = false;
+		soundBools [soundEvents.DAN_ROOM] = false;
+		soundBools [soundEvents.DAISY_ROOM] = false;
+		soundBools [soundEvents.HALLWAY] = false;
 	}
 }
