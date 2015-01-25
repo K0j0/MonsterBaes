@@ -69,6 +69,11 @@ public enum GameState{
 	SPEAK_TO_KLULU_5,
 	SPEAK_TO_KLULU_5A,
 	SPEAK_TO_KLULU_5B,
+	SPEAK_TO_KLULU_6,
+	SPEAK_TO_KLULU_6A,
+	DATE_KLULU_1,
+	DATE_KLULU_1A,
+	DATE_KLULU_1B,
 
 	// for Buzz
 	START_ZEN,
@@ -119,13 +124,18 @@ public enum StoryEvent{
 	NEED_TRASH_BAGS,
 	GOT_TRASH_BAGS,
 	PICKED_UP_ALL_TRASH,
+	DATING_KLULU,
+	DATED_KLULU,
+
 	READ_BOOK,
 	NEED_FLOWERS,
 	GOT_FLOWER_THISTLE,
 	GOT_FLOWER_SEAFIG,
 	GOT_FLOWER_NIGHTSHADE,
+
 	NEED_OIL,
 	GOT_OIL,
+
 	NEED_GLASSES,
 	GOT_GLASSES
 }
@@ -135,18 +145,21 @@ public class GameFlags{
 
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
-//		flags [StoryEvent.SPEAK_TO_KAEDE] = false;
-//		flags [StoryEvent.SPEAK_TO_DAN] = false;
-		flags [StoryEvent.NEED_TRASH_BAGS] = false;
-		flags [StoryEvent.GOT_TRASH_BAGS] = false;
+		flags [StoryEvent.NEED_TRASH_BAGS] = true;
+		flags [StoryEvent.GOT_TRASH_BAGS] = true;
 		flags [StoryEvent.PICKED_UP_ALL_TRASH] = false;
+		flags [StoryEvent.DATING_KLULU] = false;
+		flags [StoryEvent.DATED_KLULU] = false;
+
 		flags [StoryEvent.READ_BOOK] = false;
 		flags [StoryEvent.NEED_FLOWERS] = false;
 		flags [StoryEvent.GOT_FLOWER_THISTLE] = false;
 		flags [StoryEvent.GOT_FLOWER_SEAFIG] = false;
 		flags [StoryEvent.GOT_FLOWER_NIGHTSHADE] = false;
+
 		flags [StoryEvent.NEED_OIL] = false;
 		flags [StoryEvent.GOT_OIL] = false;
+
 		flags [StoryEvent.NEED_GLASSES] = false;
 		flags [StoryEvent.GOT_GLASSES] = false;
 	}
