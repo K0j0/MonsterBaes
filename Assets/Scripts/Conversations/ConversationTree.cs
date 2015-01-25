@@ -18,6 +18,10 @@ public class ConversationTree : MonoBehaviour {
 	public void Init(){
 		print ("CTree init");
 		dan.mainSCript = mainScript;
+//		dan.changeMood (Moods.ANGRY);
+//		dan.changeMood (Moods.HAPPY);
+//		dan.changeMood (Moods.SMILE);
+//		dan.changeMood (Moods.NEUTRAL);
 	}
 
 	// TODO, this should route to each conversation script based off of current state (who you're speaking to)

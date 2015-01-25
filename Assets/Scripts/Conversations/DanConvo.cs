@@ -77,4 +77,29 @@ public class DanConvo : MonoBehaviour {
 			break;
 		}
 	}
+
+	public void changeMood(Moods mood){
+		Sprite newSprite = null;
+		switch (mood) {
+			case Moods.SMILE:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_smile");
+			break;
+			case Moods.ANGRY:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_angry");
+			break;
+			case Moods.HAPPY:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_happy");
+			break;		
+			case Moods.NEUTRAL:
+			default:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_neutral");
+			break;
+		}
+		mainSCript.Dan.image.sprite = newSprite;
+	}
+
+	public void changeBigMood(Moods mood){
+
+	}
+
 }

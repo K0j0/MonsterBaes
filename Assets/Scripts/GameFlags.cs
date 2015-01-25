@@ -9,6 +9,13 @@ public enum Baes{
 	DAISY
 }
 
+public enum Moods{
+	NEUTRAL,
+	SMILE,
+	ANGRY,
+	HAPPY
+}
+
 public enum GameState{
 	START,
 	SPEAK_TO_KAEDE_1,
