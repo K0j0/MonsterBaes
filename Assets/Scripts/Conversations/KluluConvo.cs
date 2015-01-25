@@ -67,7 +67,7 @@ public class KluluConvo : MonoBehaviour {
 
 				case GameState.SPEAK_TO_KLULU_1B:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_2;
-					mainSCript.say(Baes.KULU, "Cleaning up the beach...");
+				mainSCript.say(Baes.KULU, "Cleaning up the beach. To be honest, I’m pretty pissed. No one showed up. Even the guy who was bringing the trash bags and pickers.");
 					setOptions(GameState.SPEAK_TO_KLULU_2);
 					mainSCript.showOptions();
 				break;
@@ -83,7 +83,7 @@ public class KluluConvo : MonoBehaviour {
 
 				case GameState.SPEAK_TO_KLULU_2B:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_3;
-					mainSCript.say(Baes.KULU, "Do you know...");
+				mainSCript.say(Baes.KULU, "Do you know what trash, specifically plastic does to animals?");
 					setOptions(GameState.SPEAK_TO_KLULU_3);
 					mainSCript.showOptions();
 				break;
@@ -91,7 +91,7 @@ public class KluluConvo : MonoBehaviour {
 				case GameState.SPEAK_TO_KLULU_3A:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_4;
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "Well allow me to illuminate you...");
+				mainSCript.say(Baes.KULU, "Well allow me to illuminate you on the subject. First of all a large present of litter ends up in our oceans from people just throwing trash on the ground and letting it run into our storm drains");
 					setOptions(GameState.SPEAK_TO_KLULU_4);
 					mainSCript.showOptions();
 				break;
@@ -105,7 +105,7 @@ public class KluluConvo : MonoBehaviour {
 				case GameState.SPEAK_TO_KLULU_4A:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_5;
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "Mhm, and all of that trash collection...");
+				mainSCript.say(Baes.KULU, "Mhm, and all that trash collects into giant gyres in each ocean. These bits of garbage can either be ingested by wildlife or they can be caught in it and be physically deformed.");
 					setOptions(GameState.SPEAK_TO_KLULU_5);
 					mainSCript.showOptions();
 				break;
@@ -120,7 +120,7 @@ public class KluluConvo : MonoBehaviour {
 					changeMood(Moods.SMILE);
 					GameFlags.flags[StoryEvent.NEED_TRASH_BAGS] = true;
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
+				mainSCript.say(Baes.KULU, "If your willing to get your hands dirty in the name of sea life, grab a pick and a trash bag and lets clean this beach.");
 					mainSCript.closeConvoButton.SetActive(true);
 				break;
 

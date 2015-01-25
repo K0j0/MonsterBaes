@@ -94,7 +94,9 @@ public enum GameState{
 	SPEAK_TO_DAISY_4B,
 	SPEAK_TO_DAISY_5,
 	SPEAK_TO_DAISY_5A,
-	SPEAK_TO_DAISY_5B
+	SPEAK_TO_DAISY_5B,
+	SPEAK_TO_DAISY_6,
+	SPEAK_TO_DAISY_6A
 }
 
 public enum StoryEvent{
