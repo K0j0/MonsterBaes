@@ -117,6 +117,9 @@ public class MainScript : MonoBehaviour {
 			case GameAreas.CAFE_OUTSIDE:
 				gameAreas.cafeOutsideNav.SetActive(true);
 			break;
+			case GameAreas.PALETTE:
+				gameAreas.paletteNav.SetActive(true);
+			break;
 		}
 	}
 
@@ -341,8 +344,9 @@ public class MainScript : MonoBehaviour {
 			break;
 			case "oil":
 				if(GameFlags.flags[StoryEvent.NEED_OIL]) say (Baes.YOU, "This is just what Buzz was looking for");
-				else say (Baes.YOU, "It's just some peanut oil");
+				else say (Baes.YOU, "It's just some organic oil");
 				conversationPanel.SetActive(true);
+				gameAreas.paletteNav.SetActive(false);
 			break;
 			case "glasses":
 				if(GameFlags.flags[StoryEvent.NEED_GLASSES]) say (Baes.YOU, "Ah, Dan was looking for these. I'll return them to him");
