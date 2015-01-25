@@ -11,6 +11,7 @@ public class DanConvo : MonoBehaviour {
 			case GameState.SPEAK_TO_KAEDE_1:
 			case GameState.SPEAK_TO_DAN:
 	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
+				changeBigMood(Moods.NEUTRAL);
 
 				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
 					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
@@ -48,6 +49,7 @@ public class DanConvo : MonoBehaviour {
 				
 			break;
 			case GameState.SPEAK_TO_DAN_1A:
+				changeBigMood(Moods.ANGRY);
 				mainSCript.say(Baes.DAN, "You're failing my class");
 				mainSCript.closeConvoButton.SetActive(true);
 			break;
@@ -99,7 +101,23 @@ public class DanConvo : MonoBehaviour {
 	}
 
 	public void changeBigMood(Moods mood){
-
+		Sprite newSprite = null;
+			switch (mood) {
+			case Moods.SMILE:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_smile");
+			break;
+			case Moods.ANGRY:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_angry");
+			break;
+			case Moods.HAPPY:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_happy");
+			break;		
+		case Moods.NEUTRAL:
+			default:
+				newSprite = Resources.Load<Sprite> ("Images/DanGoo/goodan_neutral");
+			break;
+		}
+		mainSCript.Dan_big.image.sprite = newSprite;
 	}
-
+	
 }
