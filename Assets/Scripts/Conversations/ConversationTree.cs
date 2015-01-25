@@ -59,7 +59,66 @@ public class ConversationTree : MonoBehaviour {
 				mainScript.buttonGroup.SetActive(false);
 				TalkToDan();
 			break;
+
+			case GameState.SPEAK_TO_DAN_3:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_3A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_3B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
 			break;
+
+			case GameState.SPEAK_TO_DAN_4_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_4A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_4B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+
+			case GameState.SPEAK_TO_DAN_4_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_4B;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_4A;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+
+			case GameState.SPEAK_TO_DAN_5:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_5B;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_5B;
+					break;
+					case 3:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_5A;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+
 			default:
 				Debug.LogError("Whoops, wasn't expecting you to say something in this state: " + mainScript.lastState);
 			break;

@@ -23,6 +23,10 @@ public class TitleScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit();
+		}
+
 		if (ready) {
 			if(Input.GetMouseButton(0)){
 				enterNamePanel.SetActive(true);
@@ -56,5 +60,8 @@ public class TitleScript : MonoBehaviour {
 	public void onEnterName(){
 		GameData.playerName = nameText.text;
 		Debug.Log("Set name to: " + GameData.playerName);
+		if(nameText.text.Length > 0){
+			Application.LoadLevel("MainScene");
+		}
 	}
 }

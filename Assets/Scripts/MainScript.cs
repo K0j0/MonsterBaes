@@ -54,6 +54,12 @@ public class MainScript : MonoBehaviour {
 		}
 	}
 
+	void Update(){
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit();
+		}
+	}
+
 	public void talkToKaede(){
 		if (GameFlags.flags [StoryEvent.SPEAK_TO_KAEDE]) {
 			// hide characters
