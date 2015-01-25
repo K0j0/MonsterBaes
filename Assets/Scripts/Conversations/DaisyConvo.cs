@@ -6,28 +6,40 @@ public class DaisyConvo : MonoBehaviour {
 	
 	public void TalkToMe(){
 		if(GameFlags.flags[StoryEvent.NEED_FLOWERS] == true){
-			changeMood(Moods.SMILE);
-			iTween.MoveTo(mainSCript.Daisy_big.gameObject, iTween.Hash(
-				"x", mainSCript.Daisy_big.transform.position.x + mainSCript.slide
-				, "islocal", false
-				, "time", 1f
-				, "delay", 0
-				));
-			
-			// hide small character
-			mainSCript.Daisy.gameObject.SetActive(false);
-			// hide nav
-			mainSCript.currNavButtons.SetActive(false);
-			
-			// show larger character
-			mainSCript.Daisy_big.gameObject.SetActive(true);
-			mainSCript.conversationPanel.SetActive(true);
-			mainSCript.closeConvoButton.SetActive (true);
-			mainSCript.blocker.SetActive(true);
-			mainSCript.book.SetActive(false);
-			
-			mainSCript.closeConvoButton.SetActive(true);
-		//	mainSCript.say(Baes.DAISY, "If you're willing to get your hands dirty...");
+			if(GameFlags.flags[StoryEvent.GOT_FLOWER_NIGHTSHADE] == true ||
+			   GameFlags.flags[StoryEvent.GOT_FLOWER_SEAFIG] == true ||
+			   GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE] == true){
+
+				switch (mainSCript.lastState)
+				{
+					case GameState.START_FLORIST:
+						TakeFocus(false);
+						changeMood(Moods.SMILE);
+						mainSCript.say(Baes.DAISY, "Oh wow, are those for me?");
+						mainSCript.lastState = GameState.SPEAK_TO_DAISY_7;
+						setOptions(GameState.SPEAK_TO_DAISY_7);
+						mainSCript.showOptions();
+					break;
+					case GameState.SPEAK_TO_DAISY_7A:
+						mainSCript.say(Baes.DAISY, "A?");
+						mainSCript.closeConvoButton.SetActive(true);
+					break;
+					case GameState.SPEAK_TO_DAISY_7B:
+						mainSCript.say(Baes.DAISY, "B");
+						mainSCript.closeConvoButton.SetActive(true);
+					break;
+					case GameState.SPEAK_TO_DAISY_7C:
+						mainSCript.say(Baes.DAISY, "C");
+						mainSCript.closeConvoButton.SetActive(true);
+					break;
+				}
+
+			}
+			else{
+				changeMood(Moods.ANGRY);
+				mainSCript.say(Baes.DAISY, "Sorry. Just... It really upsets me. *sad*");
+				TakeFocus(true);
+			}
 		}
 		else{
 			switch (mainSCript.lastState)
@@ -37,24 +49,7 @@ public class DaisyConvo : MonoBehaviour {
 				changeMood(Moods.NEUTRAL);
 				
 				
-				iTween.MoveTo(mainSCript.Daisy_big.gameObject, iTween.Hash(
-					"x", mainSCript.Daisy_big.transform.position.x + mainSCript.slide
-					, "islocal", false
-					, "time", 1f
-					, "delay", 0
-					));
-				
-				// hide small character
-				mainSCript.Daisy.gameObject.SetActive(false);
-				// hide nav
-				mainSCript.currNavButtons.SetActive(false);
-				
-				// show larger character
-				mainSCript.Daisy_big.gameObject.SetActive(true);
-				mainSCript.conversationPanel.SetActive(true);
-				mainSCript.closeConvoButton.SetActive (false); // don't show close button here
-				mainSCript.blocker.SetActive(true);
-				mainSCript.book.SetActive(false);
+				TakeFocus (false);
 				mainSCript.say (Baes.DAISY, "Hmm?");
 				
 				setOptions(GameState.SPEAK_TO_DAISY_1);
@@ -141,88 +136,113 @@ public class DaisyConvo : MonoBehaviour {
 	
 	void setOptions(GameState forState){
 		switch (forState) {
-		case GameState.SPEAK_TO_DAISY_1:
-			mainSCript.option1_text.text = "Looks like I found the beef.";
-			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "My, what lovely green eyes you have.";
-			mainSCript.option2.gameObject.SetActive(true);
-			
-			mainSCript.option3_text.text = "Nevermind...";
-			mainSCript.option3.gameObject.SetActive(true);
-			
-			mainSCript.option4_text.text = "";
-			mainSCript.option4.gameObject.SetActive(false);
+			case GameState.SPEAK_TO_DAISY_1:
+				mainSCript.option1_text.text = "Looks like I found the beef.";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "My, what lovely green eyes you have.";
+				mainSCript.option2.gameObject.SetActive(true);
+				
+				mainSCript.option3_text.text = "Nevermind...";
+				mainSCript.option3.gameObject.SetActive(true);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
+			case GameState.SPEAK_TO_DAISY_2:
+				mainSCript.option1_text.text = "Rather fitting for a florist. Green looks good on you.";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "Lovely hunk of florist right here.";
+				mainSCript.option2.gameObject.SetActive(true);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
+			case GameState.SPEAK_TO_DAISY_3:
+				mainSCript.option1_text.text = "Yeah, we got a lot of cool plants, don't we?";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "And happy cows.";
+				mainSCript.option2.gameObject.SetActive(true);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
+			case GameState.SPEAK_TO_DAISY_4:
+				mainSCript.option1_text.text = "Invasive.. plants?";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
+			case GameState.SPEAK_TO_DAISY_5:
+				mainSCript.option1_text.text = "I see";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
+			case GameState.SPEAK_TO_DAISY_6:
+				mainSCript.option1_text.text = "Oh...";
+				mainSCript.option1.gameObject.SetActive(true);
+				
+				mainSCript.option2_text.text = "What has nature ever done for me?";
+				mainSCript.option2.gameObject.SetActive(false);
+				
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+				break;
+			case GameState.SPEAK_TO_DAISY_7:
+				if(GameFlags.flags[StoryEvent.GOT_FLOWER_NIGHTSHADE]){
+					mainSCript.option1_text.text = GameFlags.flags[StoryEvent.READ_BOOK] ? "*Give Nigthshade*" : "*Give flower from entrance*";
+					mainSCript.option1.gameObject.SetActive(true);
+				}
+				else{
+					mainSCript.option1_text.text = "";
+					mainSCript.option1.gameObject.SetActive(false);
+				}
+				if(GameFlags.flags[StoryEvent.GOT_FLOWER_SEAFIG]){
+					mainSCript.option2_text.text = GameFlags.flags[StoryEvent.READ_BOOK] ? "*Give Seafig*" : "*Give flower from beach*";
+					mainSCript.option2.gameObject.SetActive(true);
+				}
+				else{
+					mainSCript.option2_text.text = "";
+					mainSCript.option2.gameObject.SetActive(false);
+				}
+				if(GameFlags.flags[StoryEvent.GOT_FLOWER_THISTLE]){
+					mainSCript.option3_text.text = GameFlags.flags[StoryEvent.READ_BOOK] ? "*Give Thistle*" : "*Give  flower from cafe*";
+					mainSCript.option3.gameObject.SetActive(true);
+				}
+				else{
+					mainSCript.option3_text.text = "";
+					mainSCript.option3.gameObject.SetActive(false);
+				}
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+
 			break;
-		case GameState.SPEAK_TO_DAISY_2:
-			mainSCript.option1_text.text = "Rather fitting for a florist. Green looks good on you.";
-			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "Lovely hunk of florist right here.";
-			mainSCript.option2.gameObject.SetActive(true);
-			
-			mainSCript.option3_text.text = "";
-			mainSCript.option3.gameObject.SetActive(false);
-			
-			mainSCript.option4_text.text = "";
-			mainSCript.option4.gameObject.SetActive(false);
-			break;
-		case GameState.SPEAK_TO_DAISY_3:
-			mainSCript.option1_text.text = "Yeah, we got a lot of cool plants, don't we?";
-			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "And happy cows.";
-			mainSCript.option2.gameObject.SetActive(true);
-			
-			mainSCript.option3_text.text = "";
-			mainSCript.option3.gameObject.SetActive(false);
-			
-			mainSCript.option4_text.text = "";
-			mainSCript.option4.gameObject.SetActive(false);
-			break;
-		case GameState.SPEAK_TO_DAISY_4:
-			mainSCript.option1_text.text = "Invasive.. plants?";
-			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "";
-			mainSCript.option2.gameObject.SetActive(false);
-			
-			mainSCript.option3_text.text = "";
-			mainSCript.option3.gameObject.SetActive(false);
-			
-			mainSCript.option4_text.text = "";
-			mainSCript.option4.gameObject.SetActive(false);
-			break;
-		case GameState.SPEAK_TO_DAISY_5:
-			mainSCript.option1_text.text = "";
-			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "What has nature ever done for me?";
-			mainSCript.option2.gameObject.SetActive(false);
-			
-			mainSCript.option3_text.text = "";
-			mainSCript.option3.gameObject.SetActive(false);
-			
-			mainSCript.option4_text.text = "";
-			mainSCript.option4.gameObject.SetActive(false);
-			break;
-		case GameState.SPEAK_TO_DAISY_6:
-			mainSCript.option1_text.text = "Oh...";
-			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "What has nature ever done for me?";
-			mainSCript.option2.gameObject.SetActive(false);
-			
-			mainSCript.option3_text.text = "";
-			mainSCript.option3.gameObject.SetActive(false);
-			
-			mainSCript.option4_text.text = "";
-			mainSCript.option4.gameObject.SetActive(false);
-			break;
-//		case GameState.SPEAK_TO_DAISY_7:
-//			mainSCript.option1_text.text = "Oh...";
-//			mainSCript.option1.gameObject.SetActive(true);
-//			break;
 		}
 	}
 	
@@ -246,4 +266,26 @@ public class DaisyConvo : MonoBehaviour {
 		}
 		mainSCript.Daisy_big.image.sprite = newSprite;
 	}
+
+	void TakeFocus(bool showCLoseButton){
+		iTween.MoveTo(mainSCript.Daisy_big.gameObject, iTween.Hash(
+			"x", mainSCript.Daisy_big.transform.position.x + mainSCript.slide
+			, "islocal", false
+			, "time", 1f
+			, "delay", 0
+			));
+		
+		// hide small character
+		mainSCript.Daisy.gameObject.SetActive(false);
+		// hide nav
+		mainSCript.currNavButtons.SetActive(false);
+		
+		// show larger character
+		mainSCript.Daisy_big.gameObject.SetActive(true);
+		mainSCript.conversationPanel.SetActive(true);
+		mainSCript.closeConvoButton.SetActive (showCLoseButton);
+		mainSCript.blocker.SetActive(true);
+		mainSCript.book.SetActive(false);
+	}
 }
+	
