@@ -4875,7 +4875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &874396053
 Transform:
   m_ObjectHideFlags: 0
@@ -8877,8 +8877,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f4ac8ebf848d2419e692806d541c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entrace1: {fileID: 0}
+  entrace1Nav: {fileID: 0}
+  entrace2: {fileID: 0}
+  entrace2Nav: {fileID: 0}
+  entraceOutside: {fileID: 0}
+  entraceOutsideNav: {fileID: 0}
+  beach: {fileID: 0}
+  beachNav: {fileID: 0}
+  florist: {fileID: 0}
+  floristNav: {fileID: 0}
+  palette: {fileID: 0}
+  paletteNav: {fileID: 0}
+  bottomLeft1: {fileID: 0}
+  bottomLeft1Nav: {fileID: 0}
+  bottomLeft2: {fileID: 0}
+  bottomLeft2Nav: {fileID: 0}
   classroom: {fileID: 1200610972}
   classroomNav: {fileID: 32669357}
+  leftMid2: {fileID: 0}
+  leftMid2Nav: {fileID: 0}
+  rightMid1: {fileID: 0}
+  rightMid1Nav: {fileID: 0}
+  rightMid2: {fileID: 0}
+  rightMid2Nav: {fileID: 0}
+  topLeft2: {fileID: 0}
+  topLeft2Nav: {fileID: 0}
+  cafeInside: {fileID: 0}
+  cafeInsideNav: {fileID: 0}
+  cafeOutside: {fileID: 0}
+  cafeOutsideNav: {fileID: 0}
+  zen: {fileID: 0}
+  zenNav: {fileID: 0}
 --- !u!114 &1409239881
 MonoBehaviour:
   m_ObjectHideFlags: 0
