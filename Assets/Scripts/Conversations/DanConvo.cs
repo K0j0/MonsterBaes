@@ -6,11 +6,11 @@ public class DanConvo : MonoBehaviour {
 
 	public void TalkToMe(){
 		switch (mainSCript.lastState) {
-			case GameFlags.GameState.START:
-			case GameFlags.GameState.SPEAK_TO_KAEDE_1:
-			case GameFlags.GameState.SPEAK_TO_DAN:
-				if (!GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_DAN]) {
-					GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_DAN] = true;
+			case GameState.START:
+			case GameState.SPEAK_TO_KAEDE_1:
+			case GameState.SPEAK_TO_DAN:
+				if (!GameFlags.flags [StoryEvent.SPEAK_TO_DAN]) {
+					GameFlags.flags [StoryEvent.SPEAK_TO_DAN] = true;
 					
 					iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
 						"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
@@ -37,7 +37,7 @@ public class DanConvo : MonoBehaviour {
 				});
 				
 				
-				mainSCript.convoTree.setOptions(GameFlags.GameState.SPEAK_TO_DAN);
+				mainSCript.convoTree.setOptions(GameState.SPEAK_TO_DAN);
 			break;
 			default:
 				Debug.LogError("Whoa, didn't think you could talk to me during this state: " + mainSCript.lastState);
@@ -46,9 +46,9 @@ public class DanConvo : MonoBehaviour {
 
 	}
 
-	public void setOptions(GameFlags.GameState forState){
+	public void setOptions(GameState forState){
 		switch (forState) {
-		case GameFlags.GameState.SPEAK_TO_DAN:
+		case GameState.SPEAK_TO_DAN:
 			mainSCript.option1_text.text = "Hey, Dan...";
 			mainSCript.option2_text.text = "Hey Dan. Did you see the debate last night?";
 			mainSCript.option3_text.text = "Hey Dan. It sure is nice out right!";

@@ -24,15 +24,15 @@ public class ConversationTree : MonoBehaviour {
 	public void optionChosen(int choice){
 		Debug.Log ("Chose Option " + choice);
 		switch (mainScript.lastState) {
-		case GameFlags.GameState.START:
-		case GameFlags.GameState.SPEAK_TO_KAEDE_1:
+		case GameState.START:
+		case GameState.SPEAK_TO_KAEDE_1:
 			
 			break;
 		}
 	}
-	public void setOptions(GameFlags.GameState forState){
+	public void setOptions(GameState forState){
 		switch (forState) {
-			case GameFlags.GameState.SPEAK_TO_DAN:
+			case GameState.SPEAK_TO_DAN:
 				dan.setOptions(forState);
 			break;
 			default:

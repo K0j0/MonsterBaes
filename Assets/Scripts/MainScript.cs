@@ -14,7 +14,7 @@ public class MainScript : MonoBehaviour {
 	public Button Dan_big;
 	public Button Kaede;
 	public Button Kaede_big;
-	public GameFlags.GameState lastState = GameFlags.GameState.START;
+	public GameState lastState = GameState.START;
 	public float slide = 50;
 	private static MonoBehaviour instance;
 	private string currArea;
@@ -42,7 +42,7 @@ public class MainScript : MonoBehaviour {
 
 		GameFlags.init ();
 		switch (lastState) {
-		case GameFlags.GameState.START:
+		case GameState.START:
 				conversationPanel.SetActive(false);
 				blocker.SetActive(false);
 				Dan.gameObject.SetActive(true);
@@ -55,7 +55,7 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void talkToKaede(){
-		if (GameFlags.flags [GameFlags.StoryEvent.SPEAK_TO_KAEDE]) {
+		if (GameFlags.flags [StoryEvent.SPEAK_TO_KAEDE]) {
 			// hide characters
 			Kaede.gameObject.SetActive(false);
 			Dan.gameObject.SetActive(false);
@@ -70,8 +70,8 @@ public class MainScript : MonoBehaviour {
 		}
 		else {
 			switch (lastState) {
-			case GameFlags.GameState.START:
-				lastState = GameFlags.GameState.SPEAK_TO_KAEDE_1;
+			case GameState.START:
+				lastState = GameState.SPEAK_TO_KAEDE_1;
 				// hide characters
 				Kaede.gameObject.SetActive(false);
 				Dan.gameObject.SetActive(false);
@@ -91,8 +91,8 @@ public class MainScript : MonoBehaviour {
 				blocker.SetActive(true);
 				convoText.text = "KAEDE:\nHey! You have a crush on Dan right? I hear he's really into politics.";
 				break;
-			case GameFlags.GameState.SPEAK_TO_KAEDE_1:
-				GameFlags.flags[GameFlags.StoryEvent.SPEAK_TO_KAEDE] = true;
+			case GameState.SPEAK_TO_KAEDE_1:
+				GameFlags.flags[StoryEvent.SPEAK_TO_KAEDE] = true;
 				
 				// hide characters
 				Kaede.gameObject.SetActive(false);
@@ -114,9 +114,9 @@ public class MainScript : MonoBehaviour {
 
 	public void closeConversationPanel(){
 		switch (lastState) {
-			case GameFlags.GameState.START:
-			case GameFlags.GameState.SPEAK_TO_KAEDE_1:
-					lastState = GameFlags.GameState.SPEAK_TO_KAEDE_1;
+			case GameState.START:
+			case GameState.SPEAK_TO_KAEDE_1:
+					lastState = GameState.SPEAK_TO_KAEDE_1;
 					// show characters
 					Kaede.gameObject.SetActive(true);
 					Dan.gameObject.SetActive(true);
