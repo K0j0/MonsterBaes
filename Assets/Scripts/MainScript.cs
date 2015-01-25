@@ -20,6 +20,7 @@ public class MainScript : MonoBehaviour {
 	private string currArea;
 	public GameObject currNavButtons;
 	public GameObject commonUI;
+	public ConversationTree convoTree;
 
 	public GameObject buttonGroup;
 	public Button option1;
@@ -139,7 +140,7 @@ public class MainScript : MonoBehaviour {
 		});
 
 
-		setOptions(GameFlags.GameState.SPEAK_TO_DAN);
+		convoTree.setOptions(GameFlags.GameState.SPEAK_TO_DAN);
 	}
 
 	public void closeConversationPanel(){
@@ -171,27 +172,6 @@ public class MainScript : MonoBehaviour {
 		newPos.x = newPos.x + slide;
 		Kaede_big.transform.position = newPos;
 		Kaede_big.gameObject.SetActive(false);
-	}
-
-	public void optionChosen(int choice){
-		Debug.Log ("Chose Option " + choice);
-		switch (lastState) {
-			case GameFlags.GameState.START:
-			case GameFlags.GameState.SPEAK_TO_KAEDE_1:
-				
-			break;
-		}
-	}
-
-	void setOptions(GameFlags.GameState forState){
-		switch (forState) {
-			case GameFlags.GameState.SPEAK_TO_DAN:
-				option1_text.text = "Hey, Dan...";
-				option2_text.text = "Hey Dan. Did you see the debate last night?";
-				option3_text.text = "Hey Dan. It sure is nice out right!";
-				option4_text.text = "Hey Dan. What's with your hair?";
-			break;
-		}
 	}
 
 	public void onNavigate(string area){

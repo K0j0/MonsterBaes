@@ -2642,6 +2642,7 @@ GameObject:
   - 114: {fileID: 1409239878}
   - 114: {fileID: 1409239880}
   - 114: {fileID: 1409239881}
+  - 114: {fileID: 1409239882}
   m_Layer: 0
   m_Name: ScriptObject
   m_TagString: Untagged
@@ -2673,6 +2674,8 @@ MonoBehaviour:
   lastState: 0
   slide: 50
   currNavButtons: {fileID: 0}
+  commonUI: {fileID: 1143423293}
+  convoTree: {fileID: 1409239882}
   buttonGroup: {fileID: 13370356}
   option1: {fileID: 1928088212}
   option1_text: {fileID: 891596306}
@@ -2722,6 +2725,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954f6fb1e7a2248438b63d73bd6eabc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1409239882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1409239877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead60f89bf4b48d40bb912836167eeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 1409239878}
+  option1: {fileID: 1928088212}
+  option1_text: {fileID: 891596306}
+  option2: {fileID: 1462504235}
+  option2_text: {fileID: 1149099269}
+  option3: {fileID: 1655189235}
+  option3_text: {fileID: 40278072}
+  option4: {fileID: 1315693077}
+  option4_text: {fileID: 609135071}
 --- !u!1 &1462504233
 GameObject:
   m_ObjectHideFlags: 0
