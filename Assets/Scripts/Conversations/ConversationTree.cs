@@ -6,6 +6,8 @@ public class ConversationTree : MonoBehaviour {
 	public MainScript mainScript;
 	public DanConvo dan;
 	public KluluConvo klulu;
+	public BuzzConvo buzz;
+	public DaisyConvo daisy;
 
 	public Button option1;
 	public Text option1_text;
@@ -20,6 +22,8 @@ public class ConversationTree : MonoBehaviour {
 		print ("CTree init");
 		dan.mainSCript = mainScript;
 		klulu.mainSCript = mainScript;
+		buzz.mainSCript = mainScript;
+		daisy.mainSCript = mainScript;
 	}
 
 	// TODO, this should route to each conversation script based off of current state (who you're speaking to)
@@ -191,6 +195,154 @@ public class ConversationTree : MonoBehaviour {
 				TalkToKlulu();
 			break;
 
+			// Daisy
+			case GameState.SPEAK_TO_DAISY_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_1A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_1B;
+					break;
+					case 3:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_1C;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			case GameState.SPEAK_TO_DAISY_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_2A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_2B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+			TalkToDaisy();
+			break;
+
+			case GameState.SPEAK_TO_DAISY_3:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_3A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_3B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			case GameState.SPEAK_TO_DAISY_4:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_4A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_4B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			case GameState.SPEAK_TO_DAISY_5:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_5A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_5B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			// Buzz
+			case GameState.SPEAK_TO_BUZZ_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_1A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_1B;
+					break;
+					case 3:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_1C;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToBuzz();
+			break;
+
+			case GameState.SPEAK_TO_BUZZ_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_2A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_2B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToBuzz();
+			break;
+
+			case GameState.SPEAK_TO_BUZZ_3:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_3A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_3B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToBuzz();
+			break;
+
+			case GameState.SPEAK_TO_BUZZ_4:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_4A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_4B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToBuzz();
+			break;
+
+			case GameState.SPEAK_TO_BUZZ_5:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_5A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.SPEAK_TO_BUZZ_5B;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToBuzz();
+			break;
+
 			default:
 				Debug.LogError("Whoops, wasn't expecting you to say something in this state: " + mainScript.lastState);
 			break;
@@ -203,5 +355,13 @@ public class ConversationTree : MonoBehaviour {
 
 	public void TalkToKlulu(){
 		klulu.TalkToMe();
+	}
+
+	public void TalkToBuzz(){
+		buzz.TalkToMe();
+	}
+
+	public void TalkToDaisy(){
+		daisy.TalkToMe();
 	}
 }

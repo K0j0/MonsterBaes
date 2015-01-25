@@ -631,7 +631,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 43226121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1505569711}
+        m_MethodName: TalkToDaisy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &43226121
@@ -2074,7 +2086,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 194078143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1505569711}
+        m_MethodName: TalkToDaisy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &194078143
@@ -3799,7 +3823,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595446894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1505569711}
+        m_MethodName: TalkToBuzz
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &595446894
@@ -8576,7 +8612,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1309968001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1505569711}
+        m_MethodName: TalkToBuzz
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1309968001
@@ -9450,10 +9498,10 @@ MonoBehaviour:
   Dan_big: {fileID: 341565647}
   Klulu: {fileID: 91400532}
   Klulu_big: {fileID: 36391723}
-  Daisy: {fileID: 0}
-  Daisy_big: {fileID: 0}
-  Buzz: {fileID: 0}
-  Buzz_big: {fileID: 0}
+  Daisy: {fileID: 43226120}
+  Daisy_big: {fileID: 194078142}
+  Buzz: {fileID: 1309968000}
+  Buzz_big: {fileID: 595446893}
   lastState: 20
   slide: 50
   currArea: BEACH
@@ -10086,6 +10134,8 @@ GameObject:
   - 114: {fileID: 1505569711}
   - 114: {fileID: 1505569709}
   - 114: {fileID: 1505569712}
+  - 114: {fileID: 1505569714}
+  - 114: {fileID: 1505569713}
   m_Layer: 0
   m_Name: AllConversations
   m_TagString: Untagged
@@ -10131,6 +10181,8 @@ MonoBehaviour:
   mainScript: {fileID: 1409239878}
   dan: {fileID: 1505569709}
   klulu: {fileID: 1505569712}
+  buzz: {fileID: 1505569714}
+  daisy: {fileID: 1505569713}
   option1: {fileID: 1928088212}
   option1_text: {fileID: 891596306}
   option2: {fileID: 1462504235}
@@ -10148,6 +10200,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c4039257d9a35c4eb80f855b3f52c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSCript: {fileID: 0}
+--- !u!114 &1505569713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cac84f0aed67a4b9686541627fe2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSCript: {fileID: 0}
+--- !u!114 &1505569714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505569708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5acf373a431bfcd47b9e306591af90ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainSCript: {fileID: 0}

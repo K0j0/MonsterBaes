@@ -56,7 +56,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-		onNavigate (GameAreas.BEACH);
+		onNavigate (GameAreas.ZEN);
 	}
 
 	void Update(){
@@ -89,6 +89,34 @@ public class MainScript : MonoBehaviour {
 				currNavButtons.SetActive(true);
 				// hide larger character
 				resetKluluBig();
+				conversationPanel.SetActive(false);
+				closeConvoButton.SetActive(true);
+				blocker.SetActive(false);
+				// hide buttons too
+				buttonGroup.SetActive(false);
+			break;
+			case GameAreas.ZEN:
+				lastState = GameState.START_ZEN;
+				// show characters
+				Buzz.gameObject.SetActive(true);
+				// show nav
+				currNavButtons.SetActive(true);
+				// hide larger character
+				resetBuzzBig();
+				conversationPanel.SetActive(false);
+				closeConvoButton.SetActive(true);
+				blocker.SetActive(false);
+				// hide buttons too
+				buttonGroup.SetActive(false);
+			break;
+			case GameAreas.FLORIST:
+				lastState = GameState.START_FLORIST;
+				// show characters
+				Daisy.gameObject.SetActive(true);
+				// show nav
+				currNavButtons.SetActive(true);
+				// hide larger character
+				resetDaisyBig();
 				conversationPanel.SetActive(false);
 				closeConvoButton.SetActive(true);
 				blocker.SetActive(false);
@@ -128,6 +156,20 @@ public class MainScript : MonoBehaviour {
 		newPos.x = newPos.x - slide;
 		Klulu_big.transform.position = newPos;
 		Klulu_big.gameObject.SetActive(false);
+	}
+
+	void resetBuzzBig(){
+		Vector3 newPos = Buzz_big.transform.position;
+		newPos.x = newPos.x - slide;
+		Buzz_big.transform.position = newPos;
+		Buzz_big.gameObject.SetActive(false);
+	}
+
+	void resetDaisyBig(){
+		Vector3 newPos = Daisy_big.transform.position;
+		newPos.x = newPos.x - slide;
+		Daisy_big.transform.position = newPos;
+		Daisy_big.gameObject.SetActive(false);
 	}
 
 	void resetDanBig(){
