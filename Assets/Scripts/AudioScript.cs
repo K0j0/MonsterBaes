@@ -20,38 +20,43 @@ public class AudioScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+//	void Update () 
+//	{
+//		if (Input.GetKeyDown (KeyCode.S)) 
+//		{
+//			if (GameFlags.soundBools [soundEvents.BUZZ_KISS]) {
+//					audio.clip = buzzKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.DAISY_KISS]) {
+//					audio.clip = daisyKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.DAN_KISS]) {
+//					audio.clip = danKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.KLULU_KISS]) {
+//					audio.clip = kluluKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.BUZZ_ROOM]) {
+//					audio.clip = buzzKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.DAISY_ROOM]) {
+//					audio.clip = daisyKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.DAN_ROOM]) {
+//					audio.clip = danKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.KLULU_ROOM]) {
+//					audio.clip = kluluKiss;
+//					audio.Play ();
+//			} else if (GameFlags.soundBools [soundEvents.HALLWAY]) {
+//					audio.clip = kluluKiss;
+//					audio.Play ();
+//			}
+//		}
+//	}
+	public void buzzRoom() 
 	{
-	//	if (Input.GetKeyDown (KeyCode.S)) 
-	//	{
-	//		if (GameFlags.flags [soundEvents.BUZZ_KISS]) {
-	//				audio.clip = buzzKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.DAISY_KISS]) {
-	//				audio.clip = daisyKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.DAN_KISS]) {
-	//				audio.clip = danKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.KLULU_KISS]) {
-	//				audio.clip = kluluKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.BUZZ_ROOM]) {
-	//				audio.clip = buzzKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.DAISY_ROOM]) {
-	//				audio.clip = daisyKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.DAN_ROOM]) {
-	//				audio.clip = danKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.KLULU_ROOM]) {
-	//				audio.clip = kluluKiss;
-	//				audio.Play ();
-	//		} else if (GameFlags.flags [soundEvents.HALLWAY]) {
-	//				audio.clip = kluluKiss;
-	//				audio.Play ();
-	//		}
-		//}
+		audio.clip = buzzAmb;
+		audio.Play ();
 	}
 }
