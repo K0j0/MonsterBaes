@@ -144,6 +144,28 @@ public class ConversationTree : MonoBehaviour {
 				TalkToDan();
 			break;
 
+			case GameState.DATE_DAN_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.DATE_DAN_1A;
+				break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+
+			case GameState.DATE_DAN_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.DATE_DAN_2A;
+				break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
+			break;
+
 		
 
 

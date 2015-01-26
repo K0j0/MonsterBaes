@@ -5,137 +5,223 @@ public class DanConvo : MonoBehaviour {
 	public MainScript mainSCript;
 
 	public void TalkToMe(){
-		if(GameFlags.flags[StoryEvent.NEED_GLASSES]){
-			if(GameFlags.flags[StoryEvent.GOT_GLASSES]){
-				changeBigMood(Moods.HAPPY);
+		if(GameFlags.flags[StoryEvent.DATING_DAN] == true){
+			mainSCript.closeConvoButton.SetActive(false);
+			switch (mainSCript.lastState)
+			{
+				case GameState.DATE_DAN_1:					
+					mainSCript.conversationPanel.SetActive(true);
+					mainSCript.say(Baes.KULU, "I can see you better now");
+					setOptions(GameState.DATE_DAN_1);
+					mainSCript.showOptions();
+				break;
 
-				switch (mainSCript.lastState)
-				{
+				case GameState.DATE_DAN_1A:
+					mainSCript.lastState = GameState.DATE_DAN_2;
+					mainSCript.say(Baes.KULU, "Are you made of copper and Tellerium?");
+					setOptions(GameState.DATE_DAN_2);
+					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_DAN_2A:
+					mainSCript.lastState = GameState.DATE_DAN_3;
+					mainSCript.say(Baes.KULU, "Are you made of copper and Tellerium?");
+					setOptions(GameState.DATE_DAN_3);
+					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_DAN_2B:
+					changeMood(Moods.ANGRY);
+					mainSCript.say(Baes.DAN, "What!?");
+
+					HelperFunctions.DelayCallback(3f, ()=>{
+						GameFlags.flags[StoryEvent.DATED_DAN] = true;
+						MainScript.instance.onNavigate(GameAreas.CLASSROOM);
+						MainScript.instance.Dan.gameObject.SetActive(false);
+						mainSCript.conversationPanel.SetActive(false);
+					});
+				break;
+
+				case GameState.DATE_DAN_3A:
+					mainSCript.lastState = GameState.DATE_DAN_4;
+					mainSCript.say(Baes.KULU, "Oh my");
+					setOptions(GameState.DATE_DAN_4);
+					mainSCript.showOptions();
+				break;
+
+				case GameState.DATE_DAN_4A:
+					mainSCript.lastState = GameState.DATE_DAN_5;
+//					mainSCript.say(Baes.KULU, "Oh my");
+					setOptions(GameState.DATE_DAN_5);
+					mainSCript.showOptions();
+				break;
+
+
+
+
+
+
+
+
+
+
+
+
+				/*
+				case GameState.DATE_DAN_2A:
+					changeMood(Moods.ANGRY);
+					mainSCript.say(Baes.KULU, "What!?");
+
+					HelperFunctions.DelayCallback(3f, ()=>{
+						GameFlags.flags[StoryEvent.DATED_DAN] = true;
+						MainScript.instance.onNavigate(GameAreas.BEACH);
+						MainScript.instance.Dan.gameObject.SetActive(false);
+						mainSCript.conversationPanel.SetActive(false);
+					});
+				break;
+
+				case GameState.DATE_DAN_2B:
+					changeMood(Moods.SMILE);
+					mainSCript.say(Baes.KULU, "Oh you flirt");
+
+					HelperFunctions.DelayCallback(1f, ()=>{
+						mainSCript.baeDates.Kiss(Baes.KULU);
+						mainSCript.conversationPanel.SetActive(false);
+					});
+				break;
+				*/
+			}
+		}
+		else{
+			if(GameFlags.flags[StoryEvent.NEED_GLASSES]){
+				if(GameFlags.flags[StoryEvent.GOT_GLASSES]){
+					changeBigMood(Moods.HAPPY);
+					
+					switch (mainSCript.lastState)
+					{
 					case GameState.START:
 						TakeFocus(false);
 						mainSCript.lastState = GameState.SPEAK_TO_DAN_6;
 						mainSCript.say (Baes.DAN, "Thank you so much! I must have left them in the cafeteria again.");
 						setOptions(GameState.SPEAK_TO_DAN_6);
 						mainSCript.showOptions();
-//						mainSCript.closeConvoButton.SetActive(true);
-					break;
-
+						//						mainSCript.closeConvoButton.SetActive(true);
+						break;
+						
 					case GameState.SPEAK_TO_DAN_6A:
 						changeMood(Moods.SMILE);
 						mainSCript.lastState = GameState.SPEAK_TO_DAN_7;
 						mainSCript.say (Baes.DAN, "Say, I've got a free period. Wanna get chat in the cafeteria?");
 						setOptions(GameState.SPEAK_TO_DAN_7);
 						mainSCript.showOptions();
-					break;
-
+						break;
+						
 					case GameState.SPEAK_TO_DAN_7A:
 						mainSCript.closeConversationPanel();
 						mainSCript.StartDate(Baes.DAN);
 						changeMood(Moods.NEUTRAL);
 						mainSCript.lastState = GameState.DATE_DAN_1; // need to call this after closing panel
-					break;
+						break;
+					}
+				}
+				else{
+					changeBigMood(Moods.SMILE);
+					TakeFocus(true);						
+					mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
 				}
 			}
 			else{
-				changeBigMood(Moods.SMILE);
-				TakeFocus(true);						
-				mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
+				switch (mainSCript.lastState)
+				{
+				case GameState.START:
+				case GameState.SPEAK_TO_DAN:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
+					changeBigMood(Moods.NEUTRAL);
+					
+					TakeFocus(false);
+					mainSCript.say (Baes.YOU, "Hey you, Mr. Slime");
+					break;
+				case GameState.SPEAK_TO_DAN_1:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_1_0;
+					mainSCript.say (Baes.DAN, "Wow, That not my name. Is that how you adress everyone?");
+					setOptions(GameState.SPEAK_TO_DAN_1_0);
+					mainSCript.showOptions();
+					break;
+				case GameState.SPEAK_TO_DAN_1A:
+					changeBigMood(Moods.ANGRY);
+					mainSCript.say(Baes.DAN, "You're failing my class");
+					mainSCript.closeConvoButton.SetActive(true);
+					break;
+				case GameState.SPEAK_TO_DAN_1B:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_2;
+					mainSCript.say(Baes.DAN, "It's rude to address someone by their physical properties");
+					setOptions(GameState.SPEAK_TO_DAN_2);
+					mainSCript.showOptions();				
+					break;
+				case GameState.SPEAK_TO_DAN_1C:
+					mainSCript.closeConversationPanel();
+					break;
+					
+				case GameState.SPEAK_TO_DAN_2A:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_3;
+					mainSCript.say(Baes.DAN, "Dan Goo. What do you want?");
+					setOptions(GameState.SPEAK_TO_DAN_3);
+					mainSCript.showOptions();
+					break;
+					
+				case GameState.SPEAK_TO_DAN_2B:				
+					changeBigMood(Moods.ANGRY);
+					mainSCript.say(Baes.DAN, "@#$%^# off!");
+					mainSCript.closeConvoButton.SetActive(true);
+					break;
+					
+				case GameState.SPEAK_TO_DAN_3A:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_4_1;
+					mainSCript.say(Baes.DAN, "Really?");
+					setOptions(GameState.SPEAK_TO_DAN_4_1);
+					mainSCript.showOptions();
+					break;
+					
+				case GameState.SPEAK_TO_DAN_3B:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_4_2;
+					changeBigMood(Moods.ANGRY);
+					mainSCript.say(Baes.DAN, "Excuse me?");
+					setOptions(GameState.SPEAK_TO_DAN_4_2);
+					mainSCript.showOptions();
+					break;
+					
+				case GameState.SPEAK_TO_DAN_4A:
+					mainSCript.lastState = GameState.SPEAK_TO_DAN_5;
+					changeBigMood(Moods.SMILE);
+					mainSCript.say(Baes.DAN, "Sure, office hours are in your handbook!");
+					setOptions(GameState.SPEAK_TO_DAN_5);
+					mainSCript.showOptions();
+					break;
+					
+				case GameState.SPEAK_TO_DAN_4B:
+					changeBigMood(Moods.ANGRY);
+					mainSCript.say(Baes.DAN, "In your dreams!");
+					mainSCript.closeConvoButton.SetActive(true);
+					break;
+					
+				case GameState.SPEAK_TO_DAN_5A:
+					GameFlags.flags[StoryEvent.NEED_GLASSES] = true;
+					changeBigMood(Moods.SMILE);
+					mainSCript.say(Baes.DAN, "I'd love to but I've misplaced my glasses. Honestly, I can hardly see the board myself without them. Once I find them I'll be happy to tutor you though.");
+					mainSCript.closeConvoButton.SetActive(true);
+					mainSCript.lastState = GameState.START;
+					break;
+					
+				case GameState.SPEAK_TO_DAN_5B:
+					mainSCript.closeConversationPanel();				
+					break;
+					
+				default:
+					Debug.LogError("Whoa, didn't think you could talk to Dan during this state: " + mainSCript.lastState);
+					break;
+				}
 			}
 		}
-		else{
-			switch (mainSCript.lastState)
-		{
-			case GameState.START:
-			case GameState.SPEAK_TO_DAN:
-	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
-				changeBigMood(Moods.NEUTRAL);
-					
-				TakeFocus(false);
-				mainSCript.say (Baes.YOU, "Hey you, Mr. Slime");
-			break;
-			case GameState.SPEAK_TO_DAN_1:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_1_0;
-				mainSCript.say (Baes.DAN, "Wow, That not my name. Is that how you adress everyone?");
-				setOptions(GameState.SPEAK_TO_DAN_1_0);
-				mainSCript.showOptions();
-			break;
-			case GameState.SPEAK_TO_DAN_1A:
-				changeBigMood(Moods.ANGRY);
-				mainSCript.say(Baes.DAN, "You're failing my class");
-				mainSCript.closeConvoButton.SetActive(true);
-			break;
-			case GameState.SPEAK_TO_DAN_1B:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_2;
-				mainSCript.say(Baes.DAN, "It's rude to address someone by their physical properties");
-				setOptions(GameState.SPEAK_TO_DAN_2);
-				mainSCript.showOptions();				
-			break;
-			case GameState.SPEAK_TO_DAN_1C:
-				mainSCript.closeConversationPanel();
-			break;
-
-			case GameState.SPEAK_TO_DAN_2A:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_3;
-				mainSCript.say(Baes.DAN, "Dan Goo. What do you want?");
-				setOptions(GameState.SPEAK_TO_DAN_3);
-				mainSCript.showOptions();
-			break;
-
-			case GameState.SPEAK_TO_DAN_2B:				
-				changeBigMood(Moods.ANGRY);
-				mainSCript.say(Baes.DAN, "@#$%^# off!");
-				mainSCript.closeConvoButton.SetActive(true);
-			break;
-
-			case GameState.SPEAK_TO_DAN_3A:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_4_1;
-				mainSCript.say(Baes.DAN, "Really?");
-				setOptions(GameState.SPEAK_TO_DAN_4_1);
-				mainSCript.showOptions();
-			break;
-
-			case GameState.SPEAK_TO_DAN_3B:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_4_2;
-				changeBigMood(Moods.ANGRY);
-				mainSCript.say(Baes.DAN, "Excuse me?");
-				setOptions(GameState.SPEAK_TO_DAN_4_2);
-				mainSCript.showOptions();
-			break;
-
-			case GameState.SPEAK_TO_DAN_4A:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_5;
-				changeBigMood(Moods.SMILE);
-				mainSCript.say(Baes.DAN, "Sure, office hours are in your handbook!");
-				setOptions(GameState.SPEAK_TO_DAN_5);
-				mainSCript.showOptions();
-			break;
-
-			case GameState.SPEAK_TO_DAN_4B:
-				changeBigMood(Moods.ANGRY);
-				mainSCript.say(Baes.DAN, "In your dreams!");
-				mainSCript.closeConvoButton.SetActive(true);
-			break;
-
-			case GameState.SPEAK_TO_DAN_5A:
-				GameFlags.flags[StoryEvent.NEED_GLASSES] = true;
-				changeBigMood(Moods.SMILE);
-				mainSCript.say(Baes.DAN, "I'd love to but I've misplaced my glasses. Honestly, I can hardly see the board myself without them. Once I find them I'll be happy to tutor you though.");
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.lastState = GameState.START;
-			break;
-
-			case GameState.SPEAK_TO_DAN_5B:
-				mainSCript.closeConversationPanel();				
-			break;
-			
-			default:
-				Debug.LogError("Whoa, didn't think you could talk to Dan during this state: " + mainSCript.lastState);
-			break;
-		}
-		}
-
-
-
 	}
 
 	void setOptions(GameState forState){
@@ -218,6 +304,28 @@ public class DanConvo : MonoBehaviour {
 				mainSCript.option1.gameObject.SetActive(true);
 				mainSCript.option2_text.text = "";
 				mainSCript.option2.gameObject.SetActive(false);
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
+
+			case GameState.DATE_DAN_1:
+				mainSCript.option1_text.text = "Haha, I'm glad.";
+				mainSCript.option1.gameObject.SetActive(true);
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
+
+			case GameState.DATE_DAN_2:
+				mainSCript.option1_text.text = "Excuse me?";
+				mainSCript.option1.gameObject.SetActive(true);
+				mainSCript.option2_text.text = "Stop you're not funny.";
+				mainSCript.option2.gameObject.SetActive(true);
 				mainSCript.option3_text.text = "";
 				mainSCript.option3.gameObject.SetActive(false);
 				mainSCript.option4_text.text = "";
