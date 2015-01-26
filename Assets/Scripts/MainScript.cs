@@ -58,7 +58,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-		onNavigate (GameAreas.FLORIST);
+		onNavigate (GameAreas.CLASSROOM);
 	}
 
 	void Update(){

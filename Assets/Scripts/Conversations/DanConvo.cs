@@ -7,29 +7,10 @@ public class DanConvo : MonoBehaviour {
 	public void TalkToMe(){
 		if(GameFlags.flags[StoryEvent.NEED_GLASSES]){
 			if(GameFlags.flags[StoryEvent.GOT_GLASSES]){
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
 				changeBigMood(Moods.HAPPY);
-				
-				
-				iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
-					"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
-					, "islocal", false
-					, "time", 1f
-					, "delay", 0
-					));
-				
-				// hide characters
-				mainSCript.Dan.gameObject.SetActive(false);
-				// hide nav
-				mainSCript.currNavButtons.SetActive(false);
-				
-				// show larger character
-				mainSCript.Dan_big.gameObject.SetActive(true);
-				mainSCript.conversationPanel.SetActive(true);
-				mainSCript.closeConvoButton.SetActive (true);
-				mainSCript.blocker.SetActive(true);
-			//	mainSCript.say (Baes.DAN, "Oh you found them! Thank you so much. Let's get started");
-			//	setOptions(GameState.SPEAK_TO_DAN_6);
+
+				TakeFocus(false);
+
 				switch (mainSCript.lastState)
 				{
 				case GameState.SPEAK_TO_DAN_6:
@@ -58,28 +39,18 @@ public class DanConvo : MonoBehaviour {
 				}
 			}
 			else{
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
-				changeBigMood(Moods.SMILE);
-				
-				
-				iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
-					"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
-					, "islocal", false
-					, "time", 1f
-					, "delay", 0
-					));
-				
-				// hide characters
-				mainSCript.Dan.gameObject.SetActive(false);
-				// hide nav
-				mainSCript.currNavButtons.SetActive(false);
-				
-				// show larger character
-				mainSCript.Dan_big.gameObject.SetActive(true);
-				mainSCript.conversationPanel.SetActive(true);
-				mainSCript.closeConvoButton.SetActive (true);
-				mainSCript.blocker.SetActive(true);
-				mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
+				switch (mainSCript.lastState)
+				{
+					case GameState.START:
+					case GameState.SPEAK_TO_DAN_1:
+						mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
+						changeBigMood(Moods.SMILE);
+						TakeFocus(true);
+						
+						mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
+					break;
+				}
+
 			}
 		}
 		else{
@@ -89,26 +60,9 @@ public class DanConvo : MonoBehaviour {
 			case GameState.SPEAK_TO_DAN:
 	        	mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
 				changeBigMood(Moods.NEUTRAL);
-
 					
-					iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
-						"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
-						, "islocal", false
-						, "time", 1f
-						, "delay", 0
-						));
-
-					// hide characters
-					mainSCript.Dan.gameObject.SetActive(false);
-					// hide nav
-					mainSCript.currNavButtons.SetActive(false);
-					
-					// show larger character
-					mainSCript.Dan_big.gameObject.SetActive(true);
-					mainSCript.conversationPanel.SetActive(true);
-					mainSCript.closeConvoButton.SetActive (false); // don't show close button here
-					mainSCript.blocker.SetActive(true);
-					mainSCript.say (Baes.YOU, "Hey you, Mr. Slime");
+				TakeFocus(false);
+				mainSCript.say (Baes.YOU, "Hey you, Mr. Slime");
 			break;
 			case GameState.SPEAK_TO_DAN_1:
 				mainSCript.lastState = GameState.SPEAK_TO_DAN_1_0;
@@ -340,6 +294,26 @@ public class DanConvo : MonoBehaviour {
 			break;
 		}
 		mainSCript.Dan_big.image.sprite = newSprite;
+	}
+
+	void TakeFocus(bool showCloseButton){
+			iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
+				"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
+				, "islocal", false
+				, "time", 1f
+				, "delay", 0
+				));
+			
+			// hide characters
+			mainSCript.Dan.gameObject.SetActive(false);
+			// hide nav
+			mainSCript.currNavButtons.SetActive(false);
+			
+			// show larger character
+			mainSCript.Dan_big.gameObject.SetActive(true);
+			mainSCript.conversationPanel.SetActive(true);
+			mainSCript.closeConvoButton.SetActive (showCloseButton);
+			mainSCript.blocker.SetActive(true);
 	}
 	
 }
