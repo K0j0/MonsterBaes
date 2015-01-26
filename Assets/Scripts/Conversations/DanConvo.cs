@@ -39,18 +39,9 @@ public class DanConvo : MonoBehaviour {
 				}
 			}
 			else{
-				switch (mainSCript.lastState)
-				{
-					case GameState.START:
-					case GameState.SPEAK_TO_DAN_1:
-						mainSCript.lastState = GameState.SPEAK_TO_DAN_1;
-						changeBigMood(Moods.SMILE);
-						TakeFocus(true);
-						
-						mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
-					break;
-				}
-
+				changeBigMood(Moods.SMILE);
+				TakeFocus(true);						
+				mainSCript.say (Baes.DAN, "As soon as I find my glasses I'll be happy to tutor you.");
 			}
 		}
 		else{
@@ -132,6 +123,7 @@ public class DanConvo : MonoBehaviour {
 				changeBigMood(Moods.SMILE);
 				mainSCript.say(Baes.DAN, "I'd love to but I've misplaced my glasses. Honestly, I can hardly see the board myself without them. Once I find them I'll be happy to tutor you though.");
 				mainSCript.closeConvoButton.SetActive(true);
+				mainSCript.lastState = GameState.START;
 			break;
 
 			case GameState.SPEAK_TO_DAN_5B:
@@ -297,12 +289,14 @@ public class DanConvo : MonoBehaviour {
 	}
 
 	void TakeFocus(bool showCloseButton){
+		if (mainSCript.Dan_big.transform.position.x == 239) {
 			iTween.MoveTo(mainSCript.Dan_big.gameObject, iTween.Hash(
 				"x", mainSCript.Dan_big.transform.position.x + mainSCript.slide
 				, "islocal", false
 				, "time", 1f
 				, "delay", 0
 				));
+			}
 			
 			// hide characters
 			mainSCript.Dan.gameObject.SetActive(false);
@@ -314,6 +308,7 @@ public class DanConvo : MonoBehaviour {
 			mainSCript.conversationPanel.SetActive(true);
 			mainSCript.closeConvoButton.SetActive (showCloseButton);
 			mainSCript.blocker.SetActive(true);
+
 	}
 	
 }
