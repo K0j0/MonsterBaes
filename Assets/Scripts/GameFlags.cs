@@ -73,7 +73,9 @@ public enum GameState{
 	SPEAK_TO_KLULU_6A,
 	DATE_KLULU_1,
 	DATE_KLULU_1A,
-	DATE_KLULU_1B,
+	DATE_KLULU_2,
+	DATE_KLULU_2A,
+	DATE_KLULU_2B,
 
 	// for Buzz
 	START_ZEN,
@@ -117,7 +119,14 @@ public enum GameState{
 	SPEAK_TO_DAISY_7,
 	SPEAK_TO_DAISY_7A,
 	SPEAK_TO_DAISY_7B,
-	SPEAK_TO_DAISY_7C
+	SPEAK_TO_DAISY_7C,
+	SPEAK_TO_DAISY_8,
+	SPEAK_TO_DAISY_8A,
+	DATE_DAISY_1,
+	DATE_DAISY_1A,
+	DATE_DAISY_2,
+	DATE_DAISY_2A,
+	DATE_DAISY_2B
 }
 
 public enum StoryEvent{
@@ -132,12 +141,18 @@ public enum StoryEvent{
 	GOT_FLOWER_THISTLE,
 	GOT_FLOWER_SEAFIG,
 	GOT_FLOWER_NIGHTSHADE,
+	DATING_DAISY,
+	DATED_DAISY,
 
 	NEED_OIL,
 	GOT_OIL,
+	DATING_BUZZ,
+	DATED_BUZZ,
 
 	NEED_GLASSES,
 	GOT_GLASSES,
+	DATING_DAN,
+	DATED_DAN,
 }
 public enum soundEvents{
 	BUZZ_KISS,
@@ -156,8 +171,8 @@ public class GameFlags{
 	public static Dictionary<soundEvents, bool> soundBools;
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
-		flags [StoryEvent.NEED_TRASH_BAGS] = true;
-		flags [StoryEvent.GOT_TRASH_BAGS] = true;
+		flags [StoryEvent.NEED_TRASH_BAGS] = false;
+		flags [StoryEvent.GOT_TRASH_BAGS] = false;
 		flags [StoryEvent.PICKED_UP_ALL_TRASH] = false;
 		flags [StoryEvent.DATING_KLULU] = false;
 		flags [StoryEvent.DATED_KLULU] = false;
@@ -167,12 +182,21 @@ public class GameFlags{
 		flags [StoryEvent.GOT_FLOWER_THISTLE] = false;
 		flags [StoryEvent.GOT_FLOWER_SEAFIG] = false;
 		flags [StoryEvent.GOT_FLOWER_NIGHTSHADE] = false;
+		flags [StoryEvent.DATING_DAISY] = false;
+		flags [StoryEvent.DATED_DAISY] = false;
+
 
 		flags [StoryEvent.NEED_OIL] = false;
 		flags [StoryEvent.GOT_OIL] = false;
+		flags [StoryEvent.DATING_BUZZ] = false;
+		flags [StoryEvent.DATED_BUZZ] = false;
+
 
 		flags [StoryEvent.NEED_GLASSES] = false;
 		flags [StoryEvent.GOT_GLASSES] = false;
+		flags [StoryEvent.DATING_DAN] = false;
+		flags [StoryEvent.DATED_DAN] = false;
+
 
 		soundBools = new Dictionary<soundEvents, bool> ();
 		soundBools [soundEvents.BUZZ_KISS] = false;

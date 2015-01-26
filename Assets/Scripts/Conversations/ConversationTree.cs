@@ -264,8 +264,19 @@ public class ConversationTree : MonoBehaviour {
 					case 1:
 						mainScript.lastState = GameState.DATE_KLULU_1A;
 					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToKlulu();
+			break;
+
+			case GameState.DATE_KLULU_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.DATE_KLULU_2A;
+					break;
 					case 2:
-						mainScript.lastState = GameState.DATE_KLULU_1B;
+						mainScript.lastState = GameState.DATE_KLULU_2B;
 					break;
 				}
 				mainScript.buttonGroup.SetActive(false);
@@ -368,6 +379,42 @@ public class ConversationTree : MonoBehaviour {
 					break;
 					case 3:
 						mainScript.lastState = GameState.SPEAK_TO_DAISY_7C;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			case GameState.SPEAK_TO_DAISY_8:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAISY_8A;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			case GameState.DATE_DAISY_1:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.DATE_DAISY_1A;
+					break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDaisy();
+			break;
+
+			case GameState.DATE_DAISY_2:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.DATE_DAISY_2A;
+					break;
+					case 2:
+						mainScript.lastState = GameState.DATE_DAISY_2B;
 					break;
 				}
 				mainScript.buttonGroup.SetActive(false);

@@ -26,7 +26,7 @@ public class MainScript : MonoBehaviour {
 	public Button Buzz_big;
 	public GameState lastState = GameState.START;
 	public float slide = 50;
-	private static MonoBehaviour instance;
+	public static MainScript instance;
 	public string currArea;
 	public GameObject currNavButtons;
 	public GameObject commonUI;
@@ -58,6 +58,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
+
 		onNavigate (GameAreas.RIGHT_MID_2);
 	}
 
