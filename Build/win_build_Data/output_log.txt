@@ -14,7 +14,7 @@ Platform assembly: C:\Users\student\Desktop\GGJ2015\MonsterBaes\Build\win_build_
 Loading C:\Users\student\Desktop\GGJ2015\MonsterBaes\Build\win_build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\student\Desktop\GGJ2015\MonsterBaes\Build\win_build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\student\Desktop\GGJ2015\MonsterBaes\Build\win_build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.078 seconds
+- Completed reload, in  0.042 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -37,21 +37,89 @@ UnityEngine.EventSystems.EventSystem:Update()
  
 (Filename:  Line: -1)
 
-Set name to: Jorge
+Set name to: Balbalona
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-UnloadTime: 6.636619 ms
+UnloadTime: 7.031235 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 309.
-Total: 1.773490 ms (FindLiveObjects: 0.045050 ms CreateObjectMapping: 0.018818 ms MarkObjects: 0.482150 ms  DeleteObjects: 0.009694 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 972.
+Total: 2.696162 ms (FindLiveObjects: 0.094091 ms CreateObjectMapping: 0.027087 ms MarkObjects: 1.297328 ms  DeleteObjects: 0.013686 ms)
 
 Bae.
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
 CTree init
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to ENTRANCE_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to PALETTE
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to BOTTOM_LEFT_1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to BOTTOM_LEFT_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to LEFT_MID_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to CLASSROOM
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+show options
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Whoa, didn't think you could talk to Dan during this state: SPEAK_TO_DAN_1_0
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Chose Option 1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Talk to Dan
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to LEFT_MID_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to RIGHT_MID_1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to RIGHT_MID_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to ZEN
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to RIGHT_MID_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to TOP_LEFT_2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Navigate to CAFE_INSIDE
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
