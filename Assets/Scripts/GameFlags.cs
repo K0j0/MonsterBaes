@@ -44,12 +44,7 @@ public enum GameState{
 	SPEAK_TO_DAN_6C,
 	SPEAK_TO_DAN_7,
 	SPEAK_TO_DAN_7A,
-	SPEAK_TO_DAN_7B,
-	SPEAK_TO_DAN_7C,
-	SPEAK_TO_DAN_8,
-	SPEAK_TO_DAN_8A,
-	SPEAK_TO_DAN_8B,
-	SPEAK_TO_DAN_8C,
+	DATE_DAN_1,
 
 	// for Klulu
 	START_BEACH,
@@ -193,7 +188,7 @@ public class GameFlags{
 
 
 		flags [StoryEvent.NEED_GLASSES] = true;
-		flags [StoryEvent.GOT_GLASSES] = false;
+		flags [StoryEvent.GOT_GLASSES] = true;
 		flags [StoryEvent.DATING_DAN] = false;
 		flags [StoryEvent.DATED_DAN] = false;
 

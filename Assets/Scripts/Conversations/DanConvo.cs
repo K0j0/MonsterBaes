@@ -9,32 +9,30 @@ public class DanConvo : MonoBehaviour {
 			if(GameFlags.flags[StoryEvent.GOT_GLASSES]){
 				changeBigMood(Moods.HAPPY);
 
-				TakeFocus(false);
-
 				switch (mainSCript.lastState)
 				{
-				case GameState.SPEAK_TO_DAN_6:
-					mainSCript.lastState = GameState.SPEAK_TO_DAN_7;
-					mainSCript.say (Baes.DAN, "Ok, you ready to learn?");
-					setOptions(GameState.SPEAK_TO_DAN_7);
-					mainSCript.showOptions();
-				break;
-				case GameState.SPEAK_TO_DAN_7A:
-					changeBigMood(Moods.ANGRY);
-					mainSCript.say(Baes.DAN, "Get out");
-					mainSCript.closeConvoButton.SetActive(true);
+					case GameState.START:
+						TakeFocus(false);
+						mainSCript.lastState = GameState.SPEAK_TO_DAN_6;
+						mainSCript.say (Baes.DAN, "Thank you so much! I must have left them in the cafeteria again.");
+						setOptions(GameState.SPEAK_TO_DAN_6);
+						mainSCript.showOptions();
+//						mainSCript.closeConvoButton.SetActive(true);
 					break;
-				case GameState.SPEAK_TO_DAN_7B:
-					mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
-					mainSCript.say(Baes.DAN, "Good. Name a noble gas.");
-					setOptions(GameState.SPEAK_TO_DAN_8);
-					mainSCript.showOptions();				
+
+					case GameState.SPEAK_TO_DAN_6A:
+						changeMood(Moods.SMILE);
+						mainSCript.lastState = GameState.SPEAK_TO_DAN_7;
+						mainSCript.say (Baes.DAN, "Say, I've got a free period. Wanna get chat in the cafeteria?");
+						setOptions(GameState.SPEAK_TO_DAN_7);
+						mainSCript.showOptions();
 					break;
-				case GameState.SPEAK_TO_DAN_7C:
-					mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
-					mainSCript.say(Baes.DAN, "Ha... Name a noble gas.");
-					setOptions(GameState.SPEAK_TO_DAN_8);
-					mainSCript.showOptions();
+
+					case GameState.SPEAK_TO_DAN_7A:
+						mainSCript.closeConversationPanel();
+						mainSCript.StartDate(Baes.DAN);
+						changeMood(Moods.NEUTRAL);
+						mainSCript.lastState = GameState.DATE_DAN_1; // need to call this after closing panel
 					break;
 				}
 			}
@@ -129,32 +127,7 @@ public class DanConvo : MonoBehaviour {
 			case GameState.SPEAK_TO_DAN_5B:
 				mainSCript.closeConversationPanel();				
 			break;
-//				if (GameFlags.flags[StoryEvent.GOT_GLASSES]);
-//				setOptions(GameState.SPEAK_TO_DAN_6);
-
-		//	case GameState.SPEAK_TO_DAN_6:
-		//		mainSCript.lastState = GameState.SPEAK_TO_DAN_7;
-		//		mainSCript.say (Baes.DAN, "Ok, you ready to learn?");
-		//		setOptions(GameState.SPEAK_TO_DAN_7);
-		//		mainSCript.showOptions();
-		//		break;
-			case GameState.SPEAK_TO_DAN_7A:
-				changeBigMood(Moods.ANGRY);
-				mainSCript.say(Baes.DAN, "Get out");
-				mainSCript.closeConvoButton.SetActive(true);
-				break;
-			case GameState.SPEAK_TO_DAN_7B:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
-				mainSCript.say(Baes.DAN, "Good. Name a noble gas.");
-				setOptions(GameState.SPEAK_TO_DAN_8);
-				mainSCript.showOptions();				
-				break;
-			case GameState.SPEAK_TO_DAN_7C:
-				mainSCript.lastState = GameState.SPEAK_TO_DAN_8;
-				mainSCript.say(Baes.DAN, "Ha... Name a noble gas.");
-				setOptions(GameState.SPEAK_TO_DAN_8);
-				mainSCript.showOptions();
-				break;
+			
 			default:
 				Debug.LogError("Whoa, didn't think you could talk to Dan during this state: " + mainSCript.lastState);
 			break;
@@ -231,19 +204,25 @@ public class DanConvo : MonoBehaviour {
 				mainSCript.option4.gameObject.SetActive(false);
 			break;
 			case GameState.SPEAK_TO_DAN_6:
-			break;
-
-			case GameState.SPEAK_TO_DAN_7:
-				mainSCript.option1_text.text = "Nope.";
+				mainSCript.option1_text.text = "Happy to help";
 				mainSCript.option1.gameObject.SetActive(true);
-				mainSCript.option2_text.text = "Yep.";
-				mainSCript.option2.gameObject.SetActive(true);
-				mainSCript.option3_text.text = "Are you?";
-				mainSCript.option3.gameObject.SetActive(true);
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
 				mainSCript.option4_text.text = "";
 				mainSCript.option4.gameObject.SetActive(false);
 			break;
-
+			case GameState.SPEAK_TO_DAN_7:
+				mainSCript.option1_text.text = "Let's do it";
+				mainSCript.option1.gameObject.SetActive(true);
+				mainSCript.option2_text.text = "";
+				mainSCript.option2.gameObject.SetActive(false);
+				mainSCript.option3_text.text = "";
+				mainSCript.option3.gameObject.SetActive(false);
+				mainSCript.option4_text.text = "";
+				mainSCript.option4.gameObject.SetActive(false);
+			break;
 
 		}
 	}

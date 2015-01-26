@@ -120,57 +120,31 @@ public class ConversationTree : MonoBehaviour {
 				mainScript.buttonGroup.SetActive(false);
 				TalkToDan();
 			break;
+		
 
 		case GameState.SPEAK_TO_DAN_6:
-		//	switch(choice)
-		//	{
-		//	case 1:
-		//		mainScript.lastState = GameState.SPEAK_TO_DAN_6C;
-		//		break;
-		//	case 2:
-		//		mainScript.lastState = GameState.SPEAK_TO_DAN_6B;
-		//		break;
-		//	case 3:
-		//		mainScript.lastState = GameState.SPEAK_TO_DAN_6A;
-		//		break;
-		//	}
-		//	mainScript.buttonGroup.SetActive(false);
-			TalkToDan();
-			break;
-
-		case GameState.SPEAK_TO_DAN_7:
 			switch(choice)
 			{
-			case 1:
-				mainScript.lastState = GameState.SPEAK_TO_DAN_7A;
-				break;										
-			case 2:										   
-				mainScript.lastState = GameState.SPEAK_TO_DAN_7B;
-				break;										
-			case 3:										   
-				mainScript.lastState = GameState.SPEAK_TO_DAN_7C;
-				break;
+				case 1:
+					mainScript.lastState = GameState.SPEAK_TO_DAN_6A;
+			break;
 			}
 			mainScript.buttonGroup.SetActive(false);
 			TalkToDan();
+		break;
+
+			case GameState.SPEAK_TO_DAN_7:
+				switch(choice)
+				{
+					case 1:
+						mainScript.lastState = GameState.SPEAK_TO_DAN_7A;
+				break;
+				}
+				mainScript.buttonGroup.SetActive(false);
+				TalkToDan();
 			break;
 
-		case GameState.SPEAK_TO_DAN_8:
-			switch(choice)
-			{
-			case 1:
-				mainScript.lastState = GameState.SPEAK_TO_DAN_8C;
-				break;
-			case 2:
-				mainScript.lastState = GameState.SPEAK_TO_DAN_8B;
-				break;
-			case 3:
-				mainScript.lastState = GameState.SPEAK_TO_DAN_8A;
-				break;
-			}
-			mainScript.buttonGroup.SetActive(false);
-			TalkToDan();
-			break;
+		
 
 
 			// Klulu
