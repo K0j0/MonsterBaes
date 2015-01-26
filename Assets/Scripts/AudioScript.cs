@@ -3,10 +3,10 @@ using System.Collections;
 
 public class AudioScript : MonoBehaviour {
 
-	public AudioClip kluluKiss;
-	public AudioClip buzzKiss;
-	public AudioClip daisyKiss;
-	public AudioClip danKiss;
+	//public AudioClip kluluKiss;
+	//public AudioClip buzzKiss;
+	//public AudioClip daisyKiss;
+	//public AudioClip danKiss;
 	public AudioClip daisyAmb;
 	public AudioClip danAmb;
 	public AudioClip kluluAmb;
@@ -56,7 +56,49 @@ public class AudioScript : MonoBehaviour {
 //	}
 	public void buzzRoom() 
 	{
+		audio.Stop ();
 		audio.clip = buzzAmb;
 		audio.Play ();
 	}
+	public void danRoom() 
+	{
+		audio.Stop ();
+		audio.clip = danAmb;
+		audio.Play ();
+	}
+	public void daisyRoom() 
+	{
+		audio.Stop ();
+		audio.clip = daisyAmb;
+		audio.Play ();
+	}public void kluluRoom() 
+	{
+		audio.Stop ();
+		audio.clip = kluluAmb;
+		audio.Play ();
+	}
+	public void hallway() 
+	{
+		audio.Stop ();
+		audio.clip = hallAmb;
+		audio.Play ();
+	}
+	//public void buzzRoom() 
+	//{
+	//	audio.clip = buzzAmb;
+	//	audio.Play ();
+	//}public void buzzRoom() 
+	//{
+	//	audio.clip = buzzAmb;
+	//	audio.Play ();
+	//}public void buzzRoom() 
+	//{
+	//	audio.clip = buzzAmb;
+	//	audio.Play ();
+	//}
+
+
+
+
+
 }
