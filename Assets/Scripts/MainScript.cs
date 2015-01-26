@@ -58,7 +58,7 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-		onNavigate (GameAreas.BEACH);
+		onNavigate (GameAreas.RIGHT_MID_2);
 	}
 
 	void Update(){

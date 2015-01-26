@@ -173,6 +173,8 @@ public class GameFlags{
 
 		flags [StoryEvent.NEED_GLASSES] = false;
 		flags [StoryEvent.GOT_GLASSES] = false;
+
+		soundBools = new Dictionary<soundEvents, bool> ();
 		soundBools [soundEvents.BUZZ_KISS] = false;
 		soundBools [soundEvents.KLULU_KISS] = false;
 		soundBools [soundEvents.DAN_KISS] = false;
