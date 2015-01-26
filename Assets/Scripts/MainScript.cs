@@ -59,7 +59,7 @@ public class MainScript : MonoBehaviour {
 
 		// where to start
 
-		onNavigate (GameAreas.CLASSROOM);
+		onNavigate (GameAreas.ENTRANCE_2);
 	}
 
 	void Update(){

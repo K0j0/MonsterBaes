@@ -197,8 +197,8 @@ public class GameFlags{
 		flags [StoryEvent.DATED_BUZZ] = false;
 
 
-		flags [StoryEvent.NEED_GLASSES] = true;
-		flags [StoryEvent.GOT_GLASSES] = true;
+		flags [StoryEvent.NEED_GLASSES] = false;
+		flags [StoryEvent.GOT_GLASSES] = false;
 		flags [StoryEvent.DATING_DAN] = false;
 		flags [StoryEvent.DATED_DAN] = false;
 
