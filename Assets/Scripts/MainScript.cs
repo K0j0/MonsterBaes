@@ -24,7 +24,7 @@ public class MainScript : MonoBehaviour {
 	public Button Daisy_big;
 	public Button Buzz;
 	public Button Buzz_big;
-	public GameState lastState = GameState.START;
+	public GameState lastState = GameState.START_CLASSROOM;
 	public float slide = 50;
 	public static MainScript instance;
 	public string currArea;
@@ -58,9 +58,10 @@ public class MainScript : MonoBehaviour {
 		buttonGroup.gameObject.SetActive(false);
 
 		// where to start
-
-		onNavigate (GameAreas.ENTRANCE_2);
-	}
+        blocker = blockerClassRoom;
+        //onNavigate(GameAreas.ENTRANCE_2);
+        onNavigate(GameAreas.CLASSROOM);
+    }
 
 	void Update(){
 		if (Input.GetKey (KeyCode.Escape)) {
@@ -76,7 +77,7 @@ public class MainScript : MonoBehaviour {
 		
 		switch (currArea) {
 			case GameAreas.CLASSROOM:
-				lastState = GameState.SPEAK_TO_DAN;
+				lastState = GameState.START_CLASSROOM;
 				// show characters
 				Dan.gameObject.SetActive(true);
 				// show nav
@@ -204,7 +205,7 @@ public class MainScript : MonoBehaviour {
 				gameAreas.classroom.transform.SetAsLastSibling();
 				commonUI.transform.SetAsLastSibling();
 				blocker = blockerClassRoom;
-				lastState = GameState.START; // classroom with Dan
+				lastState = GameState.START_CLASSROOM; // classroom with Dan
 				currNavButtons = gameAreas.classroomNav;
 			break;
 			case GameAreas.LEFT_MID_2:

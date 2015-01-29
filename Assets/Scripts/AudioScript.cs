@@ -19,41 +19,7 @@ public class AudioScript : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
-//	void Update () 
-//	{
-//		if (Input.GetKeyDown (KeyCode.S)) 
-//		{
-//			if (GameFlags.soundBools [soundEvents.BUZZ_KISS]) {
-//					audio.clip = buzzKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.DAISY_KISS]) {
-//					audio.clip = daisyKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.DAN_KISS]) {
-//					audio.clip = danKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.KLULU_KISS]) {
-//					audio.clip = kluluKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.BUZZ_ROOM]) {
-//					audio.clip = buzzKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.DAISY_ROOM]) {
-//					audio.clip = daisyKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.DAN_ROOM]) {
-//					audio.clip = danKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.KLULU_ROOM]) {
-//					audio.clip = kluluKiss;
-//					audio.Play ();
-//			} else if (GameFlags.soundBools [soundEvents.HALLWAY]) {
-//					audio.clip = kluluKiss;
-//					audio.Play ();
-//			}
-//		}
-//	}
+	
 	public void buzzRoom() 
 	{
 		audio.Stop ();
@@ -79,26 +45,9 @@ public class AudioScript : MonoBehaviour {
 	}
 	public void hallway() 
 	{
+        print("Play hallway");
 		audio.Stop ();
-		audio.clip = hallAmb;
+        audio.clip = danAmb;
 		audio.Play ();
 	}
-	//public void buzzRoom() 
-	//{
-	//	audio.clip = buzzAmb;
-	//	audio.Play ();
-	//}public void buzzRoom() 
-	//{
-	//	audio.clip = buzzAmb;
-	//	audio.Play ();
-	//}public void buzzRoom() 
-	//{
-	//	audio.clip = buzzAmb;
-	//	audio.Play ();
-	//}
-
-
-
-
-
 }

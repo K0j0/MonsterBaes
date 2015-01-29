@@ -18,14 +18,14 @@ public enum Moods{
 
 public enum GameState{
 	// for Dan
-	START,
-	SPEAK_TO_DAN,
-	SPEAK_TO_DAN_1,
-	SPEAK_TO_DAN_1_0,
-	SPEAK_TO_DAN_2,
+	START_CLASSROOM,
+	SPEAK_TO_DAN_0,
+	SPEAK_TO_DAN_0A,
+    SPEAK_TO_DAN_1,	
 	SPEAK_TO_DAN_1A,
 	SPEAK_TO_DAN_1B,
 	SPEAK_TO_DAN_1C,
+    SPEAK_TO_DAN_2,
 	SPEAK_TO_DAN_2A,
 	SPEAK_TO_DAN_2B,
 	SPEAK_TO_DAN_3,
@@ -176,12 +176,14 @@ public class GameFlags{
 	public static Dictionary<soundEvents, bool> soundBools;
 	public static void init(){
 		flags = new Dictionary<StoryEvent, bool> ();
+        // Klulu
 		flags [StoryEvent.NEED_TRASH_BAGS] = false;
 		flags [StoryEvent.GOT_TRASH_BAGS] = false;
 		flags [StoryEvent.PICKED_UP_ALL_TRASH] = false;
 		flags [StoryEvent.DATING_KLULU] = false;
 		flags [StoryEvent.DATED_KLULU] = false;
 
+        // Daisy
 		flags [StoryEvent.READ_BOOK] = false;
 		flags [StoryEvent.NEED_FLOWERS] = false;
 		flags [StoryEvent.GOT_FLOWER_THISTLE] = false;
@@ -190,15 +192,15 @@ public class GameFlags{
 		flags [StoryEvent.DATING_DAISY] = false;
 		flags [StoryEvent.DATED_DAISY] = false;
 
-
+        // Buzz
 		flags [StoryEvent.NEED_OIL] = false;
 		flags [StoryEvent.GOT_OIL] = false;
 		flags [StoryEvent.DATING_BUZZ] = false;
 		flags [StoryEvent.DATED_BUZZ] = false;
 
-
-		flags [StoryEvent.NEED_GLASSES] = false;
-		flags [StoryEvent.GOT_GLASSES] = false;
+        // Dan
+		flags [StoryEvent.NEED_GLASSES] = true;
+        flags[StoryEvent.GOT_GLASSES] = true;
 		flags [StoryEvent.DATING_DAN] = false;
 		flags [StoryEvent.DATED_DAN] = false;
 
