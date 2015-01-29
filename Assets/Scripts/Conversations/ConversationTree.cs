@@ -168,11 +168,36 @@ public class ConversationTree : MonoBehaviour {
 				{
 					case 1:
 						mainScript.lastState = GameState.DATE_DAN_2A;
-				break;
+				    break;
+                    case 2:
+                        mainScript.lastState = GameState.DATE_DAN_2B;
+                    break;
 				}
 				mainScript.buttonGroup.SetActive(false);
 				TalkToDan();
 			break;
+
+            case GameState.DATE_DAN_3:
+                switch (choice)
+                {
+                    case 1:
+                        mainScript.lastState = GameState.DATE_DAN_3A;
+                    break;
+                }
+                mainScript.buttonGroup.SetActive(false);
+                TalkToDan();
+            break;
+
+            case GameState.DATE_DAN_4:
+                switch (choice)
+                {
+                    case 1:
+                        mainScript.lastState = GameState.DATE_DAN_4A;
+                        break;
+                }
+                mainScript.buttonGroup.SetActive(false);
+                TalkToDan();
+            break;
 
 		
 

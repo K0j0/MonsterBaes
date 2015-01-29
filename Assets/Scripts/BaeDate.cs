@@ -31,12 +31,24 @@ public class BaeDate : MonoBehaviour {
 			case Baes.BUZZ:
 			break;
 			case Baes.DAN:
+                Dan.gameObject.SetActive(false);
+                Dan_Button.SetActive(false);
+                Dan_Kiss.SetActive(true);
+			    danKiss();
+				
+				HelperFunctions.DelayCallback(3f, ()=>{
+                    Dan_Kiss.SetActive(false);
+					GameFlags.flags[StoryEvent.DATED_DAN] = true;
+					MainScript.instance.onNavigate(GameAreas.CLASSROOM);
+					MainScript.instance.Dan.gameObject.SetActive(false);
+					audio.Stop();
+				});
 			break;
 			case Baes.DAISY:
 				Daisy.gameObject.SetActive(false);
 				Daisy_Button.SetActive(false);
 				Daisy_Kiss.SetActive(true);
-			daisyKiss();
+			    daisyKiss();
 				
 				HelperFunctions.DelayCallback(3f, ()=>{
 					Daisy_Kiss.SetActive(false);
@@ -50,7 +62,7 @@ public class BaeDate : MonoBehaviour {
 				Klulu.gameObject.SetActive(false);
 				Klulu_Button.SetActive(false);
 				Klulu_Kiss.SetActive(true);
-			kluluKiss();
+			    kluluKiss();
 
 				HelperFunctions.DelayCallback(3f, ()=>{
 					Klulu_Kiss.SetActive(false);

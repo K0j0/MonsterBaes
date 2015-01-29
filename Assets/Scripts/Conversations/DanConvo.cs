@@ -19,22 +19,21 @@ public class DanConvo : MonoBehaviour {
 				case GameState.DATE_DAN_1A:
                     changeMood(Moods.SMILE);
 					mainSCript.lastState = GameState.DATE_DAN_2;
-                    mainSCript.say(Baes.DAN, "Are you made of copper and Tellerium?");
+                    mainSCript.say(Baes.DAN, "Are you made of Copper and Tellerium?");
 					setOptions(GameState.DATE_DAN_2);
 					mainSCript.showOptions();
 				break;
 
-				case GameState.DATE_DAN_2A:
-                    
+				case GameState.DATE_DAN_2A:                    
 					mainSCript.lastState = GameState.DATE_DAN_3;
-					mainSCript.say(Baes.KULU, "Are you made of copper and Tellerium?");
+					mainSCript.say(Baes.DAN, "Because you're CuTe");
 					setOptions(GameState.DATE_DAN_3);
 					mainSCript.showOptions();
 				break;
 
 				case GameState.DATE_DAN_2B:
 					changeMood(Moods.ANGRY);
-					mainSCript.say(Baes.DAN, "What!?");
+					mainSCript.say(Baes.DAN, "Nevermind. I should go.");
 
 					HelperFunctions.DelayCallback(3f, ()=>{
 						GameFlags.flags[StoryEvent.DATED_DAN] = true;
@@ -45,16 +44,21 @@ public class DanConvo : MonoBehaviour {
 				break;
 
 				case GameState.DATE_DAN_3A:
+                    changeMood(Moods.HAPPY);
 					mainSCript.lastState = GameState.DATE_DAN_4;
-					mainSCript.say(Baes.KULU, "Oh my");
+					mainSCript.say(Baes.DAN, "I think there's chemistry between us...");
 					setOptions(GameState.DATE_DAN_4);
 					mainSCript.showOptions();
 				break;
 
 				case GameState.DATE_DAN_4A:
-					mainSCript.lastState = GameState.DATE_DAN_5;
-					setOptions(GameState.DATE_DAN_5);
-					mainSCript.showOptions();
+					changeMood(Moods.SMILE);
+					mainSCript.say(Baes.DAN, "...");
+
+					HelperFunctions.DelayCallback(1f, ()=>{
+						mainSCript.baeDates.Kiss(Baes.DAN);
+						mainSCript.conversationPanel.SetActive(false);
+					});
 				break;
 			}
 		}
@@ -301,15 +305,37 @@ public class DanConvo : MonoBehaviour {
 			break;
 
 			case GameState.DATE_DAN_2:
-				mainSCript.option1_text.text = "Excuse me?";
+				mainSCript.option1_text.text = "Uh, what?";
 				mainSCript.option1.gameObject.SetActive(true);
-				mainSCript.option2_text.text = "Stop you're not funny.";
+				mainSCript.option2_text.text = "You're not funny. Stop.";
 				mainSCript.option2.gameObject.SetActive(true);
 				mainSCript.option3_text.text = "";
 				mainSCript.option3.gameObject.SetActive(false);
 				mainSCript.option4_text.text = "";
 				mainSCript.option4.gameObject.SetActive(false);
 			break;
+
+            case GameState.DATE_DAN_3:
+                mainSCript.option1_text.text = "You're not bad yourself";
+                mainSCript.option1.gameObject.SetActive(true);
+                mainSCript.option2_text.text = "";
+                mainSCript.option2.gameObject.SetActive(false);
+                mainSCript.option3_text.text = "";
+                mainSCript.option3.gameObject.SetActive(false);
+                mainSCript.option4_text.text = "";
+                mainSCript.option4.gameObject.SetActive(false);
+            break;
+
+            case GameState.DATE_DAN_4:
+                mainSCript.option1_text.text = "Oh gosh, stop.";
+                mainSCript.option1.gameObject.SetActive(true);
+                mainSCript.option2_text.text = "";
+                mainSCript.option2.gameObject.SetActive(false);
+                mainSCript.option3_text.text = "";
+                mainSCript.option3.gameObject.SetActive(false);
+                mainSCript.option4_text.text = "";
+                mainSCript.option4.gameObject.SetActive(false);
+            break;
 
 		}
 	}
