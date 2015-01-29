@@ -5,7 +5,8 @@
 [Tt]emp/
 [Ll]ibrary
 [Bb]uildis/
-[Bb]build/
+[Bb]uild/
+UnityVS/
 
 #These are files in the root folder of the project
 *.tmproj
