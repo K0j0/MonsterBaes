@@ -59,8 +59,8 @@ public class MainScript : MonoBehaviour {
 
 		// where to start
         blocker = blockerClassRoom;
-        //onNavigate(GameAreas.ENTRANCE_2);
-        onNavigate(GameAreas.ZEN);
+        onNavigate(GameAreas.ENTRANCE_2);
+        //onNavigate(GameAreas.ZEN);
     }
 
 	void Update(){

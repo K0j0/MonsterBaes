@@ -39,6 +39,7 @@ public class BaeDate : MonoBehaviour {
 					GameFlags.flags[StoryEvent.DATED_BUZZ] = true;
 					MainScript.instance.onNavigate(GameAreas.ZEN);
 					MainScript.instance.Buzz.gameObject.SetActive(false);
+                    MainScript.instance.closeConvoButton.SetActive(true);
 					audio.Stop();
 				});
 			break;
@@ -53,6 +54,7 @@ public class BaeDate : MonoBehaviour {
 					GameFlags.flags[StoryEvent.DATED_DAN] = true;
 					MainScript.instance.onNavigate(GameAreas.CLASSROOM);
 					MainScript.instance.Dan.gameObject.SetActive(false);
+                    MainScript.instance.closeConvoButton.SetActive(true);
 					audio.Stop();
 				});
 			break;
@@ -67,6 +69,7 @@ public class BaeDate : MonoBehaviour {
 					GameFlags.flags[StoryEvent.DATED_DAISY] = true;
 					MainScript.instance.onNavigate(GameAreas.FLORIST);
 					MainScript.instance.Daisy.gameObject.SetActive(false);
+                    MainScript.instance.closeConvoButton.SetActive(true);
 					audio.Stop ();
 				});
 			break;
@@ -81,7 +84,8 @@ public class BaeDate : MonoBehaviour {
 					GameFlags.flags[StoryEvent.DATED_KLULU] = true;
 					MainScript.instance.onNavigate(GameAreas.BEACH);
 					MainScript.instance.Klulu.gameObject.SetActive(false);
-					audio.Stop ();
+                    MainScript.instance.closeConvoButton.SetActive(true);
+                    audio.Stop ();
 				});
 			break;
 		}

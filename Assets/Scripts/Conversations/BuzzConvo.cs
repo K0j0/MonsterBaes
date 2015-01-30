@@ -59,7 +59,7 @@ public class BuzzConvo : MonoBehaviour {
 			    else{
 				    changeMood(Moods.SMILE);
 				    TakeFocus(true);
-				    mainSCript.say(Baes.BUZZ, "I'm so dry...");
+				    mainSCript.say(Baes.BUZZ, "Please let me know when you've found some organic oil. Peace.");
 			    }
 		    }
 		    else{
@@ -74,15 +74,14 @@ public class BuzzConvo : MonoBehaviour {
 				    mainSCript.showOptions();
 				    break;
 				
-			    case GameState.SPEAK_TO_BUZZ_1A:				
-				    changeMood(Moods.SMILE);
-				    mainSCript.say(Baes.BUZZ, "Heh. Flattery will get you nowhere");
+			    case GameState.SPEAK_TO_BUZZ_1A:								    
+				    mainSCript.say(Baes.BUZZ, "...");
 				    mainSCript.closeConvoButton.SetActive (true);
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_1B:
 				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_2;
-				    mainSCript.say(Baes.BUZZ, "Cleaning up the beach...");
+				    mainSCript.say(Baes.BUZZ, "I'm practicing Bit-Ram yoga. My circuits heat up to about 200 degrees as I pose.");
 				    setOptions(GameState.SPEAK_TO_BUZZ_2);
 				    mainSCript.showOptions();
 				    break;
@@ -92,57 +91,55 @@ public class BuzzConvo : MonoBehaviour {
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_2A:
+                    changeMood(Moods.SMILE);
 				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "...");
+				    mainSCript.say(Baes.BUZZ, "I bet you say that to all the robots.");
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_2B:
 				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_3;
-				    mainSCript.say(Baes.BUZZ, "Do you know...");
+				    mainSCript.say(Baes.BUZZ, "Oh it is. I'm actually a bit worried about my gears though. I forgot to consume any organic oil this morning.");
 				    setOptions(GameState.SPEAK_TO_BUZZ_3);
 				    mainSCript.showOptions();
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_3A:
 				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_4;
-				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "Well allow me to illuminate you...");
+				    mainSCript.say(Baes.BUZZ, "Operating at a high temperature for too long can corrupt my memory. Nothing a soft reboot won't fix.");
 				    setOptions(GameState.SPEAK_TO_BUZZ_4);
 				    mainSCript.showOptions();
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_3B:
+                    changeMood(Moods.ANGRY);
 				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "...");
+				    mainSCript.say(Baes.BUZZ, "I'm detecting some negativity...");
 				    changeMood(Moods.ANGRY);
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_4A:
 				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_5;
-				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "Mhm, and all of that trash collection...");
+				    mainSCript.say(Baes.BUZZ, "Say, could you do me a solid and bring me some organiz oil? I can already feel my pistons starting to chafe.");
 				    setOptions(GameState.SPEAK_TO_BUZZ_5);
 				    mainSCript.showOptions();
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_4B:
 				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "...");
-				    changeMood(Moods.ANGRY);
+				    mainSCript.say(Baes.BUZZ, "We all shut down one day, friend.");
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_5A:
 				    changeMood(Moods.SMILE);
 				    GameFlags.flags[StoryEvent.NEED_OIL] = true;
 				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "If you're willing to get your hands dirty...");
-				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.BUZZ, "Thanks! Please let me know when you've found some. I'd really appreciate it.");				    
 				    break;
 				
 			    case GameState.SPEAK_TO_BUZZ_5B:
 				    mainSCript.closeConvoButton.SetActive(true);
-				    mainSCript.say(Baes.BUZZ, "...");
-				    changeMood(Moods.ANGRY);
+				    mainSCript.say(Baes.BUZZ, "Lighten up, bro!");
+				    changeMood(Moods.SMILE);
 				    break;
 				
 			    default:
@@ -158,10 +155,10 @@ public class BuzzConvo : MonoBehaviour {
 	void setOptions(GameState forState){
 		switch (forState) {
 		case GameState.SPEAK_TO_BUZZ_1:
-			mainSCript.option1_text.text = "What's cookin' good lookin'?";
+			mainSCript.option1_text.text = "Come again?";
 			mainSCript.option1.gameObject.SetActive(true);
 			
-			mainSCript.option2_text.text = "What are you up to on the beach all by your lonesome?";
+			mainSCript.option2_text.text = "What are you doing?";
 			mainSCript.option2.gameObject.SetActive(true);
 			
 			mainSCript.option3_text.text = "Nevermind";
@@ -171,10 +168,10 @@ public class BuzzConvo : MonoBehaviour {
 			mainSCript.option4.gameObject.SetActive(false);
 			break;
 		case GameState.SPEAK_TO_BUZZ_2:
-			mainSCript.option1_text.text = "Well...good luck with that!";
+			mainSCript.option1_text.text = "Wow, you're hot";
 			mainSCript.option1.gameObject.SetActive(true);
 			
-			mainSCript.option2_text.text = "Then why are you still out here if no here?";
+			mainSCript.option2_text.text = "Sounds intense";
 			mainSCript.option2.gameObject.SetActive(true);
 			
 			mainSCript.option3_text.text = "";
@@ -184,10 +181,10 @@ public class BuzzConvo : MonoBehaviour {
 			mainSCript.option4.gameObject.SetActive(false);
 			break;
 		case GameState.SPEAK_TO_BUZZ_3:
-			mainSCript.option1_text.text = "Not really no...";
+			mainSCript.option1_text.text = "Robots forget things?";
 			mainSCript.option1.gameObject.SetActive(true);
 			
-			mainSCript.option2_text.text = "Do I need to?";
+			mainSCript.option2_text.text = "Sucks for you";
 			mainSCript.option2.gameObject.SetActive(true);
 			
 			mainSCript.option3_text.text = "";
@@ -197,10 +194,10 @@ public class BuzzConvo : MonoBehaviour {
 			mainSCript.option4.gameObject.SetActive(false);
 			break;
 		case GameState.SPEAK_TO_BUZZ_4:
-			mainSCript.option1_text.text = "Wait, seriously?";
+			mainSCript.option1_text.text = "Good to know";
 			mainSCript.option1.gameObject.SetActive(true);
-			
-			mainSCript.option2_text.text = "Wow...interesting";
+
+            mainSCript.option2_text.text = "Sure you won't shut down?";
 			mainSCript.option2.gameObject.SetActive(true);
 			
 			mainSCript.option3_text.text = "";
@@ -210,10 +207,10 @@ public class BuzzConvo : MonoBehaviour {
 			mainSCript.option4.gameObject.SetActive(false);
 			break;
 		case GameState.SPEAK_TO_BUZZ_5:
-			mainSCript.option1_text.text = "Oh no, that's terrible. Can I help at all?";
+			mainSCript.option1_text.text = "Sure thing";
 			mainSCript.option1.gameObject.SetActive(true);
 			
-			mainSCript.option2_text.text = "What has nature ever done for me?";
+			mainSCript.option2_text.text = "TMI, dude";
 			mainSCript.option2.gameObject.SetActive(true);
 			
 			mainSCript.option3_text.text = "";
