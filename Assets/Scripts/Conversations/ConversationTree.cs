@@ -525,6 +525,20 @@ public class ConversationTree : MonoBehaviour {
 				TalkToBuzz();
 			break;
 
+            case GameState.DATE_BUZZ_1:
+            switch (choice)
+            {
+                case 1:
+                    mainScript.lastState = GameState.DATE_BUZZ_1A;
+                break;
+                case 2:
+                    mainScript.lastState = GameState.DATE_BUZZ_1A;
+                break;
+            }
+            mainScript.buttonGroup.SetActive(false);
+            TalkToBuzz();
+            break;
+
 			default:
 				Debug.LogError("Whoops, wasn't expecting you to say something in this state: " + mainScript.lastState);
 			break;

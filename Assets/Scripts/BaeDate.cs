@@ -29,6 +29,18 @@ public class BaeDate : MonoBehaviour {
 		print ("Kiss " + who);
 		switch(who){
 			case Baes.BUZZ:
+                Buzz.gameObject.SetActive(false);
+                Buzz_Button.SetActive(false);
+                Buzz_Kiss.SetActive(true);
+			    buzzKiss();
+				
+				HelperFunctions.DelayCallback(3f, ()=>{
+                    Buzz_Kiss.SetActive(false);
+					GameFlags.flags[StoryEvent.DATED_BUZZ] = true;
+					MainScript.instance.onNavigate(GameAreas.ZEN);
+					MainScript.instance.Buzz.gameObject.SetActive(false);
+					audio.Stop();
+				});
 			break;
 			case Baes.DAN:
                 Dan.gameObject.SetActive(false);

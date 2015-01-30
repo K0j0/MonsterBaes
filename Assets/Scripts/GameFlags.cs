@@ -100,6 +100,8 @@ public enum GameState{
 	SPEAK_TO_BUZZ_5,
 	SPEAK_TO_BUZZ_5A,
 	SPEAK_TO_BUZZ_5B,
+    DATE_BUZZ_1,
+    DATE_BUZZ_1A,
 
 	// for Daisy
 	START_FLORIST,

@@ -8,9 +8,12 @@ public class TitleScript : MonoBehaviour {
 	public GameObject enterNamePanel;
 	public Text nameText;
 	public Button submitNameButton;
+    public Button beginButton;
 
 	bool ready = false;
 	bool showPanel = true;
+    public Text creditsText;
+    public GameObject credits;
 
 	// Use this for initialization
 	void Start () {
@@ -27,35 +30,42 @@ public class TitleScript : MonoBehaviour {
 			Application.Quit();
 		}
 
-		if (ready) {
-			if(Input.GetMouseButton(0)){
-				enterNamePanel.SetActive(true);
+		// don't enable submit button without text in input
+		if(nameText.text.Length > 0){
+			submitNameButton.interactable = true;
+		} else submitNameButton.interactable = false;
+	}
 
+    public void onBegin()
+    {
+        print("onBegin");
+		if (ready) {
+		    enterNamePanel.SetActive(true);
 //				InputField input = enterNamePanel.GetComponentInChildren<InputField>();
 //				EventSystem.current.SetSelectedGameObject(enterNamePanel);
 
-				// slide in name panel
-				if(showPanel){
-					showPanel = false;
-					Vector3 pos = enterNamePanel.transform.position;
-					pos.y = 500;
-					enterNamePanel.transform.position = pos;
+			// slide in name panel
+			if(showPanel){
+				showPanel = false;
 
-					iTween.MoveTo(enterNamePanel, iTween.Hash(
-						"y", 0
-						, "islocal", true
-						, "time", 1f
-						, "delay", 0
-					));
-				}
+                // hide credtis toggle
+                creditsText.gameObject.SetActive(false);
+
+				Vector3 pos = enterNamePanel.transform.position;
+				pos.y = 500;
+				enterNamePanel.transform.position = pos;
+
+				iTween.MoveTo(enterNamePanel, iTween.Hash(
+					"y", 0
+					, "islocal", true
+					, "time", 1f
+					, "delay", 0
+				));
 			}
 
-			// don't enable button without text in it
-			if(nameText.text.Length > 0){
-				submitNameButton.interactable = true;
-			} else submitNameButton.interactable = false;
 		}
-	}
+
+    }
 
 	public void onEnterName(){
 		GameData.playerName = nameText.text;
@@ -64,4 +74,19 @@ public class TitleScript : MonoBehaviour {
 			Application.LoadLevel("MainScene");
 		}
 	}
+
+    public void onToggleCredits()
+    {
+        credits.SetActive(!credits.activeInHierarchy);        
+        if (credits.activeInHierarchy)
+        {
+            creditsText.text = "BACK";
+            beginButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            creditsText.text = "CREDITS";
+            beginButton.gameObject.SetActive(true);
+        }
+    }
 }

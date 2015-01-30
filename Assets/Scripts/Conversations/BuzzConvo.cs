@@ -5,106 +5,136 @@ public class BuzzConvo : MonoBehaviour {
 	public MainScript mainSCript;
 	
 	public void TalkToMe(){
-		if(GameFlags.flags[StoryEvent.NEED_OIL] == true){
-			if(GameFlags.flags[StoryEvent.GOT_OIL]){
-//				TakeFocus(true);
-//				mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
-				mainSCript.StartDate(Baes.BUZZ);
-			}
-			else{
-				changeMood(Moods.SMILE);
-				TakeFocus(true);
-				mainSCript.say(Baes.KULU, "I'm so dry...");
-			}
-		}
-		else{
-			switch (mainSCript.lastState)
-			{
-			case GameState.START_ZEN:
-				mainSCript.lastState = GameState.SPEAK_TO_BUZZ_1;
-				changeMood(Moods.NEUTRAL);
-				TakeFocus(false);
-				mainSCript.say (Baes.KULU, "Namaste.");				
-				setOptions(GameState.SPEAK_TO_BUZZ_1);
-				mainSCript.showOptions();
-				break;
+        // first check for date
+        if (GameFlags.flags[StoryEvent.DATING_BUZZ] == true)
+        {
+            mainSCript.closeConvoButton.SetActive(false);
+            switch (mainSCript.lastState)
+            {
+                case GameState.DATE_BUZZ_1:
+                    changeMood(Moods.SMILE);
+                    mainSCript.conversationPanel.SetActive(true);
+					mainSCript.say(Baes.BUZZ, "Thanks for keeping me oiled up and limber");
+					setOptions(GameState.DATE_BUZZ_1);
+					mainSCript.showOptions();
+                break;
+
+                case GameState.DATE_BUZZ_1A:
+                    changeMood(Moods.HAPPY);
+                    mainSCript.conversationPanel.SetActive(true);
+                    mainSCript.say(Baes.BUZZ, "M'ere, sweet cheeks!");
+
+                    HelperFunctions.DelayCallback(1f, () =>
+                    {
+                        mainSCript.baeDates.Kiss(Baes.BUZZ);
+                        mainSCript.conversationPanel.SetActive(false);
+                    });
+                break;
+            }
+        }
+        else
+        {
+		    if(GameFlags.flags[StoryEvent.NEED_OIL] == true){
+			    if(GameFlags.flags[StoryEvent.GOT_OIL]){
+    //				TakeFocus(true);
+    //				mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
+				    mainSCript.StartDate(Baes.BUZZ);
+			    }
+			    else{
+				    changeMood(Moods.SMILE);
+				    TakeFocus(true);
+				    mainSCript.say(Baes.KULU, "I'm so dry...");
+			    }
+		    }
+		    else{
+			    switch (mainSCript.lastState)
+			    {
+			    case GameState.START_ZEN:
+				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_1;
+				    changeMood(Moods.NEUTRAL);
+				    TakeFocus(false);
+				    mainSCript.say (Baes.KULU, "Namaste.");				
+				    setOptions(GameState.SPEAK_TO_BUZZ_1);
+				    mainSCript.showOptions();
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_1A:				
-				changeMood(Moods.SMILE);
-				mainSCript.say(Baes.KULU, "Heh. Flattery will get you nowhere");
-				mainSCript.closeConvoButton.SetActive (true);
-				break;
+			    case GameState.SPEAK_TO_BUZZ_1A:				
+				    changeMood(Moods.SMILE);
+				    mainSCript.say(Baes.KULU, "Heh. Flattery will get you nowhere");
+				    mainSCript.closeConvoButton.SetActive (true);
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_1B:
-				mainSCript.lastState = GameState.SPEAK_TO_BUZZ_2;
-				mainSCript.say(Baes.KULU, "Cleaning up the beach...");
-				setOptions(GameState.SPEAK_TO_BUZZ_2);
-				mainSCript.showOptions();
-				break;
+			    case GameState.SPEAK_TO_BUZZ_1B:
+				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_2;
+				    mainSCript.say(Baes.KULU, "Cleaning up the beach...");
+				    setOptions(GameState.SPEAK_TO_BUZZ_2);
+				    mainSCript.showOptions();
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_1C:
-				mainSCript.closeConversationPanel();
-				break;
+			    case GameState.SPEAK_TO_BUZZ_1C:
+				    mainSCript.closeConversationPanel();
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_2A:
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "...");
-				break;
+			    case GameState.SPEAK_TO_BUZZ_2A:
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "...");
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_2B:
-				mainSCript.lastState = GameState.SPEAK_TO_BUZZ_3;
-				mainSCript.say(Baes.KULU, "Do you know...");
-				setOptions(GameState.SPEAK_TO_BUZZ_3);
-				mainSCript.showOptions();
-				break;
+			    case GameState.SPEAK_TO_BUZZ_2B:
+				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_3;
+				    mainSCript.say(Baes.KULU, "Do you know...");
+				    setOptions(GameState.SPEAK_TO_BUZZ_3);
+				    mainSCript.showOptions();
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_3A:
-				mainSCript.lastState = GameState.SPEAK_TO_BUZZ_4;
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "Well allow me to illuminate you...");
-				setOptions(GameState.SPEAK_TO_BUZZ_4);
-				mainSCript.showOptions();
-				break;
+			    case GameState.SPEAK_TO_BUZZ_3A:
+				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_4;
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "Well allow me to illuminate you...");
+				    setOptions(GameState.SPEAK_TO_BUZZ_4);
+				    mainSCript.showOptions();
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_3B:
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "...");
-				changeMood(Moods.ANGRY);
-				break;
+			    case GameState.SPEAK_TO_BUZZ_3B:
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "...");
+				    changeMood(Moods.ANGRY);
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_4A:
-				mainSCript.lastState = GameState.SPEAK_TO_BUZZ_5;
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "Mhm, and all of that trash collection...");
-				setOptions(GameState.SPEAK_TO_BUZZ_5);
-				mainSCript.showOptions();
-				break;
+			    case GameState.SPEAK_TO_BUZZ_4A:
+				    mainSCript.lastState = GameState.SPEAK_TO_BUZZ_5;
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "Mhm, and all of that trash collection...");
+				    setOptions(GameState.SPEAK_TO_BUZZ_5);
+				    mainSCript.showOptions();
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_4B:
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "...");
-				changeMood(Moods.ANGRY);
-				break;
+			    case GameState.SPEAK_TO_BUZZ_4B:
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "...");
+				    changeMood(Moods.ANGRY);
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_5A:
-				changeMood(Moods.SMILE);
-				GameFlags.flags[StoryEvent.NEED_OIL] = true;
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
-				mainSCript.closeConvoButton.SetActive(true);
-				break;
+			    case GameState.SPEAK_TO_BUZZ_5A:
+				    changeMood(Moods.SMILE);
+				    GameFlags.flags[StoryEvent.NEED_OIL] = true;
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "If you're willing to get your hands dirty...");
+				    mainSCript.closeConvoButton.SetActive(true);
+				    break;
 				
-			case GameState.SPEAK_TO_BUZZ_5B:
-				mainSCript.closeConvoButton.SetActive(true);
-				mainSCript.say(Baes.KULU, "...");
-				changeMood(Moods.ANGRY);
-				break;
+			    case GameState.SPEAK_TO_BUZZ_5B:
+				    mainSCript.closeConvoButton.SetActive(true);
+				    mainSCript.say(Baes.KULU, "...");
+				    changeMood(Moods.ANGRY);
+				    break;
 				
-			default:
-				Debug.LogError("Whoa, didn't think you could talk to Buzz during this state: " + mainSCript.lastState);
-				break;
-			}
-		}
+			    default:
+				    Debug.LogError("Whoa, didn't think you could talk to Buzz during this state: " + mainSCript.lastState);
+				    break;
+			    }
+		    }
+        }
 		
 		
 	}
@@ -176,6 +206,20 @@ public class BuzzConvo : MonoBehaviour {
 			mainSCript.option4_text.text = "";
 			mainSCript.option4.gameObject.SetActive(false);
 			break;
+
+        case GameState.DATE_BUZZ_1:
+            mainSCript.option1_text.text = "No problem!";
+            mainSCript.option1.gameObject.SetActive(true);
+
+            mainSCript.option2_text.text = "Erm, ok...";
+            mainSCript.option2.gameObject.SetActive(true);
+
+            mainSCript.option3_text.text = "";
+            mainSCript.option3.gameObject.SetActive(false);
+
+            mainSCript.option4_text.text = "";
+            mainSCript.option4.gameObject.SetActive(false);
+            break;
 		}
 	}
 	
@@ -198,6 +242,7 @@ public class BuzzConvo : MonoBehaviour {
 			break;
 		}
 		mainSCript.Buzz_big.image.sprite = newSprite;
+        mainSCript.baeDates.Buzz.image.sprite = newSprite;
 	}
 
 	void TakeFocus(bool showCloseButton){
