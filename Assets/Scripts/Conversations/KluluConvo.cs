@@ -12,21 +12,21 @@ public class KluluConvo : MonoBehaviour {
 			{
 				case GameState.DATE_KLULU_1:					
 					mainSCript.conversationPanel.SetActive(true);
-					mainSCript.say(Baes.KULU, "Thanks for helping me out, dear.");
+					mainSCript.say(Baes.KLULU, "Thanks for helping me out, dear.");
 					setOptions(GameState.DATE_KLULU_1);
 					mainSCript.showOptions();
 				break;
 
 				case GameState.DATE_KLULU_1A:
 					mainSCript.lastState = GameState.DATE_KLULU_2;
-					mainSCript.say(Baes.KULU, "On behalf of the marine life and other lovely critters, we appreciate it.");
+					mainSCript.say(Baes.KLULU, "On behalf of the marine life and other lovely critters, we appreciate it.");
 					setOptions(GameState.DATE_KLULU_2);
 					mainSCript.showOptions();
 				break;
 
 				case GameState.DATE_KLULU_2A:
 					changeMood(Moods.ANGRY);
-					mainSCript.say(Baes.KULU, "What!?");
+					mainSCript.say(Baes.KLULU, "What!?");
 
 					HelperFunctions.DelayCallback(3f, ()=>{
 						GameFlags.flags[StoryEvent.DATED_KLULU] = true;
@@ -38,10 +38,10 @@ public class KluluConvo : MonoBehaviour {
 
 				case GameState.DATE_KLULU_2B:
 					changeMood(Moods.SMILE);
-					mainSCript.say(Baes.KULU, "Oh you flirt");
+					mainSCript.say(Baes.KLULU, "Oh you flirt");
 
 					HelperFunctions.DelayCallback(1f, ()=>{
-						mainSCript.baeDates.Kiss(Baes.KULU);
+						mainSCript.baeDates.Kiss(Baes.KLULU);
 						mainSCript.conversationPanel.SetActive(false);
 					});
 				break;
@@ -58,13 +58,13 @@ public class KluluConvo : MonoBehaviour {
 						case GameState.SPEAK_TO_KLULU_6:
 							mainSCript.lastState = GameState.SPEAK_TO_KLULU_6;
 							TakeFocus (false); // Lead to date
-							mainSCript.say(Baes.KULU, "Well thanks for helping. Why don't I take you out for coffee or something?");
+							mainSCript.say(Baes.KLULU, "Well thanks for helping. Why don't I take you out for coffee or something?");
 							setOptions(GameState.SPEAK_TO_KLULU_6);
 							mainSCript.showOptions();
 						break;
 						case GameState.SPEAK_TO_KLULU_6A:							
 							mainSCript.closeConversationPanel();
-							mainSCript.StartDate(Baes.KULU);
+							mainSCript.StartDate(Baes.KLULU);
 							changeMood(Moods.NEUTRAL);
 							mainSCript.lastState = GameState.DATE_KLULU_1; // need to call this after closing panel
 						break;
@@ -74,13 +74,13 @@ public class KluluConvo : MonoBehaviour {
 				else if(GameFlags.flags[StoryEvent.GOT_TRASH_BAGS]){
 					changeMood(Moods.SMILE);
 					TakeFocus (true);
-					mainSCript.say(Baes.KULU, "That's great! Now we can clean up the beach.");
+					mainSCript.say(Baes.KLULU, "That's great! Now we can clean up the beach.");
 					
 				}
 				else{
 					changeMood(Moods.SMILE);
 					TakeFocus (true);
-					mainSCript.say(Baes.KULU, "If your willing to get your hands dirty in the name of sea life, grab a pick and a trash bag and lets clean this beach.");
+					mainSCript.say(Baes.KLULU, "If your willing to get your hands dirty in the name of sea life, grab a pick and a trash bag and lets clean this beach.");
 				}
 			}
 			else{
@@ -91,20 +91,20 @@ public class KluluConvo : MonoBehaviour {
 					changeMood(Moods.NEUTRAL);
 					
 					TakeFocus (false);
-					mainSCript.say(Baes.KULU, "Hey.");
+					mainSCript.say(Baes.KLULU, "Hey.");
 					setOptions(GameState.SPEAK_TO_KLULU_1);
 					mainSCript.showOptions();
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_1A:				
 					changeMood(Moods.SMILE);
-					mainSCript.say(Baes.KULU, "Heh. Flattery will get you nowhere");
+					mainSCript.say(Baes.KLULU, "Heh. Flattery will get you nowhere");
 					mainSCript.closeConvoButton.SetActive (true);
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_1B:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_2;
-					mainSCript.say(Baes.KULU, "Cleaning up the beach. To be honest, I'm pretty pissed. No one showed up. Even the guy who was bringing the trash bags and pickers.");
+					mainSCript.say(Baes.KLULU, "Cleaning up the beach. To be honest, I'm pretty pissed. No one showed up. Even the guy who was bringing the trash bags and pickers.");
 					setOptions(GameState.SPEAK_TO_KLULU_2);
 					mainSCript.showOptions();
 					break;
@@ -115,39 +115,39 @@ public class KluluConvo : MonoBehaviour {
 					
 				case GameState.SPEAK_TO_KLULU_2A:
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "...");
+					mainSCript.say(Baes.KLULU, "...");
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_2B:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_3;
-					mainSCript.say(Baes.KULU, "Do you know what trash, specifically plastic does to animals?");
+					mainSCript.say(Baes.KLULU, "Do you know what trash, specifically plastic does to animals?");
 					setOptions(GameState.SPEAK_TO_KLULU_3);
 					mainSCript.showOptions();
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_3A:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_4;
-					mainSCript.say(Baes.KULU, "Well allow me to illuminate you on the subject. First of all a large present of litter ends up in our oceans from people just throwing trash on the ground and letting it run into our storm drains");
+					mainSCript.say(Baes.KLULU, "Well allow me to illuminate you on the subject. First of all a large present of litter ends up in our oceans from people just throwing trash on the ground and letting it run into our storm drains");
 					setOptions(GameState.SPEAK_TO_KLULU_4);
 					mainSCript.showOptions();
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_3B:
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "...");
+					mainSCript.say(Baes.KLULU, "...");
 					changeMood(Moods.ANGRY);
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_4A:
 					mainSCript.lastState = GameState.SPEAK_TO_KLULU_5;
-					mainSCript.say(Baes.KULU, "Mhm, and all that trash collects into giant gyres in each ocean. These bits of garbage can either be ingested by wildlife or they can be caught in it and be physically deformed.");
+					mainSCript.say(Baes.KLULU, "Mhm, and all that trash collects into giant gyres in each ocean. These bits of garbage can either be ingested by wildlife or they can be caught in it and be physically deformed.");
 					setOptions(GameState.SPEAK_TO_KLULU_5);
 					mainSCript.showOptions();
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_4B:
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "...");
+					mainSCript.say(Baes.KLULU, "...");
 					changeMood(Moods.ANGRY);
 					break;
 					
@@ -156,13 +156,13 @@ public class KluluConvo : MonoBehaviour {
 					changeMood(Moods.SMILE);
 					GameFlags.flags[StoryEvent.NEED_TRASH_BAGS] = true;
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "If your willing to get your hands dirty in the name of sea life, grab a pick and a trash bag and lets clean this beach.");
+					mainSCript.say(Baes.KLULU, "If your willing to get your hands dirty in the name of sea life, grab a pick and a trash bag and lets clean this beach.");
 					mainSCript.closeConvoButton.SetActive(true);
 					break;
 					
 				case GameState.SPEAK_TO_KLULU_5B:
 					mainSCript.closeConvoButton.SetActive(true);
-					mainSCript.say(Baes.KULU, "...");
+					mainSCript.say(Baes.KLULU, "...");
 					changeMood(Moods.ANGRY);
 					break;
 					

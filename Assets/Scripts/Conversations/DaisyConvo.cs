@@ -11,7 +11,7 @@ public class DaisyConvo : MonoBehaviour {
 			{
 				case GameState.DATE_DAISY_1:					
 					mainSCript.conversationPanel.SetActive(true);
-					mainSCript.say(Baes.KULU, "Thanks for finding the nightshade. It's one of my favorite dangerous flowers.");
+					mainSCript.say(Baes.KLULU, "Thanks for finding the nightshade. It's one of my favorite dangerous flowers.");
 					setOptions(GameState.DATE_DAISY_1);
 					mainSCript.showOptions();
 				break;
@@ -19,14 +19,14 @@ public class DaisyConvo : MonoBehaviour {
 				case GameState.DATE_DAISY_1A:
 					changeMood(Moods.SMILE);
 					mainSCript.lastState = GameState.DATE_DAISY_2;
-					mainSCript.say(Baes.KULU, "I hope you washed your hand");
+					mainSCript.say(Baes.KLULU, "I hope you washed your hand");
 					setOptions(GameState.DATE_DAISY_2);
 					mainSCript.showOptions();
 				break;
 
 				case GameState.DATE_DAISY_2A:
 					changeMood(Moods.ANGRY);
-					mainSCript.say(Baes.KULU, "EW!?");
+					mainSCript.say(Baes.KLULU, "EW!?");
 
 					HelperFunctions.DelayCallback(3f, ()=>{
 						GameFlags.flags[StoryEvent.DATED_DAISY] = true;
@@ -38,7 +38,7 @@ public class DaisyConvo : MonoBehaviour {
 
 				case GameState.DATE_DAISY_2B:
 					changeMood(Moods.SMILE);
-					mainSCript.say(Baes.KULU, "You're just about as sweet as my little flowers");
+					mainSCript.say(Baes.KLULU, "You're just about as sweet as my little flowers");
 
 					HelperFunctions.DelayCallback(1f, ()=>{
 						mainSCript.baeDates.Kiss(Baes.DAISY);

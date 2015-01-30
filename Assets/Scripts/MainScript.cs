@@ -138,7 +138,7 @@ public class MainScript : MonoBehaviour {
 			case Baes.YOU:
 				convoText.text = GameData.playerName + ":\n";
 			break;
-			case Baes.KULU:
+			case Baes.KLULU:
 				convoText.text = "Klulu:\n";
 			break;
 			case Baes.DAN:

@@ -70,7 +70,7 @@ public class BaeDate : MonoBehaviour {
 					audio.Stop ();
 				});
 			break;
-			case Baes.KULU:
+			case Baes.KLULU:
 				Klulu.gameObject.SetActive(false);
 				Klulu_Button.SetActive(false);
 				Klulu_Kiss.SetActive(true);
@@ -114,7 +114,7 @@ public class BaeDate : MonoBehaviour {
 				Daisy.gameObject.SetActive (true);
 				Daisy_Button.SetActive (true);
 			break;
-			case Baes.KULU:
+			case Baes.KLULU:
 				GameFlags.flags[StoryEvent.DATING_KLULU] = true;
 				Klulu.gameObject.SetActive (true);
 				Klulu_Button.SetActive (true);

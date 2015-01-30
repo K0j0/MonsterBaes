@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public enum Baes{
 	YOU,
 	DAN,
-	KULU,
+	KLULU,
 	BUZZ,
 	DAISY
 }
@@ -100,6 +100,8 @@ public enum GameState{
 	SPEAK_TO_BUZZ_5,
 	SPEAK_TO_BUZZ_5A,
 	SPEAK_TO_BUZZ_5B,
+    SPEAK_TO_BUZZ_6,
+    SPEAK_TO_BUZZ_6A,
     DATE_BUZZ_1,
     DATE_BUZZ_1A,
 

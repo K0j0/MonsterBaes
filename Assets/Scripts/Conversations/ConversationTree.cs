@@ -525,6 +525,17 @@ public class ConversationTree : MonoBehaviour {
 				TalkToBuzz();
 			break;
 
+            case GameState.SPEAK_TO_BUZZ_6:
+            switch (choice)
+            {
+                case 1:
+                    mainScript.lastState = GameState.SPEAK_TO_BUZZ_6A;
+                break;
+            }
+            mainScript.buttonGroup.SetActive(false);
+            TalkToBuzz();
+            break;
+
             case GameState.DATE_BUZZ_1:
             switch (choice)
             {
