@@ -13,41 +13,43 @@ public class AudioScript : MonoBehaviour {
 	public AudioClip buzzAmb;
 	public AudioClip hallAmb;
 
+    AudioSource gameAudio;
+
 	// Use this for initialization
 	void Start () 
 	{
-
+        gameAudio = GetComponent<AudioSource>();
 	}
 	
 	
 	public void buzzRoom() 
 	{
-		audio.Stop ();
-		audio.clip = buzzAmb;
-		audio.Play ();
+		gameAudio.Stop ();
+		gameAudio.clip = buzzAmb;
+		gameAudio.Play ();
 	}
 	public void danRoom() 
 	{
-		audio.Stop ();
-		audio.clip = danAmb;
-		audio.Play ();
+		gameAudio.Stop ();
+		gameAudio.clip = danAmb;
+		gameAudio.Play ();
 	}
 	public void daisyRoom() 
 	{
-		audio.Stop ();
-		audio.clip = daisyAmb;
-		audio.Play ();
+		gameAudio.Stop ();
+		gameAudio.clip = daisyAmb;
+		gameAudio.Play ();
 	}public void kluluRoom() 
 	{
-		audio.Stop ();
-		audio.clip = kluluAmb;
-		audio.Play ();
+		gameAudio.Stop ();
+		gameAudio.clip = kluluAmb;
+		gameAudio.Play ();
 	}
 	public void hallway() 
 	{
         print("Play hallway");
-		audio.Stop ();
-        audio.clip = danAmb;
-		audio.Play ();
+		gameAudio.Stop ();
+        gameAudio.clip = danAmb;
+		gameAudio.Play ();
 	}
 }

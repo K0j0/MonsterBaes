@@ -24,8 +24,15 @@ public class BaeDate : MonoBehaviour {
 	public AudioClip daisyKissSound;
 	public AudioClip buzzKissSound;
 
+    AudioSource myAudio;
 
-	public void Kiss(Baes who){
+    private void Awake()
+    {
+        myAudio = GetComponent<AudioSource>();
+    }
+
+
+    public void Kiss(Baes who){
 		print ("Kiss " + who);
 		switch(who){
 			case Baes.BUZZ:
@@ -40,7 +47,7 @@ public class BaeDate : MonoBehaviour {
 					MainScript.instance.onNavigate(GameAreas.ZEN);
 					MainScript.instance.Buzz.gameObject.SetActive(false);
                     MainScript.instance.closeConvoButton.SetActive(true);
-					audio.Stop();
+                    myAudio.Stop();
 				});
 			break;
 			case Baes.DAN:
@@ -55,7 +62,7 @@ public class BaeDate : MonoBehaviour {
 					MainScript.instance.onNavigate(GameAreas.CLASSROOM);
 					MainScript.instance.Dan.gameObject.SetActive(false);
                     MainScript.instance.closeConvoButton.SetActive(true);
-					audio.Stop();
+                    myAudio.Stop();
 				});
 			break;
 			case Baes.DAISY:
@@ -70,7 +77,7 @@ public class BaeDate : MonoBehaviour {
 					MainScript.instance.onNavigate(GameAreas.FLORIST);
 					MainScript.instance.Daisy.gameObject.SetActive(false);
                     MainScript.instance.closeConvoButton.SetActive(true);
-					audio.Stop ();
+                    myAudio.Stop ();
 				});
 			break;
 			case Baes.KLULU:
@@ -85,7 +92,7 @@ public class BaeDate : MonoBehaviour {
 					MainScript.instance.onNavigate(GameAreas.BEACH);
 					MainScript.instance.Klulu.gameObject.SetActive(false);
                     MainScript.instance.closeConvoButton.SetActive(true);
-                    audio.Stop ();
+                    myAudio.Stop ();
 				});
 			break;
 		}
@@ -126,19 +133,19 @@ public class BaeDate : MonoBehaviour {
 		}
 	}
 	public void kluluKiss(){
-		audio.clip = kluluKissSound;
-		audio.Play ();
+        myAudio.clip = kluluKissSound;
+        myAudio.Play ();
 	}
 	public void danKiss(){
-		audio.clip = danKissSound;
-		audio.Play ();
+        myAudio.clip = danKissSound;
+        myAudio.Play ();
 	}
 	public void daisyKiss(){
-		audio.clip = daisyKissSound;
-		audio.Play ();
+        myAudio.clip = daisyKissSound;
+        myAudio.Play ();
 	}
 	public void buzzKiss(){
-		audio.clip = buzzKissSound;
-		audio.Play ();
+        myAudio.clip = buzzKissSound;
+        myAudio.Play ();
 	}
 }
